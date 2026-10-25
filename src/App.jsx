@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Database,
-  FileSpreadsheet,
-  BarChart3,
-  LayoutGrid,
   ShieldCheck,
   Award,
   ArrowUpRight,
@@ -51,6 +47,17 @@ function LinkedinIcon(props) {
     </svg>
   );
 }
+
+const tools = [
+  'Microsoft Excel',
+  'SQL Databases',
+  'Looker Studio',
+  'Google Sheets',
+  'Figma',
+];
+
+// Duplicate items for a seamless gapless infinite scroll loop
+const marqueeItems = [...tools, ...tools, ...tools, ...tools];
 
 const content = {
   id: {
@@ -102,37 +109,7 @@ const content = {
       overline: 'Keahlian Teknis',
       title: 'Kemampuan Utama',
       subtitle:
-        'Metodologi analitis teruji dengan penguasaan alat dan alur kerja praktis.',
-      items: [
-        {
-          skill: 'Modeling',
-          tool: 'Microsoft Excel',
-          description:
-            'Arsitektur formula dinamis, tabel pivot dengan multi-slicer, dan dasbor eksekutif terotomatisasi.',
-          icon: FileSpreadsheet,
-        },
-        {
-          skill: 'Cleansing',
-          tool: 'SQL Databases',
-          description:
-            'Struktur tabel relasional, complex joins, Common Table Expressions (CTE), dan validasi integritas data.',
-          icon: Database,
-        },
-        {
-          skill: 'Reporting',
-          tool: 'Looker Studio',
-          description:
-            'Menghubungkan sumber data relasional ke dalam sistem pelaporan stakeholder berbasis cloud yang mudah diakses.',
-          icon: BarChart3,
-        },
-        {
-          skill: 'Design',
-          tool: 'Figma',
-          description:
-            'Membuat wireframe tata letak dasbor dan menyelaraskan metrik ke dalam hierarki visual yang jelas.',
-          icon: LayoutGrid,
-        },
-      ],
+        'Teknologi dan alat utama yang digunakan dalam pemodelan data, manipulasi SQL, pelaporan bisnis, dan perancangan dasbor.',
     },
     accreditations: {
       overline: 'Kredensial',
@@ -217,37 +194,7 @@ const content = {
       overline: 'Technical Stack',
       title: 'Core Capabilities',
       subtitle:
-        'Rigorous analytical methodologies with hands-on tool proficiencies.',
-      items: [
-        {
-          skill: 'Modeling',
-          tool: 'Microsoft Excel',
-          description:
-            'Dynamic formula architecture, multi-slicer pivot tables, and automated executive dashboards.',
-          icon: FileSpreadsheet,
-        },
-        {
-          skill: 'Cleansing',
-          tool: 'SQL Databases',
-          description:
-            'Relational table structuring, complex joins, CTEs, and validating data integrity.',
-          icon: Database,
-        },
-        {
-          skill: 'Reporting',
-          tool: 'Looker Studio',
-          description:
-            'Connecting relational data sources into cloud-accessible stakeholder reporting.',
-          icon: BarChart3,
-        },
-        {
-          skill: 'Design',
-          tool: 'Figma',
-          description:
-            'Wireframing dashboard layouts and aligning metrics into visual hierarchies.',
-          icon: LayoutGrid,
-        },
-      ],
+        'Core technologies and tools deployed across data modeling, relational manipulation, and executive reporting.',
     },
     accreditations: {
       overline: 'Credentials',
@@ -296,7 +243,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900 font-sans selection:bg-neutral-900 selection:text-white">
-      {/* 1. Floating Navbar with Language Toggle */}
+      {/* 1. Floating Navbar with Compact Single-Button Language Switch */}
       <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-5 px-4 pointer-events-none">
         <nav
           aria-label="Main Navigation"
@@ -496,53 +443,49 @@ export default function App() {
           </div>
         </section>
 
-        {/* 4. Core Capabilities (Updated with Modeling, Cleansing, Reporting, Design) */}
+        {/* 4. Core Capabilities (Infinite Horizontal Text Marquee) */}
         <section
           id="capabilities"
-          className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 border-t border-neutral-200"
+          className="py-20 md:py-28 border-t border-neutral-200 overflow-hidden"
         >
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
-            <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-neutral-600 block mb-1">
-                {t.capabilities.overline}
-              </span>
-              <h2 className="font-serif text-3xl sm:text-4xl text-neutral-900 tracking-tight">
-                {t.capabilities.title}
-              </h2>
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 mb-12">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between">
+              <div>
+                <span className="text-xs font-mono uppercase tracking-widest text-neutral-600 block mb-1">
+                  {t.capabilities.overline}
+                </span>
+                <h2 className="font-serif text-3xl sm:text-4xl text-neutral-900 tracking-tight">
+                  {t.capabilities.title}
+                </h2>
+              </div>
+              <p className="text-neutral-600 text-sm max-w-sm mt-2 sm:mt-0">
+                {t.capabilities.subtitle}
+              </p>
             </div>
-            <p className="text-neutral-600 text-sm max-w-sm mt-2 sm:mt-0">
-              {t.capabilities.subtitle}
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {t.capabilities.items.map((cap) => {
-              const Icon = cap.icon;
-              return (
-                <div
-                  key={cap.skill}
-                  className="border border-neutral-200 rounded-2xl p-6 bg-white/40 hover:border-neutral-400/80 hover:bg-white transition-all duration-200 flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-5">
-                      <div className="w-10 h-10 rounded-xl bg-neutral-100 border border-neutral-200/80 flex items-center justify-center text-neutral-800">
-                        <Icon className="w-5 h-5 text-neutral-800" />
-                      </div>
-                      <span className="text-[11px] font-mono tracking-wider uppercase px-2 py-0.5 rounded-md bg-neutral-100 text-neutral-700 border border-neutral-200/60">
-                        {cap.skill}
-                      </span>
-                    </div>
+          {/* Marquee Banner Track */}
+          <div className="w-full relative py-8 sm:py-12 border-y border-neutral-200/80 bg-neutral-100/40 select-none group overflow-hidden">
+            {/* Subtle Gradient Fade Masks on Viewport Edges */}
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-32 md:w-48 z-10 bg-gradient-to-r from-neutral-50 to-transparent" />
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-32 md:w-48 z-10 bg-gradient-to-l from-neutral-50 to-transparent" />
 
-                    <h3 className="font-serif text-xl font-medium text-neutral-900 tracking-tight mb-2">
-                      {cap.tool}
-                    </h3>
-                    <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed">
-                      {cap.description}
-                    </p>
-                  </div>
+            {/* Seamless Infinite Scrolling Track */}
+            <div className="animate-marquee flex items-center whitespace-nowrap will-change-transform">
+              {marqueeItems.map((tool, index) => (
+                <div
+                  key={`${tool}-${index}`}
+                  className="inline-flex items-center"
+                >
+                  <span className="font-serif text-4xl sm:text-6xl md:text-7xl font-normal text-neutral-300 tracking-tight transition-colors duration-300 hover:text-neutral-900 px-4 sm:px-8 cursor-default">
+                    {tool}
+                  </span>
+                  <span className="text-xl sm:text-3xl text-neutral-400 select-none px-2 sm:px-4">
+                    •
+                  </span>
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </section>
 
