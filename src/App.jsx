@@ -750,7 +750,7 @@ export default function App() {
             </p>
 
             <a
-              href="mailto:iqbaldwifathonah@example.com"
+              href="mailto:iqbalfathonah20@gmail.com?subject=Peluang%20Kerja%20Data%20Analyst"
               id="footer-email-btn"
               className="rounded-full px-7 py-3 bg-neutral-900 text-white font-medium text-sm transition-all duration-200 hover:bg-neutral-800 hover:scale-[1.02] active:scale-[0.98] inline-flex items-center gap-2.5 shadow-xs mb-10"
             >
@@ -761,9 +761,9 @@ export default function App() {
             {/* Social Links */}
             <div className="flex items-center justify-center gap-8 text-sm font-medium text-neutral-600 pt-6 border-t border-neutral-200/80">
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/iqbal-dwi-fathonah-56ba2a3b0/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 id="link-linkedin"
                 className="flex items-center gap-1.5 hover:text-neutral-900 transition-colors"
               >
@@ -771,9 +771,9 @@ export default function App() {
                 <span>LinkedIn</span>
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/qivoradev"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 id="link-github"
                 className="flex items-center gap-1.5 hover:text-neutral-900 transition-colors"
               >
@@ -781,9 +781,9 @@ export default function App() {
                 <span>GitHub</span>
               </a>
               <a
-                href="https://wa.me/"
+                href="https://api.whatsapp.com/send?phone=6282322231710&text=Halo%20Iqbal,%20saya%20melihat%20portofolio%20Data%20Analyst%20Anda%20dan%20ingin%20berdiskusi%20lebih%20lanjut."
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 id="link-whatsapp"
                 className="flex items-center gap-1.5 hover:text-neutral-900 transition-colors"
               >
