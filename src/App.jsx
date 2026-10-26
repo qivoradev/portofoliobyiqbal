@@ -8,6 +8,8 @@ import {
   Mail,
   Layers,
   X,
+  Sun,
+  Moon,
 } from 'lucide-react';
 
 function GithubIcon(props) {
@@ -397,12 +399,21 @@ const content = {
 
 export default function App() {
   const [lang, setLang] = useState('id');
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [selectedCert, setSelectedCert] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -426,62 +437,79 @@ export default function App() {
   const t = content[lang];
 
   return (
-    <div className="min-h-screen bg-neutral-50 text-neutral-900 font-sans selection:bg-neutral-900 selection:text-white">
-      {/* 1. Floating Navbar with Compact Single-Button Language Switch */}
+    <div className="min-h-screen bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-50 font-sans selection:bg-neutral-900 selection:text-white dark:selection:bg-white dark:selection:text-neutral-950 transition-colors duration-300">
+      {/* 1. Floating Navbar with Compact Single-Button Language Switch and Dark Mode Toggle */}
       <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-5 px-4 pointer-events-none">
         <nav
           aria-label="Main Navigation"
-          className="pointer-events-auto inline-flex items-center gap-4 sm:gap-6 px-4 sm:px-5 py-2 rounded-full bg-neutral-100/80 backdrop-blur-md border border-neutral-200/90 shadow-sm"
+          className="pointer-events-auto inline-flex items-center gap-3 sm:gap-6 px-4 sm:px-5 py-2 rounded-full bg-neutral-100/80 dark:bg-neutral-900/80 backdrop-blur-md border border-neutral-200/90 dark:border-neutral-800 shadow-sm transition-colors duration-300"
         >
           <a
             href="#about"
             id="nav-logo"
             className="flex items-center gap-2 group transition-opacity hover:opacity-80"
           >
-            <span className="w-2 h-2 rounded-full bg-neutral-900 group-hover:scale-125 transition-transform" />
-            <span className="text-xs font-semibold tracking-wider uppercase text-neutral-900">
+            <span className="w-2 h-2 rounded-full bg-neutral-900 dark:bg-neutral-50 group-hover:scale-125 transition-transform" />
+            <span className="text-xs font-semibold tracking-wider uppercase text-neutral-900 dark:text-neutral-50 transition-colors">
               {t.nav.brand}
             </span>
           </a>
 
-          <div className="h-3.5 w-px bg-neutral-300/80" />
+          <div className="h-3.5 w-px bg-neutral-300/80 dark:bg-neutral-800 hidden md:block transition-colors" />
 
-          <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm font-medium text-neutral-600">
+          {/* Middle Nav Links: Hidden on mobile (< md), visible on desktop (md+) */}
+          <div className="hidden md:flex items-center gap-4 sm:gap-6 text-xs sm:text-sm font-medium text-neutral-600 dark:text-neutral-400">
             <a
               href="#about"
               id="nav-link-about"
-              className="hover:text-neutral-900 transition-colors"
+              className="hover:text-neutral-900 dark:hover:text-neutral-50 transition-colors"
             >
               {t.nav.about}
             </a>
             <a
               href="#projects"
               id="nav-link-projects"
-              className="hover:text-neutral-900 transition-colors"
+              className="hover:text-neutral-900 dark:hover:text-neutral-50 transition-colors"
             >
               {t.nav.projects}
             </a>
             <a
               href="#capabilities"
               id="nav-link-capabilities"
-              className="hover:text-neutral-900 transition-colors"
+              className="hover:text-neutral-900 dark:hover:text-neutral-50 transition-colors"
             >
               {t.nav.capabilities}
             </a>
           </div>
 
-          <div className="h-3.5 w-px bg-neutral-300/80" />
+          <div className="h-3.5 w-px bg-neutral-300/80 dark:bg-neutral-800 transition-colors" />
 
-          {/* Single Compact Language Switch Button */}
-          <button
-            type="button"
-            id="lang-toggle-btn"
-            onClick={() => setLang(lang === 'id' ? 'en' : 'id')}
-            aria-label={`Switch language. Current: ${lang.toUpperCase()}`}
-            className="rounded-full px-2.5 py-0.5 text-xs sm:text-sm font-medium text-neutral-700 hover:text-neutral-900 hover:bg-neutral-200/80 transition-colors cursor-pointer select-none"
-          >
-            {lang.toUpperCase()}
-          </button>
+          {/* Controls: Compact Language Switcher & Dark Mode Toggle */}
+          <div className="flex items-center gap-1 sm:gap-1.5">
+            <button
+              type="button"
+              id="lang-toggle-btn"
+              onClick={() => setLang(lang === 'id' ? 'en' : 'id')}
+              aria-label={`Switch language. Current: ${lang.toUpperCase()}`}
+              className="rounded-full px-2.5 py-1 text-xs sm:text-sm font-medium text-neutral-700 hover:text-neutral-900 hover:bg-neutral-200/80 dark:text-neutral-300 dark:hover:text-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer select-none"
+            >
+              {lang.toUpperCase()}
+            </button>
+
+            <button
+              type="button"
+              id="theme-toggle-btn"
+              onClick={() => setIsDarkMode(!isDarkMode)}
+              aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+              className="rounded-full p-1.5 text-neutral-700 hover:text-neutral-900 hover:bg-neutral-200/80 dark:text-neutral-300 dark:hover:text-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer select-none"
+            >
+              {isDarkMode ? (
+                <Sun className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" />
+              ) : (
+                <Moon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-700" />
+              )}
+            </button>
+          </div>
         </nav>
       </header>
 
@@ -492,23 +520,23 @@ export default function App() {
           className="pt-32 pb-20 sm:pt-40 sm:pb-24 md:pt-48 md:pb-28 px-4 sm:px-6 max-w-4xl mx-auto text-center flex flex-col items-center"
         >
           {/* Status Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-neutral-200 bg-white/60 mb-6 text-xs font-medium text-neutral-600">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white/60 dark:bg-neutral-900/60 mb-6 text-xs font-medium text-neutral-600 dark:text-neutral-300 transition-colors">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             {t.hero.badge}
           </div>
 
           {/* H1 Heading */}
-          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl font-normal text-neutral-900 tracking-tight leading-[1.1] mb-3">
+          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl font-normal text-neutral-900 dark:text-neutral-50 tracking-tight leading-[1.1] mb-3 transition-colors">
             {t.hero.heading}
           </h1>
 
           {/* H2 Subtitle */}
-          <h2 className="font-sans text-xl sm:text-2xl font-medium text-neutral-600 tracking-tight mb-6">
+          <h2 className="font-sans text-xl sm:text-2xl font-medium text-neutral-600 dark:text-neutral-400 tracking-tight mb-6 transition-colors">
             {t.hero.role}
           </h2>
 
           {/* Description */}
-          <p className="max-w-2xl mx-auto text-neutral-600 text-base sm:text-lg leading-relaxed mb-8">
+          <p className="max-w-2xl mx-auto text-neutral-600 dark:text-neutral-400 text-base sm:text-lg leading-relaxed mb-8 transition-colors">
             {t.hero.description}
           </p>
 
@@ -517,7 +545,7 @@ export default function App() {
             <a
               href="#projects"
               id="btn-view-projects"
-              className="rounded-full px-6 py-2.5 bg-neutral-900 text-white font-medium text-sm transition-all duration-200 hover:bg-neutral-800 hover:scale-[1.02] active:scale-[0.98] inline-flex items-center gap-2 shadow-xs"
+              className="rounded-full px-6 py-2.5 bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-neutral-50 dark:text-neutral-950 dark:hover:bg-neutral-200 font-medium text-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] inline-flex items-center gap-2 shadow-xs"
             >
               <span>{t.hero.viewProjects}</span>
               <ArrowDownRight className="w-4 h-4" />
@@ -526,9 +554,9 @@ export default function App() {
             <a
               href="#contact"
               id="btn-download-resume"
-              className="rounded-full px-6 py-2.5 bg-neutral-100 text-neutral-800 border border-neutral-200 font-medium text-sm transition-all duration-200 hover:bg-neutral-200/80 hover:border-neutral-300 hover:scale-[1.02] active:scale-[0.98] inline-flex items-center gap-2"
+              className="rounded-full px-6 py-2.5 bg-neutral-100 text-neutral-800 border border-neutral-200 hover:bg-neutral-200/80 hover:border-neutral-300 dark:bg-neutral-900 dark:text-neutral-200 dark:border-neutral-800 dark:hover:bg-neutral-800 dark:hover:border-neutral-700 font-medium text-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] inline-flex items-center gap-2"
             >
-              <FileText className="w-4 h-4 text-neutral-600" />
+              <FileText className="w-4 h-4 text-neutral-600 dark:text-neutral-400" />
               <span>{t.hero.downloadResume}</span>
             </a>
           </div>
@@ -539,9 +567,9 @@ export default function App() {
               <img
                 src="/hero-asset.jpg"
                 alt="Visual Concept"
-                className="w-full max-w-sm mx-auto object-contain pointer-events-none select-none rounded-2xl border border-neutral-200/80 shadow-xs transition-transform duration-500 group-hover:scale-[1.01]"
+                className="w-full max-w-sm mx-auto object-contain pointer-events-none select-none rounded-2xl border border-neutral-200/80 dark:border-neutral-800 shadow-xs transition-transform duration-500 group-hover:scale-[1.01]"
               />
-              <div className="mt-3 text-[11px] font-mono tracking-widest uppercase text-neutral-600">
+              <div className="mt-3 text-[11px] font-mono tracking-widest uppercase text-neutral-600 dark:text-neutral-400 transition-colors">
                 {t.hero.assetCaption}
               </div>
             </div>
@@ -553,16 +581,16 @@ export default function App() {
           id="projects"
           className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6"
         >
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 pb-4 border-b border-neutral-200">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 pb-4 border-b border-neutral-200 dark:border-neutral-800 transition-colors">
             <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-neutral-600 block mb-1">
+              <span className="text-xs font-mono uppercase tracking-widest text-neutral-600 dark:text-neutral-400 block mb-1">
                 {t.projects.overline}
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl text-neutral-900 tracking-tight">
+              <h2 className="font-serif text-3xl sm:text-4xl text-neutral-900 dark:text-neutral-50 tracking-tight transition-colors">
                 {t.projects.title}
               </h2>
             </div>
-            <p className="text-neutral-600 text-sm max-w-sm mt-2 sm:mt-0">
+            <p className="text-neutral-600 dark:text-neutral-400 text-sm max-w-sm mt-2 sm:mt-0 transition-colors">
               {t.projects.subtitle}
             </p>
           </div>
@@ -580,34 +608,34 @@ export default function App() {
                     setSelectedProject(project);
                   }
                 }}
-                className="group border border-neutral-200 rounded-2xl p-7 sm:p-8 bg-neutral-50 hover:bg-white hover:border-neutral-400 hover:shadow-md transition-all duration-300 flex flex-col justify-between cursor-pointer select-none"
+                className="group border border-neutral-200 dark:border-neutral-800 rounded-2xl p-7 sm:p-8 bg-neutral-50 dark:bg-neutral-900/60 hover:bg-white dark:hover:bg-neutral-900 hover:border-neutral-400 dark:hover:border-neutral-700 hover:shadow-md transition-all duration-300 flex flex-col justify-between cursor-pointer select-none"
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">
-                    <span className="text-[11px] font-mono tracking-widest uppercase text-neutral-500">
+                    <span className="text-[11px] font-mono tracking-widest uppercase text-neutral-500 dark:text-neutral-400">
                       CASE STUDY 0{index + 1}
                     </span>
-                    <span className="inline-flex items-center gap-1.5 text-xs font-medium text-neutral-500 group-hover:text-neutral-900 transition-colors">
+                    <span className="inline-flex items-center gap-1.5 text-xs font-medium text-neutral-500 dark:text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-neutral-50 transition-colors">
                       <span>{lang === 'id' ? 'Buka Analisis' : 'View Deep Dive'}</span>
                       <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-2xl sm:text-3xl font-medium text-neutral-900 tracking-tight group-hover:text-neutral-700 transition-colors">
+                  <h3 className="font-serif text-2xl sm:text-3xl font-medium text-neutral-900 dark:text-neutral-50 tracking-tight group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors">
                     {project.title}
                   </h3>
 
-                  <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mt-3.5">
+                  <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base leading-relaxed mt-3.5 transition-colors">
                     {project.shortDesc}
                   </p>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-neutral-200/80">
+                <div className="pt-6 mt-6 border-t border-neutral-200/80 dark:border-neutral-800/80">
                   <div className="flex flex-wrap gap-2">
                     {project.tools.map((tool) => (
                       <span
                         key={tool}
-                        className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md border border-neutral-200 text-neutral-600 bg-white"
+                        className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-300 bg-white dark:bg-neutral-800 transition-colors"
                       >
                         {tool}
                       </span>
@@ -622,29 +650,29 @@ export default function App() {
         {/* 4. Core Capabilities (Infinite Horizontal Text Marquee) */}
         <section
           id="capabilities"
-          className="py-20 md:py-28 border-t border-neutral-200 overflow-hidden"
+          className="py-20 md:py-28 border-t border-neutral-200 dark:border-neutral-800 overflow-hidden transition-colors"
         >
           <div className="max-w-5xl mx-auto px-4 sm:px-6 mb-12">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between">
               <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-neutral-600 block mb-1">
+                <span className="text-xs font-mono uppercase tracking-widest text-neutral-600 dark:text-neutral-400 block mb-1">
                   {t.capabilities.overline}
                 </span>
-                <h2 className="font-serif text-3xl sm:text-4xl text-neutral-900 tracking-tight">
+                <h2 className="font-serif text-3xl sm:text-4xl text-neutral-900 dark:text-neutral-50 tracking-tight transition-colors">
                   {t.capabilities.title}
                 </h2>
               </div>
-              <p className="text-neutral-600 text-sm max-w-sm mt-2 sm:mt-0">
+              <p className="text-neutral-600 dark:text-neutral-400 text-sm max-w-sm mt-2 sm:mt-0 transition-colors">
                 {t.capabilities.subtitle}
               </p>
             </div>
           </div>
 
           {/* Marquee Banner Track */}
-          <div className="w-full relative py-8 sm:py-12 border-y border-neutral-200/80 bg-neutral-100/40 select-none group overflow-hidden">
+          <div className="w-full relative py-8 sm:py-12 border-y border-neutral-200/80 dark:border-neutral-800 bg-neutral-100/40 dark:bg-neutral-900/30 select-none group overflow-hidden transition-colors">
             {/* Subtle Gradient Fade Masks on Viewport Edges */}
-            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-32 md:w-48 z-10 bg-gradient-to-r from-neutral-50 to-transparent" />
-            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-32 md:w-48 z-10 bg-gradient-to-l from-neutral-50 to-transparent" />
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-32 md:w-48 z-10 bg-gradient-to-r from-neutral-50 dark:from-neutral-950 to-transparent" />
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-32 md:w-48 z-10 bg-gradient-to-l from-neutral-50 dark:from-neutral-950 to-transparent" />
 
             {/* Seamless Infinite Scrolling Track */}
             <div className="animate-marquee flex items-center whitespace-nowrap will-change-transform">
@@ -653,10 +681,10 @@ export default function App() {
                   key={`${tool}-${index}`}
                   className="inline-flex items-center"
                 >
-                  <span className="font-serif text-4xl sm:text-6xl md:text-7xl font-normal text-neutral-300 tracking-tight transition-colors duration-300 hover:text-neutral-900 px-4 sm:px-8 cursor-default">
+                  <span className="font-serif text-4xl sm:text-6xl md:text-7xl font-normal text-neutral-300 dark:text-neutral-700 tracking-tight transition-colors duration-300 hover:text-neutral-900 dark:hover:text-neutral-100 px-4 sm:px-8 cursor-default">
                     {tool}
                   </span>
-                  <span className="text-xl sm:text-3xl text-neutral-400 select-none px-2 sm:px-4">
+                  <span className="text-xl sm:text-3xl text-neutral-400 dark:text-neutral-600 select-none px-2 sm:px-4">
                     •
                   </span>
                 </div>
@@ -668,18 +696,18 @@ export default function App() {
         {/* 5. Verified Accreditations */}
         <section
           id="accreditations"
-          className="py-20 md:py-24 max-w-5xl mx-auto px-4 sm:px-6 border-t border-neutral-200"
+          className="py-20 md:py-24 max-w-5xl mx-auto px-4 sm:px-6 border-t border-neutral-200 dark:border-neutral-800 transition-colors"
         >
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10">
             <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-neutral-600 block mb-1">
+              <span className="text-xs font-mono uppercase tracking-widest text-neutral-600 dark:text-neutral-400 block mb-1">
                 {t.accreditations.overline}
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl text-neutral-900 tracking-tight">
+              <h2 className="font-serif text-3xl sm:text-4xl text-neutral-900 dark:text-neutral-50 tracking-tight transition-colors">
                 {t.accreditations.title}
               </h2>
             </div>
-            <p className="text-neutral-600 text-sm max-w-sm mt-2 sm:mt-0">
+            <p className="text-neutral-600 dark:text-neutral-400 text-sm max-w-sm mt-2 sm:mt-0 transition-colors">
               {t.accreditations.subtitle}
             </p>
           </div>
@@ -706,24 +734,24 @@ export default function App() {
                       });
                     }
                   }}
-                  className="border border-neutral-200 rounded-2xl p-6 bg-white/40 hover:border-neutral-300 hover:-translate-y-1 hover:shadow-md transition-all duration-300 flex items-start gap-4 cursor-pointer group select-none"
+                  className="border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 bg-white/40 dark:bg-neutral-900/40 hover:border-neutral-300 dark:hover:border-neutral-700 hover:-translate-y-1 hover:shadow-md transition-all duration-300 flex items-start gap-4 cursor-pointer group select-none"
                 >
-                  <div className="p-2.5 rounded-xl bg-neutral-100 border border-neutral-200 text-neutral-800 shrink-0 group-hover:bg-neutral-900 group-hover:text-white transition-colors duration-200">
-                    <Icon className="w-5 h-5 text-neutral-800 group-hover:text-white transition-colors duration-200" />
+                  <div className="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 shrink-0 group-hover:bg-neutral-900 group-hover:text-white dark:group-hover:bg-neutral-50 dark:group-hover:text-neutral-950 transition-colors duration-200">
+                    <Icon className="w-5 h-5 text-neutral-800 dark:text-neutral-200 group-hover:text-white dark:group-hover:text-neutral-950 transition-colors duration-200" />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between gap-2">
-                      <h3 className="font-serif text-xl font-medium text-neutral-900 group-hover:text-neutral-700 transition-colors">
+                      <h3 className="font-serif text-xl font-medium text-neutral-900 dark:text-neutral-50 group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors">
                         {cert.title}
                       </h3>
-                      <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                      <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60">
                         {t.accreditations.verified}
                       </span>
                     </div>
-                    <p className="text-xs font-mono text-neutral-600 mt-1 mb-2">
+                    <p className="text-xs font-mono text-neutral-600 dark:text-neutral-400 mt-1 mb-2">
                       {cert.issuer}
                     </p>
-                    <p className="text-xs text-neutral-600 leading-relaxed">
+                    <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
                       {cert.description}
                     </p>
                   </div>
@@ -736,38 +764,38 @@ export default function App() {
         {/* 6. Get In Touch (Footer) */}
         <footer
           id="contact"
-          className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 border-t border-neutral-200 text-center"
+          className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 border-t border-neutral-200 dark:border-neutral-800 text-center transition-colors"
         >
           <div className="max-w-xl mx-auto">
-            <span className="text-xs font-mono uppercase tracking-widest text-neutral-600 block mb-2">
+            <span className="text-xs font-mono uppercase tracking-widest text-neutral-600 dark:text-neutral-400 block mb-2">
               {t.footer.overline}
             </span>
-            <h2 className="font-serif text-3xl sm:text-5xl text-neutral-900 tracking-tight mb-4">
+            <h2 className="font-serif text-3xl sm:text-5xl text-neutral-900 dark:text-neutral-50 tracking-tight mb-4 transition-colors">
               {t.footer.title}
             </h2>
-            <p className="text-neutral-600 text-base leading-relaxed mb-8">
+            <p className="text-neutral-600 dark:text-neutral-400 text-base leading-relaxed mb-8 transition-colors">
               {t.footer.description}
             </p>
 
             <a
               href="mailto:iqbalfathonah20@gmail.com?subject=Peluang%20Kerja%20Data%20Analyst"
               id="footer-email-btn"
-              className="rounded-full px-7 py-3 bg-neutral-900 text-white font-medium text-sm transition-all duration-200 hover:bg-neutral-800 hover:scale-[1.02] active:scale-[0.98] inline-flex items-center gap-2.5 shadow-xs mb-10"
+              className="rounded-full px-7 py-3 bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-neutral-50 dark:text-neutral-950 dark:hover:bg-neutral-200 font-medium text-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] inline-flex items-center gap-2.5 shadow-xs mb-10"
             >
               <Mail className="w-4 h-4" />
               <span>{t.footer.sendEmail}</span>
             </a>
 
             {/* Social Links */}
-            <div className="flex items-center justify-center gap-8 text-sm font-medium text-neutral-600 pt-6 border-t border-neutral-200/80">
+            <div className="flex items-center justify-center gap-8 text-sm font-medium text-neutral-600 dark:text-neutral-400 pt-6 border-t border-neutral-200/80 dark:border-neutral-800 transition-colors">
               <a
                 href="https://www.linkedin.com/in/iqbal-dwi-fathonah-56ba2a3b0/"
                 target="_blank"
                 rel="noopener noreferrer"
                 id="link-linkedin"
-                className="flex items-center gap-1.5 hover:text-neutral-900 transition-colors"
+                className="flex items-center gap-1.5 hover:text-neutral-900 dark:hover:text-neutral-50 transition-colors"
               >
-                <LinkedinIcon className="w-4 h-4 text-neutral-700" />
+                <LinkedinIcon className="w-4 h-4 text-neutral-700 dark:text-neutral-300" />
                 <span>LinkedIn</span>
               </a>
               <a
@@ -775,9 +803,9 @@ export default function App() {
                 target="_blank"
                 rel="noopener noreferrer"
                 id="link-github"
-                className="flex items-center gap-1.5 hover:text-neutral-900 transition-colors"
+                className="flex items-center gap-1.5 hover:text-neutral-900 dark:hover:text-neutral-50 transition-colors"
               >
-                <GithubIcon className="w-4 h-4 text-neutral-700" />
+                <GithubIcon className="w-4 h-4 text-neutral-700 dark:text-neutral-300" />
                 <span>GitHub</span>
               </a>
               <a
@@ -785,15 +813,15 @@ export default function App() {
                 target="_blank"
                 rel="noopener noreferrer"
                 id="link-whatsapp"
-                className="flex items-center gap-1.5 hover:text-neutral-900 transition-colors"
+                className="flex items-center gap-1.5 hover:text-neutral-900 dark:hover:text-neutral-50 transition-colors"
               >
-                <WhatsappIcon className="w-4 h-4 text-neutral-700" />
+                <WhatsappIcon className="w-4 h-4 text-neutral-700 dark:text-neutral-300" />
                 <span>WhatsApp</span>
               </a>
             </div>
 
             {/* Copyright */}
-            <p className="text-sm text-neutral-500 mt-10">
+            <p className="text-sm text-neutral-500 dark:text-neutral-400 mt-10 transition-colors">
               {t.footer.copyright}
             </p>
           </div>
@@ -803,7 +831,7 @@ export default function App() {
       {/* 7. Certificate Lightbox Modal */}
       {selectedCert && (
         <div
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-neutral-900/90 p-4 md:p-8 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-neutral-950/90 p-4 md:p-8 backdrop-blur-sm"
           onClick={() => setSelectedCert(null)}
           role="dialog"
           aria-modal="true"
@@ -833,30 +861,31 @@ export default function App() {
             <img
               src={selectedCert.url}
               alt={selectedCert.title}
-              className="w-auto max-w-full max-h-[70vh] md:max-h-[80vh] object-contain rounded-md shadow-2xl"
+              className="w-auto max-w-full max-h-[70vh] md:max-h-[80vh] object-contain rounded-md shadow-2xl border border-neutral-800"
             />
           </div>
         </div>
       )}
+
       {/* 8. Project Detail Modal */}
       {selectedProject && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-neutral-900/80 backdrop-blur-sm p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-neutral-950/80 backdrop-blur-sm p-4"
           onClick={() => setSelectedProject(null)}
           role="dialog"
           aria-modal="true"
         >
           <div
-            className="bg-white max-w-3xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 rounded-xl shadow-2xl relative"
+            className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 max-w-3xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 rounded-xl shadow-2xl relative text-neutral-900 dark:text-neutral-50 transition-colors"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Sticky Header */}
-            <div className="sticky -top-6 sm:-top-8 -mt-6 sm:-mt-8 pt-6 sm:pt-8 bg-white/95 backdrop-blur-xs pb-4 mb-6 border-b border-neutral-200 flex items-start justify-between gap-4 z-10">
+            <div className="sticky -top-6 sm:-top-8 -mt-6 sm:-mt-8 pt-6 sm:pt-8 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xs pb-4 mb-6 border-b border-neutral-200 dark:border-neutral-800 flex items-start justify-between gap-4 z-10 transition-colors">
               <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 block mb-1">
+                <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 block mb-1">
                   {lang === 'id' ? 'Detail Analisis Kasus' : 'Case Study Deep Dive'}
                 </span>
-                <h2 className="font-serif text-2xl sm:text-3xl text-neutral-900 tracking-tight">
+                <h2 className="font-serif text-2xl sm:text-3xl text-neutral-900 dark:text-neutral-50 tracking-tight">
                   {selectedProject.title}
                 </h2>
               </div>
@@ -865,7 +894,7 @@ export default function App() {
                 id="close-project-modal"
                 onClick={() => setSelectedProject(null)}
                 aria-label="Close project modal"
-                className="p-2 rounded-full text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 transition-colors cursor-pointer shrink-0"
+                className="p-2 rounded-full text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer shrink-0"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -876,7 +905,7 @@ export default function App() {
               <img
                 src={selectedProject.imageUrl}
                 alt={selectedProject.title}
-                className="w-full h-auto max-h-[60vh] object-contain bg-neutral-100 rounded-lg border border-neutral-200 mb-8 shadow-sm"
+                className="w-full h-auto max-h-[60vh] object-contain bg-neutral-100 dark:bg-neutral-950 rounded-lg border border-neutral-200 dark:border-neutral-800 mb-8 shadow-sm"
               />
             )}
 
@@ -885,12 +914,12 @@ export default function App() {
               {selectedProject.modal.metrics.map((metric) => (
                 <div
                   key={metric.label}
-                  className="bg-neutral-50 border border-neutral-200 rounded-lg p-4 text-center sm:text-left"
+                  className="bg-neutral-50 dark:bg-neutral-950/50 border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 text-center sm:text-left"
                 >
-                  <div className="text-xs font-mono uppercase tracking-wider text-neutral-500 mb-1">
+                  <div className="text-xs font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-1">
                     {metric.label}
                   </div>
-                  <div className="font-serif text-2xl sm:text-3xl font-medium text-neutral-900 tracking-tight">
+                  <div className="font-serif text-2xl sm:text-3xl font-medium text-neutral-900 dark:text-neutral-50 tracking-tight">
                     {metric.value}
                   </div>
                 </div>
@@ -899,11 +928,11 @@ export default function App() {
 
             {/* The Problem */}
             <div className="mb-8">
-              <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight mb-3">
+              <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 dark:text-neutral-50 tracking-tight mb-3">
                 {selectedProject.modal.problemLabel}
               </h3>
-              <div className="bg-neutral-50 border-l-2 border-neutral-900 p-4 rounded-r-lg">
-                <p className="text-neutral-700 text-sm sm:text-base leading-relaxed">
+              <div className="bg-neutral-50 dark:bg-neutral-950/50 border-l-2 border-neutral-900 dark:border-neutral-200 p-4 rounded-r-lg">
+                <p className="text-neutral-700 dark:text-neutral-300 text-sm sm:text-base leading-relaxed">
                   {selectedProject.modal.problem}
                 </p>
               </div>
@@ -911,32 +940,32 @@ export default function App() {
 
             {/* Insights & Recommendations */}
             <div className="mb-6">
-              <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight mb-4">
+              <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 dark:text-neutral-50 tracking-tight mb-4">
                 {selectedProject.modal.insightsLabel}
               </h3>
               <div className="space-y-4">
                 {selectedProject.modal.insights.map((item, idx) => (
                   <div
                     key={item.title}
-                    className="border border-neutral-200 rounded-lg p-5 bg-neutral-50/60"
+                    className="border border-neutral-200 dark:border-neutral-800 rounded-lg p-5 bg-neutral-50/60 dark:bg-neutral-950/30"
                   >
                     <div className="flex items-center gap-2.5 mb-2.5">
-                      <span className="w-5 h-5 rounded-full bg-neutral-900 text-white text-[11px] font-mono flex items-center justify-center font-medium shrink-0">
+                      <span className="w-5 h-5 rounded-full bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-950 text-[11px] font-mono flex items-center justify-center font-medium shrink-0">
                         {idx + 1}
                       </span>
-                      <h4 className="font-serif text-lg font-medium text-neutral-900">
+                      <h4 className="font-serif text-lg font-medium text-neutral-900 dark:text-neutral-50">
                         {item.title}
                       </h4>
                     </div>
-                    <p className="text-neutral-700 text-sm sm:text-base leading-relaxed mb-2.5">
-                      <strong className="font-medium text-neutral-900">
+                    <p className="text-neutral-700 dark:text-neutral-300 text-sm sm:text-base leading-relaxed mb-2.5">
+                      <strong className="font-medium text-neutral-900 dark:text-neutral-50">
                         {lang === 'id' ? 'Temuan: ' : 'Finding: '}
                       </strong>
                       {item.finding}
                     </p>
-                    <div className="pt-2.5 border-t border-neutral-200/80">
-                      <p className="text-neutral-700 text-sm sm:text-base leading-relaxed">
-                        <strong className="font-medium text-neutral-900">
+                    <div className="pt-2.5 border-t border-neutral-200/80 dark:border-neutral-800">
+                      <p className="text-neutral-700 dark:text-neutral-300 text-sm sm:text-base leading-relaxed">
+                        <strong className="font-medium text-neutral-900 dark:text-neutral-50">
                           {lang === 'id' ? 'Rekomendasi: ' : 'Recommendation: '}
                         </strong>
                         {item.recommendation}
@@ -948,14 +977,14 @@ export default function App() {
             </div>
 
             {/* Tools */}
-            <div className="pt-6 mt-8 border-t border-neutral-200 flex flex-wrap items-center gap-2">
-              <span className="text-xs font-mono uppercase tracking-wider text-neutral-500 mr-2">
+            <div className="pt-6 mt-8 border-t border-neutral-200 dark:border-neutral-800 flex flex-wrap items-center gap-2">
+              <span className="text-xs font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mr-2">
                 {lang === 'id' ? 'Alat Analisis:' : 'Analysis Stack:'}
               </span>
               {selectedProject.tools.map((tool) => (
                 <span
                   key={tool}
-                  className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md border border-neutral-200 text-neutral-600 bg-neutral-50"
+                  className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-300 bg-neutral-50 dark:bg-neutral-800"
                 >
                   {tool}
                 </span>

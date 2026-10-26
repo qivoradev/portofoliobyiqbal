@@ -14,10 +14,17 @@
   --color-neutral-700: #404040;
   --color-neutral-800: #262626;
   --color-neutral-900: #171717;
+  --color-neutral-950: #0a0a0a;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 html {
   color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 body {
@@ -25,6 +32,12 @@ body {
   color: var(--color-neutral-900);
   font-family: var(--font-sans);
   min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark body {
+  background-color: var(--color-neutral-950);
+  color: var(--color-neutral-50);
 }
 
 @keyframes marquee {
