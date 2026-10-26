@@ -90,11 +90,15 @@ const content = {
       capabilities: 'Kemampuan',
     },
     hero: {
-      badge: 'Terbuka untuk Peran Data Analyst',
-      heading: "Halo, saya Iqbal Dwi Fathonah.",
+      badge: 'Terbuka untuk Kerja',
+      name: 'Iqbal Dwi Fathonah',
+      title: 'Data Analyst',
+      heading: 'Data Analyst',
       role: 'Data Analyst',
+      subheadline:
+        'Lulusan Teknologi Informasi (2026). Berspesialisasi dalam mentransformasi data menjadi wawasan bisnis yang jelas melalui SQL dan Excel, didukung oleh pemahaman fundamental Artificial Intelligence.',
       description:
-        'Lulusan Teknologi Informasi (2026). Berspesialisasi dalam mentransformasi skema basis data relasional kompleks menjadi model SQL yang bersih, dasbor Microsoft Excel terotomatisasi, dan wawasan eksekutif.',
+        'Lulusan Teknologi Informasi (2026). Berspesialisasi dalam mentransformasi data menjadi wawasan bisnis yang jelas melalui SQL dan Excel, didukung oleh pemahaman fundamental Artificial Intelligence.',
       viewProjects: 'Lihat Proyek',
       downloadResume: 'Unduh Resume',
       assetCaption: 'Arsitektur Data & Struktur Analitis',
@@ -121,7 +125,7 @@ const content = {
             problemLabel: 'The Problem',
             problem:
               'Di mana kecelakaan paling sering terjadi, kapan waktu paling rawan, dan apa akar penyebab utamanya?',
-            insightsLabel: 'Insights & Recommendations (What, So What, Now What)',
+            insightsLabel: 'Insights & Recommendations',
             insights: [
               {
                 title: 'Faktor Distraksi',
@@ -165,7 +169,7 @@ const content = {
             problemLabel: 'The Problem',
             problem:
               'Margin 12.5% tampak sehat, namun 19% transaksi berujung rugi. Di mana profit bocor dan apakah diskon menjadi penyebabnya?',
-            insightsLabel: 'Insights & Recommendations (What, So What, Now What)',
+            insightsLabel: 'Insights & Recommendations',
             insights: [
               {
                 title: 'Dampak Diskon',
@@ -245,11 +249,15 @@ const content = {
       capabilities: 'Capabilities',
     },
     hero: {
-      badge: 'Available for Data Analyst Roles',
-      heading: "Hi, I'm Iqbal Dwi Fathonah.",
+      badge: 'Open to Work',
+      name: 'Iqbal Dwi Fathonah',
+      title: 'Data Analyst',
+      heading: 'Data Analyst',
       role: 'Data Analyst',
+      subheadline:
+        'Information Technology Graduate (2026). Specializing in transforming data into actionable business insights through SQL and Excel, backed by a foundational understanding of Artificial Intelligence.',
       description:
-        'Information Technology Graduate (2026). Specializing in transforming complex relational database schemas into clean SQL models, automated Microsoft Excel dashboards, and executive insights.',
+        'Information Technology Graduate (2026). Specializing in transforming data into actionable business insights through SQL and Excel, backed by a foundational understanding of Artificial Intelligence.',
       viewProjects: 'View Projects',
       downloadResume: 'Download Resume',
       assetCaption: 'Data Architecture & Analytical Structure',
@@ -276,7 +284,7 @@ const content = {
             problemLabel: 'The Problem',
             problem:
               'Where do collisions occur most frequently, when are peak risk hours, and what are the primary root causes?',
-            insightsLabel: 'Insights & Recommendations (What, So What, Now What)',
+            insightsLabel: 'Insights & Recommendations',
             insights: [
               {
                 title: 'Distraction Factor',
@@ -323,7 +331,7 @@ const content = {
             problemLabel: 'The Problem',
             problem:
               'A 12.5% margin seems healthy, yet 19% of transactions resulted in net losses. Where is profit leaking, and are excessive discount tiers responsible?',
-            insightsLabel: 'Insights & Recommendations (What, So What, Now What)',
+            insightsLabel: 'Insights & Recommendations',
             insights: [
               {
                 title: 'Discount Impact',
@@ -525,19 +533,18 @@ export default function App() {
             {t.hero.badge}
           </div>
 
-          {/* H1 Heading */}
-          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl font-normal text-neutral-900 dark:text-neutral-50 tracking-tight leading-[1.1] mb-3 transition-colors">
-            {t.hero.heading}
+          <span className="text-xs sm:text-sm font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 block mb-3">
+            {t.hero.name}
+          </span>
+
+          {/* Main Title */}
+          <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl font-normal text-neutral-900 dark:text-neutral-50 tracking-tight leading-[1.05] mb-6 transition-colors">
+            {t.hero.title}
           </h1>
 
-          {/* H2 Subtitle */}
-          <h2 className="font-sans text-xl sm:text-2xl font-medium text-neutral-600 dark:text-neutral-400 tracking-tight mb-6 transition-colors">
-            {t.hero.role}
-          </h2>
-
-          {/* Description */}
+          {/* Sub-headline */}
           <p className="max-w-2xl mx-auto text-neutral-600 dark:text-neutral-400 text-base sm:text-lg leading-relaxed mb-8 transition-colors">
-            {t.hero.description}
+            {t.hero.subheadline}
           </p>
 
           {/* CTA Buttons */}
@@ -905,21 +912,18 @@ export default function App() {
               <img
                 src={selectedProject.imageUrl}
                 alt={selectedProject.title}
-                className="w-full h-auto max-h-[60vh] object-contain bg-neutral-100 dark:bg-neutral-950 rounded-lg border border-neutral-200 dark:border-neutral-800 mb-8 shadow-sm"
+                className="w-full h-auto max-h-[60vh] object-contain rounded-lg border border-neutral-200 dark:border-neutral-800 mb-8"
               />
             )}
 
             {/* Key Metrics */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-6 mb-8 border-y border-neutral-200 dark:border-neutral-800">
               {selectedProject.modal.metrics.map((metric) => (
-                <div
-                  key={metric.label}
-                  className="bg-neutral-50 dark:bg-neutral-950/50 border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 text-center sm:text-left"
-                >
+                <div key={metric.label}>
                   <div className="text-xs font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-1">
                     {metric.label}
                   </div>
-                  <div className="font-serif text-2xl sm:text-3xl font-medium text-neutral-900 dark:text-neutral-50 tracking-tight">
+                  <div className="font-serif text-3xl sm:text-4xl font-normal text-neutral-900 dark:text-neutral-50 tracking-tight">
                     {metric.value}
                   </div>
                 </div>
@@ -928,49 +932,37 @@ export default function App() {
 
             {/* The Problem */}
             <div className="mb-8">
-              <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 dark:text-neutral-50 tracking-tight mb-3">
+              <h4 className="font-serif text-2xl mb-4 border-b border-neutral-200 pb-2 dark:border-neutral-800">
                 {selectedProject.modal.problemLabel}
-              </h3>
-              <div className="bg-neutral-50 dark:bg-neutral-950/50 border-l-2 border-neutral-900 dark:border-neutral-200 p-4 rounded-r-lg">
-                <p className="text-neutral-700 dark:text-neutral-300 text-sm sm:text-base leading-relaxed">
-                  {selectedProject.modal.problem}
-                </p>
-              </div>
+              </h4>
+              <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed text-lg mb-8">
+                {selectedProject.modal.problem}
+              </p>
             </div>
 
             {/* Insights & Recommendations */}
-            <div className="mb-6">
-              <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 dark:text-neutral-50 tracking-tight mb-4">
+            <div className="mb-8">
+              <h4 className="font-serif text-2xl mb-6 border-b border-neutral-200 pb-2 dark:border-neutral-800">
                 {selectedProject.modal.insightsLabel}
-              </h3>
-              <div className="space-y-4">
+              </h4>
+              <div className="flex flex-col gap-8">
                 {selectedProject.modal.insights.map((item, idx) => (
-                  <div
-                    key={item.title}
-                    className="border border-neutral-200 dark:border-neutral-800 rounded-lg p-5 bg-neutral-50/60 dark:bg-neutral-950/30"
-                  >
-                    <div className="flex items-center gap-2.5 mb-2.5">
-                      <span className="w-5 h-5 rounded-full bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-950 text-[11px] font-mono flex items-center justify-center font-medium shrink-0">
-                        {idx + 1}
-                      </span>
-                      <h4 className="font-serif text-lg font-medium text-neutral-900 dark:text-neutral-50">
-                        {item.title}
-                      </h4>
-                    </div>
-                    <p className="text-neutral-700 dark:text-neutral-300 text-sm sm:text-base leading-relaxed mb-2.5">
-                      <strong className="font-medium text-neutral-900 dark:text-neutral-50">
+                  <div key={item.title} className="flex flex-col gap-2">
+                    <h5 className="font-bold text-lg text-neutral-900 dark:text-white">
+                      {idx + 1}. {item.title}
+                    </h5>
+                    <p className="text-neutral-700 dark:text-neutral-300">
+                      <span className="font-semibold text-neutral-900 dark:text-neutral-100">
                         {lang === 'id' ? 'Temuan: ' : 'Finding: '}
-                      </strong>
+                      </span>
                       {item.finding}
                     </p>
-                    <div className="pt-2.5 border-t border-neutral-200/80 dark:border-neutral-800">
-                      <p className="text-neutral-700 dark:text-neutral-300 text-sm sm:text-base leading-relaxed">
-                        <strong className="font-medium text-neutral-900 dark:text-neutral-50">
-                          {lang === 'id' ? 'Rekomendasi: ' : 'Recommendation: '}
-                        </strong>
-                        {item.recommendation}
-                      </p>
-                    </div>
+                    <p className="text-neutral-700 dark:text-neutral-300">
+                      <span className="font-semibold text-neutral-900 dark:text-neutral-100">
+                        {lang === 'id' ? 'Rekomendasi: ' : 'Recommendation: '}
+                      </span>
+                      {item.recommendation}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -984,7 +976,7 @@ export default function App() {
               {selectedProject.tools.map((tool) => (
                 <span
                   key={tool}
-                  className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-300 bg-neutral-50 dark:bg-neutral-800"
+                  className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-300"
                 >
                   {tool}
                 </span>
