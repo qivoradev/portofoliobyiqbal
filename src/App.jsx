@@ -106,6 +106,7 @@ const content = {
         {
           id: 'nyc-traffic-safety',
           title: 'NYC Traffic Safety',
+          imageUrl: '/projects/nyc-dashboard.png',
           shortDesc:
             'Dashboard Excel interaktif untuk menganalisis 238rb+ data kecelakaan NYC. Memetakan zona rawan, tren waktu, dan penyebab utama guna mendukung rekomendasi keselamatan jalan.',
           tools: ['Excel', 'Data Modeling', 'Root Cause Analysis', 'Dashboard'],
@@ -144,6 +145,7 @@ const content = {
         {
           id: 'superstore-profitability',
           title: 'Superstore Sales & Profitability',
+          imageUrl: '/projects/superstore-dashboard.png',
           shortDesc:
             'Analisis data ritel untuk mengevaluasi profitabilitas regional, tren musiman, dan mengukur dampak pemberian tingkat diskon terhadap margin keuntungan bersih.',
           tools: [
@@ -259,6 +261,7 @@ const content = {
         {
           id: 'nyc-traffic-safety',
           title: 'NYC Traffic Safety',
+          imageUrl: '/projects/nyc-dashboard.png',
           shortDesc:
             'Interactive Excel dashboard analyzing 238k+ NYC collision records to map high-risk zones, time trends, and root causes for actionable safety recommendations.',
           tools: ['Excel', 'Data Modeling', 'Root Cause Analysis', 'Dashboard'],
@@ -300,6 +303,7 @@ const content = {
         {
           id: 'superstore-profitability',
           title: 'Superstore Sales & Profitability',
+          imageUrl: '/projects/superstore-dashboard.png',
           shortDesc:
             'Retail data analysis to evaluate regional profitability, seasonal sales trends, and the direct impact of discount tiers on net profit margins.',
           tools: [
@@ -866,6 +870,15 @@ export default function App() {
                 <X className="w-5 h-5" />
               </button>
             </div>
+
+            {/* Dashboard Showcase Screenshot */}
+            {selectedProject.imageUrl && (
+              <img
+                src={selectedProject.imageUrl}
+                alt={selectedProject.title}
+                className="w-full h-auto max-h-[60vh] object-contain bg-neutral-100 rounded-lg border border-neutral-200 mb-8 shadow-sm"
+              />
+            )}
 
             {/* Key Metrics */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
