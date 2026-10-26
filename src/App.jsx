@@ -523,7 +523,7 @@ export default function App() {
         {/* 2. Hero Section (Split Two-Column Design) */}
         <section
           id="about"
-          className="pt-32 pb-20 sm:pt-40 sm:pb-24 md:pt-48 md:pb-28 px-4 sm:px-6 max-w-6xl mx-auto"
+          className="pt-32 pb-28 sm:pt-40 sm:pb-32 lg:pt-48 lg:pb-36 px-4 sm:px-6 max-w-6xl mx-auto"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center max-w-6xl mx-auto">
             {/* Left Column (Text Content) */}
@@ -572,7 +572,7 @@ export default function App() {
 
             {/* Right Column (Profile Picture) */}
             <div className="relative flex justify-center lg:justify-end order-last">
-              <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px] rounded-full lg:rounded-2xl overflow-hidden bg-neutral-100 dark:bg-neutral-800 shadow-xl border border-neutral-200 dark:border-neutral-800">
+              <div className="relative w-full max-w-[320px] md:max-w-[400px] aspect-[4/5] rounded-2xl overflow-hidden bg-neutral-100 dark:bg-neutral-800 shadow-xl border border-neutral-200 dark:border-neutral-800 mx-auto lg:mx-0 lg:ml-auto">
                 <img
                   src="/profile-picture.png"
                   alt="Iqbal Dwi Fathonah"
