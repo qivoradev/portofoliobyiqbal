@@ -547,7 +547,7 @@ export default function App() {
           <div className="flex flex-col items-center justify-center text-center px-6 w-full max-w-sm">
             {/* Simple Eyebrow/Name */}
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-2">
-              Iqbal D. Fathonah
+              iqbaldf
             </h2>
             {/* Subtitle */}
             <p className="text-xs tracking-[0.3em] text-neutral-400 uppercase mb-12">
