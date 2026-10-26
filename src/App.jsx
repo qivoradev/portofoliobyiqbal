@@ -540,47 +540,33 @@ export default function App() {
         <div
           id="cinematic-preloader"
           aria-hidden={isRevealed}
-          className={`fixed inset-0 z-[100] flex flex-col justify-between p-6 sm:p-10 md:p-14 bg-neutral-950 text-white transition-transform duration-1000 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+          className={`fixed inset-0 z-[100] flex items-center justify-center bg-neutral-950 text-white transition-transform duration-1000 ease-[cubic-bezier(0.76,0,0.24,1)] ${
             isRevealed ? '-translate-y-full pointer-events-none' : 'translate-y-0'
           }`}
         >
-          {/* Top Row: Brand & Role */}
-          <div className="flex items-center justify-between text-xs font-mono tracking-widest text-neutral-400 uppercase">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>IQBAL DWI FATHONAH</span>
-            </div>
-            <span>PORTFOLIO / 2026</span>
-          </div>
-
-          {/* Center: Minimalist Statement & Centered Progress Bar */}
-          <div className="max-w-2xl my-auto py-8 sm:py-12 w-full mx-auto">
-            <span className="text-xs font-mono tracking-widest text-neutral-500 uppercase block mb-3">
-              Data Analyst
-            </span>
-            <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white leading-[1.15] mb-8">
-              Transforming raw data into clear, decisive business actions.
+          <div className="flex flex-col items-center justify-center text-center px-6 w-full max-w-sm">
+            {/* Simple Eyebrow/Name */}
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-2">
+              Iqbal D. Fathonah
             </h2>
+            {/* Subtitle */}
+            <p className="text-xs tracking-[0.3em] text-neutral-400 uppercase mb-12">
+              Data Analyst Portfolio
+            </p>
 
-            {/* Centered Progress Bar & Counter (Safe from mobile browser UI cutoffs) */}
-            <div className="w-full max-w-sm">
-              <div className="flex items-center justify-between text-xs font-mono tracking-widest text-neutral-400 mb-2.5 uppercase">
-                <span>{progress >= 100 ? 'READY' : 'INITIALIZING'}</span>
-                <span className="tabular-nums font-medium text-white">{progress}%</span>
+            {/* The Progress Bar Container */}
+            <div className="w-full flex flex-col gap-3">
+              <div className="flex justify-between text-xs tracking-widest uppercase text-neutral-500">
+                <span>Loading</span>
+                <span>{progress}%</span>
               </div>
-              <div className="w-full h-[1px] bg-neutral-800 relative overflow-hidden">
+              <div className="h-[1px] w-full bg-neutral-800 relative overflow-hidden">
                 <div
                   className="h-full bg-white transition-all duration-75 ease-out"
                   style={{ width: `${progress}%` }}
                 />
               </div>
             </div>
-          </div>
-
-          {/* Bottom Row */}
-          <div className="flex items-center justify-between text-[11px] font-mono tracking-widest text-neutral-500 uppercase">
-            <span>SQL • EXCEL • AI FUNDAMENTALS</span>
-            <span>2026</span>
           </div>
         </div>
       )}
