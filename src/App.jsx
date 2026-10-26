@@ -711,7 +711,7 @@ export default function App() {
                 <img
                   src="/profile-picture.png"
                   alt="Iqbal Dwi Fathonah"
-                  className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
+                  className="w-full h-full object-cover transition-all duration-500 grayscale-0 md:grayscale md:hover:grayscale-0"
                 />
               </div>
             </div>
