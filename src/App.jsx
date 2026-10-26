@@ -245,7 +245,7 @@ const content = {
       overline: 'Kontak',
       title: 'Mari Terhubung',
       description:
-        'Tertarik berdiskusi mengenai pemodelan data, optimasi SQL, atau sistem pelaporan otomatis? Jangan ragu untuk menghubungi saya.',
+        'Terbuka untuk peluang diskusi seputar Data Analytics. Mari terhubung dan mulai berkolaborasi.',
       sendEmail: 'Kirim Email',
       copyright: '© 2026 Iqbal Dwi Fathonah. Hak Cipta Dilindungi.',
     },
@@ -416,7 +416,7 @@ const content = {
       overline: 'Get In Touch',
       title: "Let's Connect",
       description:
-        'Interested in discussing data modeling, SQL optimization, or automated reporting systems? Reach out to collaborate.',
+        'Open to discussions regarding Data Analytics. Let\'s connect and start collaborating.',
       sendEmail: 'Send an Email',
       copyright: '© 2026 Iqbal Dwi Fathonah. All rights reserved.',
     },
