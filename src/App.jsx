@@ -108,9 +108,8 @@ const content = {
       subtitle:
         'Menggabungkan keahlian analisis data, literasi kecerdasan buatan, dan disiplin pemikiran analitis.',
       paragraphs: [
-        'Sebagai lulusan baru Teknologi Informasi (2026), saya berfokus pada pengolahan data untuk menghasilkan keputusan bisnis yang jelas melalui SQL dan Excel. Saya bekerja dengan prinsip pemahaman logika dan konsep fundamental, yang diperkuat oleh literasi di bidang Artificial Intelligence (Sertifikasi Certiport) dan Web Development (Sertifikasi BNSP).',
-        'Berbekal latar belakang teknis yang menyeluruh ini, saya terbiasa mengekstraksi basis data relasional, menganalisis dataset kompleks, dan menyusun pelaporan yang terstruktur. Saya memandang analitik data bukan sekadar alat operasional, melainkan jembatan untuk menerjemahkan angka menjadi strategi yang terarah.',
-        'Bagi saya, pemikiran analitis adalah sebuah kebiasaan. Pola pikir ini mengalir secara natural dalam keseharian saya yang terstruktur—mulai dari memperhitungkan komposisi nutrisi saat memasak sendiri, menjaga konsistensi pace saat berlari 5km, hingga menakar ceremonial grade matcha harian dengan presisi. Berbekal pemikiran analitis yang kuat ini, saya siap berkontribusi secara profesional untuk mendukung pengambilan keputusan dan efisiensi operasional tim.',
+        'Sebagai lulusan baru Teknologi Informasi (2026), saya berfokus mengolah data menjadi keputusan bisnis yang jelas melalui SQL dan Excel. Saya bekerja berdasarkan pemahaman logika dan konsep fundamental, didukung oleh literasi di bidang Artificial Intelligence (Sertifikasi Certiport) dan Web Development (Sertifikasi BNSP).',
+        'Berbekal latar belakang teknis yang menyeluruh ini, saya terbiasa mengekstraksi basis data relasional, menganalisis dataset kompleks, dan menyusun pelaporan terstruktur. Saya siap membawa pemikiran analitis yang kuat untuk mendukung efisiensi operasional dan pengambilan keputusan perusahaan.',
       ],
     },
     projects: {
@@ -277,9 +276,8 @@ const content = {
       subtitle:
         'Combining data analytics expertise, artificial intelligence literacy, and disciplined precision thinking.',
       paragraphs: [
-        'As a recent Information Technology graduate (2026), I focus on processing data to generate clear business decisions through SQL and Excel. I work with a foundational understanding of logic and core concepts, reinforced by literacy in Artificial Intelligence (Certiport Certification) and Web Development (BNSP Certification).',
-        'Armed with this comprehensive technical background, I am accustomed to querying relational databases, analyzing complex datasets, and compiling structured reporting. I view data analytics not merely as an operational tool, but as a bridge translating numbers into targeted strategies.',
-        'For me, analytical thinking is a daily habit. This mindset flows naturally into my structured routine—from calculating nutritional breakdowns when home-cooking, maintaining a consistent pace during a 5km run, to precisely measuring daily ceremonial grade matcha. Backed by this strong analytical thinking, I am ready to contribute professionally to support decision-making and operational efficiency.',
+        'As a recent Information Technology graduate (2026), I focus on transforming data into clear business decisions through SQL and Excel. I work based on logical understanding and fundamental concepts, supported by literacy in Artificial Intelligence (Certiport Certification) and Web Development (BNSP Certification).',
+        'Equipped with this comprehensive technical background, I am adept at querying relational databases, analyzing complex datasets, and compiling structured reporting. I am ready to bring strong analytical thinking to support operational efficiency and corporate decision-making.',
       ],
     },
     projects: {
@@ -752,7 +750,7 @@ export default function App() {
             </p>
           </div>
 
-          <div className="space-y-6 text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-3xl text-base sm:text-lg">
+          <div className="space-y-4 text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-3xl text-base sm:text-lg">
             {t.about.paragraphs.map((p, idx) => (
               <p key={idx}>{p}</p>
             ))}
