@@ -229,7 +229,7 @@ const content = {
           certificateImage: '/certificates/certiport-ai.jpg',
           modalTitle: 'Certiport: Artificial Intelligence Specialist',
           description:
-            'Akreditasi terverifikasi dalam konsep dasar kecerdasan buatan, persiapan data machine learning, dan tata kelola data yang etis.',
+            'Sertifikasi terverifikasi dalam konsep dasar kecerdasan buatan, persiapan data machine learning, dan tata kelola data yang etis.',
         },
       ],
     },
@@ -395,7 +395,7 @@ const content = {
           certificateImage: '/certificates/certiport-ai.jpg',
           modalTitle: 'Certiport: Artificial Intelligence Specialist',
           description:
-            'Verified accreditation in foundational artificial intelligence concepts, machine learning data preparation, and ethical data handling.',
+            'Verified certification in foundational artificial intelligence concepts, machine learning data preparation, and ethical data handling.',
         },
       ],
     },
@@ -867,15 +867,15 @@ export default function App() {
           className="py-16 md:py-24 max-w-5xl mx-auto px-4 sm:px-6 border-t border-neutral-200 dark:border-neutral-800 transition-colors"
         >
           <div className="mb-10">
-            <p className="text-xs tracking-[0.2em] font-mono text-neutral-500 dark:text-neutral-400 uppercase mb-2">
+            <p className="text-xs tracking-[0.2em] font-mono text-neutral-400 uppercase mb-2">
               {t.certifications.overline}
             </p>
-            <h2 className="font-serif text-3xl sm:text-4xl text-neutral-900 dark:text-neutral-50 tracking-tight transition-colors">
+            <h2 className="font-serif text-3xl sm:text-4xl text-neutral-900 dark:text-white tracking-tight transition-colors">
               {t.certifications.title}
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {t.certifications.items.map((cert) => (
               <div
                 key={cert.title}
@@ -895,19 +895,20 @@ export default function App() {
                     });
                   }
                 }}
-                className="border-l border-neutral-300 dark:border-neutral-700 hover:border-neutral-900 dark:hover:border-neutral-100 pl-6 py-1 transition-colors duration-200 cursor-pointer group text-left select-none"
+                className="border border-neutral-200 dark:border-neutral-800 rounded-xl p-6 md:p-8 hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors duration-300 bg-transparent cursor-pointer group text-left select-none"
               >
-                <div className="flex justify-between items-baseline mb-2 gap-2">
-                  <h3 className="font-medium text-neutral-900 dark:text-white text-lg group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors">
-                    {cert.title}
-                  </h3>
-                  <span className="text-xs text-neutral-400 dark:text-neutral-500 shrink-0 font-mono">
+                <div className="flex justify-between items-baseline mb-4">
+                  <span className="text-xs font-medium tracking-wider text-neutral-500 uppercase">
                     {cert.scope}
                   </span>
+                  <span className="text-neutral-400 dark:text-neutral-500 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all text-xs">
+                    ↗
+                  </span>
                 </div>
-                <p className="text-xs tracking-wide text-neutral-500 dark:text-neutral-400 mb-3 uppercase font-mono">
-                  {cert.issuer}
-                </p>
+                <h3 className="font-medium text-neutral-900 dark:text-white text-xl mb-1 group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors">
+                  {cert.title}
+                </h3>
+                <p className="text-sm text-neutral-500 mb-4">{cert.issuer}</p>
                 <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
                   {cert.description}
                 </p>
