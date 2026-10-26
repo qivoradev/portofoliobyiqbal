@@ -102,6 +102,17 @@ const content = {
       viewProjects: 'Lihat Proyek',
       downloadResume: 'Unduh Resume',
     },
+    about: {
+      overline: 'Tentang Saya',
+      title: 'Profil & Pendekatan',
+      subtitle:
+        'Menggabungkan keahlian analisis data, literasi kecerdasan buatan, dan disiplin pemikiran analitis.',
+      paragraphs: [
+        'Sebagai lulusan baru Teknologi Informasi (2026), saya berfokus pada pengolahan data untuk menghasilkan keputusan bisnis yang jelas melalui SQL dan Excel. Saya bekerja dengan prinsip pemahaman logika dan konsep fundamental, yang diperkuat oleh literasi di bidang Artificial Intelligence (Sertifikasi Certiport) dan Web Development (Sertifikasi BNSP).',
+        'Berbekal latar belakang teknis yang menyeluruh ini, saya terbiasa mengekstraksi basis data relasional, menganalisis dataset kompleks, dan menyusun pelaporan yang terstruktur. Saya memandang analitik data bukan sekadar alat operasional, melainkan jembatan untuk menerjemahkan angka menjadi strategi yang terarah.',
+        'Bagi saya, pemikiran analitis adalah sebuah kebiasaan. Pola pikir ini mengalir secara natural dalam keseharian saya yang terstruktur—mulai dari memperhitungkan komposisi nutrisi saat memasak sendiri, menjaga konsistensi pace saat berlari 5km, hingga menakar ceremonial grade matcha harian dengan presisi. Berbekal pemikiran analitis yang kuat ini, saya siap berkontribusi secara profesional untuk mendukung pengambilan keputusan dan efisiensi operasional tim.',
+      ],
+    },
     projects: {
       overline: 'Etalase Portofolio',
       title: 'Analisis Unggulan',
@@ -259,6 +270,17 @@ const content = {
         'Information Technology Graduate (2026). Specializing in transforming data into actionable business insights through SQL and Excel, backed by a foundational understanding of Artificial Intelligence.',
       viewProjects: 'View Projects',
       downloadResume: 'Download Resume',
+    },
+    about: {
+      overline: 'About Me',
+      title: 'Profile & Approach',
+      subtitle:
+        'Combining data analytics expertise, artificial intelligence literacy, and disciplined precision thinking.',
+      paragraphs: [
+        'As a recent Information Technology graduate (2026), I focus on processing data to generate clear business decisions through SQL and Excel. I work with a foundational understanding of logic and core concepts, reinforced by literacy in Artificial Intelligence (Certiport Certification) and Web Development (BNSP Certification).',
+        'Armed with this comprehensive technical background, I am accustomed to querying relational databases, analyzing complex datasets, and compiling structured reporting. I view data analytics not merely as an operational tool, but as a bridge translating numbers into targeted strategies.',
+        'For me, analytical thinking is a daily habit. This mindset flows naturally into my structured routine—from calculating nutritional breakdowns when home-cooking, maintaining a consistent pace during a 5km run, to precisely measuring daily ceremonial grade matcha. Backed by this strong analytical thinking, I am ready to contribute professionally to support decision-making and operational efficiency.',
+      ],
     },
     projects: {
       overline: 'Portfolio Showcase',
@@ -578,7 +600,7 @@ export default function App() {
           className="pointer-events-auto inline-flex items-center gap-3 sm:gap-6 px-4 sm:px-5 py-2 rounded-full bg-neutral-100/80 dark:bg-neutral-900/80 backdrop-blur-md border border-neutral-200/90 dark:border-neutral-800 shadow-sm transition-colors duration-300"
         >
           <a
-            href="#about"
+            href="#"
             id="nav-logo"
             className="flex items-center gap-2 group transition-opacity hover:opacity-80"
           >
@@ -649,8 +671,8 @@ export default function App() {
       <main>
         {/* 2. Hero Section (Split Two-Column Design) */}
         <section
-          id="about"
-          className="pt-32 pb-28 sm:pt-40 sm:pb-32 lg:pt-48 lg:pb-36 px-4 sm:px-6 max-w-6xl mx-auto"
+          id="hero"
+          className="pt-32 pb-24 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-32 px-4 sm:px-6 max-w-6xl mx-auto"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center max-w-6xl mx-auto">
             {/* Left Column (Text Content) */}
@@ -711,10 +733,36 @@ export default function App() {
           </div>
         </section>
 
-        {/* 3. Featured Projects */}
+        {/* 3. About Me Section */}
+        <section
+          id="about"
+          className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 border-t border-neutral-200 dark:border-neutral-800 transition-colors"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 pb-4 border-b border-neutral-200 dark:border-neutral-800 transition-colors">
+            <div>
+              <span className="text-xs font-mono uppercase tracking-widest text-neutral-600 dark:text-neutral-400 block mb-1">
+                {t.about.overline}
+              </span>
+              <h2 className="font-serif text-3xl sm:text-4xl text-neutral-900 dark:text-neutral-50 tracking-tight transition-colors">
+                {t.about.title}
+              </h2>
+            </div>
+            <p className="text-neutral-600 dark:text-neutral-400 text-sm max-w-sm mt-2 sm:mt-0 transition-colors">
+              {t.about.subtitle}
+            </p>
+          </div>
+
+          <div className="space-y-6 text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-3xl text-base sm:text-lg">
+            {t.about.paragraphs.map((p, idx) => (
+              <p key={idx}>{p}</p>
+            ))}
+          </div>
+        </section>
+
+        {/* 4. Featured Projects */}
         <section
           id="projects"
-          className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6"
+          className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 border-t border-neutral-200 dark:border-neutral-800 transition-colors"
         >
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 pb-4 border-b border-neutral-200 dark:border-neutral-800 transition-colors">
             <div>
