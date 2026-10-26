@@ -96,9 +96,9 @@ const content = {
       heading: 'Data Analyst',
       role: 'Data Analyst',
       subheadline:
-        'Lulusan Teknologi Informasi (2026). Berspesialisasi dalam mentransformasi data menjadi wawasan bisnis yang jelas melalui SQL dan Excel, didukung oleh pemahaman fundamental Artificial Intelligence.',
+        'Lulusan Baru Teknologi Informasi (2026). Berspesialisasi dalam mentransformasi data menjadi wawasan bisnis yang terukur melalui pengolahan data relasional dan visualisasi data interaktif.',
       description:
-        'Lulusan Teknologi Informasi (2026). Berspesialisasi dalam mentransformasi data menjadi wawasan bisnis yang jelas melalui SQL dan Excel, didukung oleh pemahaman fundamental Artificial Intelligence.',
+        'Lulusan Baru Teknologi Informasi (2026). Berspesialisasi dalam mentransformasi data menjadi wawasan bisnis yang terukur melalui pengolahan data relasional dan visualisasi data interaktif.',
       viewProjects: 'Lihat Proyek',
       downloadResume: 'Unduh Resume',
     },
@@ -264,9 +264,9 @@ const content = {
       heading: 'Data Analyst',
       role: 'Data Analyst',
       subheadline:
-        'Information Technology Graduate (2026). Specializing in transforming data into actionable business insights through SQL and Excel, backed by a foundational understanding of Artificial Intelligence.',
+        'Recent Information Technology Graduate (2026). Specializing in transforming data into measurable business insights through relational data processing and interactive data visualization.',
       description:
-        'Information Technology Graduate (2026). Specializing in transforming data into actionable business insights through SQL and Excel, backed by a foundational understanding of Artificial Intelligence.',
+        'Recent Information Technology Graduate (2026). Specializing in transforming data into measurable business insights through relational data processing and interactive data visualization.',
       viewProjects: 'View Projects',
       downloadResume: 'Download Resume',
     },
