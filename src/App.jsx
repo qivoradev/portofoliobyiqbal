@@ -583,11 +583,11 @@ export default function App() {
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                 <a
                   href="#projects"
                   id="btn-view-projects"
-                  className="rounded-full px-6 py-2.5 bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-neutral-50 dark:text-neutral-950 dark:hover:bg-neutral-200 font-medium text-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] inline-flex items-center justify-center gap-2 shadow-xs"
+                  className="w-full max-w-[260px] sm:w-auto rounded-full px-6 py-2.5 bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-neutral-50 dark:text-neutral-950 dark:hover:bg-neutral-200 font-medium text-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] inline-flex items-center justify-center gap-2 shadow-xs"
                 >
                   <span>{t.hero.viewProjects}</span>
                   <ArrowDownRight className="w-4 h-4" />
@@ -596,7 +596,7 @@ export default function App() {
                 <a
                   href="#contact"
                   id="btn-download-resume"
-                  className="rounded-full px-6 py-2.5 bg-neutral-100 text-neutral-800 border border-neutral-200 hover:bg-neutral-200/80 hover:border-neutral-300 dark:bg-neutral-900 dark:text-neutral-200 dark:border-neutral-800 dark:hover:bg-neutral-800 dark:hover:border-neutral-700 font-medium text-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] inline-flex items-center justify-center gap-2"
+                  className="w-full max-w-[260px] sm:w-auto rounded-full px-6 py-2.5 bg-neutral-100 text-neutral-800 border border-neutral-200 hover:bg-neutral-200/80 hover:border-neutral-300 dark:bg-neutral-900 dark:text-neutral-200 dark:border-neutral-800 dark:hover:bg-neutral-800 dark:hover:border-neutral-700 font-medium text-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] inline-flex items-center justify-center gap-2"
                 >
                   <FileText className="w-4 h-4 text-neutral-600 dark:text-neutral-400" />
                   <span>{t.hero.downloadResume}</span>
