@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {
-  ShieldCheck,
-  Award,
   ArrowUpRight,
   ArrowDownRight,
   FileText,
   Mail,
-  Layers,
   X,
   Sun,
   Moon,
@@ -212,32 +209,27 @@ const content = {
       subtitle:
         'Teknologi dan alat utama yang digunakan dalam pemodelan data, manipulasi SQL, pelaporan bisnis, dan perancangan dasbor.',
     },
-    accreditations: {
+    certifications: {
       overline: 'Kredensial',
-      title: 'Akreditasi',
-      subtitle:
-        'Sertifikasi teknis standar nasional dan internasional yang terverifikasi.',
-      verified: 'Terverifikasi',
+      title: 'Sertifikasi',
       items: [
         {
           title: 'BNSP Web Development',
-          issuer: 'Badan Nasional Sertifikasi Profesi (BNSP)',
-          code: 'Sertifikasi Kompetensi Nasional',
+          scope: 'Nasional',
+          issuer: 'Badan Nasional Sertifikasi Profesi',
           certificateImage: '/certificates/bnsp-web-dev.jpg',
           modalTitle: 'Sertifikat Kompetensi: Web Developer (BNSP)',
           description:
             'Kualifikasi nasional yang mengesahkan standar kompetensi arsitektur sistem, desain basis data relasional, dan siklus pengembangan web.',
-          icon: ShieldCheck,
         },
         {
           title: 'Certiport AI',
-          issuer: 'Certiport - Pearson VUE',
-          code: 'Sertifikasi Spesialis TI',
+          scope: 'Internasional',
+          issuer: 'Certiport • Pearson VUE',
           certificateImage: '/certificates/certiport-ai.jpg',
           modalTitle: 'Certiport: Artificial Intelligence Specialist',
           description:
             'Akreditasi terverifikasi dalam konsep dasar kecerdasan buatan, persiapan data machine learning, dan tata kelola data yang etis.',
-          icon: Award,
         },
       ],
     },
@@ -383,32 +375,27 @@ const content = {
       subtitle:
         'Core technologies and tools deployed across data modeling, relational manipulation, and executive reporting.',
     },
-    accreditations: {
+    certifications: {
       overline: 'Credentials',
-      title: 'Accreditations',
-      subtitle:
-        'Verified national and international technical certifications.',
-      verified: 'Verified',
+      title: 'Certifications',
       items: [
         {
           title: 'BNSP Web Development',
-          issuer: 'Badan Nasional Sertifikasi Profesi (BNSP)',
-          code: 'Competency Certified',
+          scope: 'National',
+          issuer: 'Badan Nasional Sertifikasi Profesi',
           certificateImage: '/certificates/bnsp-web-dev.jpg',
           modalTitle: 'Sertifikat Kompetensi: Web Developer (BNSP)',
           description:
             'National qualification certifying systematic system architecture, database design standards, and web application lifecycle.',
-          icon: ShieldCheck,
         },
         {
           title: 'Certiport AI',
-          issuer: 'Certiport - Pearson VUE',
-          code: 'IT Specialist Certification',
+          scope: 'International',
+          issuer: 'Certiport • Pearson VUE',
           certificateImage: '/certificates/certiport-ai.jpg',
           modalTitle: 'Certiport: Artificial Intelligence Specialist',
           description:
             'Verified accreditation in foundational artificial intelligence concepts, machine learning data preparation, and ethical data handling.',
-          icon: Award,
         },
       ],
     },
@@ -874,71 +861,58 @@ export default function App() {
           </div>
         </section>
 
-        {/* 5. Verified Accreditations */}
+        {/* 5. Certifications */}
         <section
-          id="accreditations"
-          className="py-20 md:py-24 max-w-5xl mx-auto px-4 sm:px-6 border-t border-neutral-200 dark:border-neutral-800 transition-colors"
+          id="certifications"
+          className="py-16 md:py-24 max-w-5xl mx-auto px-4 sm:px-6 border-t border-neutral-200 dark:border-neutral-800 transition-colors"
         >
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10">
-            <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-neutral-600 dark:text-neutral-400 block mb-1">
-                {t.accreditations.overline}
-              </span>
-              <h2 className="font-serif text-3xl sm:text-4xl text-neutral-900 dark:text-neutral-50 tracking-tight transition-colors">
-                {t.accreditations.title}
-              </h2>
-            </div>
-            <p className="text-neutral-600 dark:text-neutral-400 text-sm max-w-sm mt-2 sm:mt-0 transition-colors">
-              {t.accreditations.subtitle}
+          <div className="mb-10">
+            <p className="text-xs tracking-[0.2em] font-mono text-neutral-500 dark:text-neutral-400 uppercase mb-2">
+              {t.certifications.overline}
             </p>
+            <h2 className="font-serif text-3xl sm:text-4xl text-neutral-900 dark:text-neutral-50 tracking-tight transition-colors">
+              {t.certifications.title}
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {t.accreditations.items.map((cert) => {
-              const Icon = cert.icon;
-              return (
-                <div
-                  key={cert.title}
-                  onClick={() =>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {t.certifications.items.map((cert) => (
+              <div
+                key={cert.title}
+                onClick={() =>
+                  setSelectedCert({
+                    url: cert.certificateImage,
+                    title: cert.modalTitle,
+                  })
+                }
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
                     setSelectedCert({
                       url: cert.certificateImage,
                       title: cert.modalTitle,
-                    })
+                    });
                   }
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      setSelectedCert({
-                        url: cert.certificateImage,
-                        title: cert.modalTitle,
-                      });
-                    }
-                  }}
-                  className="border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 bg-white/40 dark:bg-neutral-900/40 hover:border-neutral-300 dark:hover:border-neutral-700 hover:-translate-y-1 hover:shadow-md transition-all duration-300 flex items-start gap-4 cursor-pointer group select-none"
-                >
-                  <div className="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 shrink-0 group-hover:bg-neutral-900 group-hover:text-white dark:group-hover:bg-neutral-50 dark:group-hover:text-neutral-950 transition-colors duration-200">
-                    <Icon className="w-5 h-5 text-neutral-800 dark:text-neutral-200 group-hover:text-white dark:group-hover:text-neutral-950 transition-colors duration-200" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between gap-2">
-                      <h3 className="font-serif text-xl font-medium text-neutral-900 dark:text-neutral-50 group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors">
-                        {cert.title}
-                      </h3>
-                      <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60">
-                        {t.accreditations.verified}
-                      </span>
-                    </div>
-                    <p className="text-xs font-mono text-neutral-600 dark:text-neutral-400 mt-1 mb-2">
-                      {cert.issuer}
-                    </p>
-                    <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                      {cert.description}
-                    </p>
-                  </div>
+                }}
+                className="border-l border-neutral-300 dark:border-neutral-700 hover:border-neutral-900 dark:hover:border-neutral-100 pl-6 py-1 transition-colors duration-200 cursor-pointer group text-left select-none"
+              >
+                <div className="flex justify-between items-baseline mb-2 gap-2">
+                  <h3 className="font-medium text-neutral-900 dark:text-white text-lg group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors">
+                    {cert.title}
+                  </h3>
+                  <span className="text-xs text-neutral-400 dark:text-neutral-500 shrink-0 font-mono">
+                    {cert.scope}
+                  </span>
                 </div>
-              );
-            })}
+                <p className="text-xs tracking-wide text-neutral-500 dark:text-neutral-400 mb-3 uppercase font-mono">
+                  {cert.issuer}
+                </p>
+                <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                  {cert.description}
+                </p>
+              </div>
+            ))}
           </div>
         </section>
 
