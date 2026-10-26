@@ -7,6 +7,7 @@ import {
   FileText,
   Mail,
   Layers,
+  X,
 } from 'lucide-react';
 
 function GithubIcon(props) {
@@ -44,6 +45,25 @@ function LinkedinIcon(props) {
       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
       <rect width="4" height="12" x="2" y="9" />
       <circle cx="4" cy="4" r="2" />
+    </svg>
+  );
+}
+
+function WhatsappIcon(props) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="16"
+      height="16"
+      stroke="currentColor"
+      strokeWidth="2"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M3 21l1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z" />
+      <path d="M8.5 9.5a5.5 5.5 0 0 0 6 6l1-.5a1 1 0 0 0 .5-1l-.5-1.5a1 1 0 0 0-1-.7l-1 .3a3.5 3.5 0 0 1-2.6-2.6l.3-1a1 1 0 0 0-.7-1l-1.5-.5a1 1 0 0 0-1 .5z" />
     </svg>
   );
 }
@@ -122,6 +142,7 @@ const content = {
           title: 'BNSP Web Development',
           issuer: 'Badan Nasional Sertifikasi Profesi (BNSP)',
           code: 'Sertifikasi Kompetensi Nasional',
+          certificateImage: '/certificates/bnsp-web-dev.jpg',
           description:
             'Kualifikasi nasional yang mengesahkan standar kompetensi arsitektur sistem, desain basis data relasional, dan siklus pengembangan web.',
           icon: ShieldCheck,
@@ -130,6 +151,7 @@ const content = {
           title: 'Certiport AI',
           issuer: 'Certiport - Pearson VUE',
           code: 'Sertifikasi Spesialis TI',
+          certificateImage: '/certificates/certiport-ai.jpg',
           description:
             'Akreditasi terverifikasi dalam konsep dasar kecerdasan buatan, persiapan data machine learning, dan tata kelola data yang etis.',
           icon: Award,
@@ -142,7 +164,7 @@ const content = {
       description:
         'Tertarik berdiskusi mengenai pemodelan data, optimasi SQL, atau sistem pelaporan otomatis? Jangan ragu untuk menghubungi saya.',
       sendEmail: 'Kirim Email',
-      copyright: `© ${new Date().getFullYear()} Iqbal Dwi Fathonah. Dibuat dengan React & Tailwind CSS.`,
+      copyright: '© 2026 Iqbal Dwi Fathonah. Hak Cipta Dilindungi.',
     },
   },
   en: {
@@ -207,6 +229,7 @@ const content = {
           title: 'BNSP Web Development',
           issuer: 'Badan Nasional Sertifikasi Profesi (BNSP)',
           code: 'Competency Certified',
+          certificateImage: '/certificates/bnsp-web-dev.jpg',
           description:
             'National qualification certifying systematic system architecture, database design standards, and web application lifecycle.',
           icon: ShieldCheck,
@@ -215,6 +238,7 @@ const content = {
           title: 'Certiport AI',
           issuer: 'Certiport - Pearson VUE',
           code: 'IT Specialist Certification',
+          certificateImage: '/certificates/certiport-ai.jpg',
           description:
             'Verified accreditation in foundational artificial intelligence concepts, machine learning data preparation, and ethical data handling.',
           icon: Award,
@@ -227,17 +251,36 @@ const content = {
       description:
         'Interested in discussing data modeling, SQL optimization, or automated reporting systems? Reach out to collaborate.',
       sendEmail: 'Send an Email',
-      copyright: `© ${new Date().getFullYear()} Iqbal Dwi Fathonah. Built with React & Tailwind CSS.`,
+      copyright: '© 2026 Iqbal Dwi Fathonah. All rights reserved.',
     },
   },
 };
 
 export default function App() {
   const [lang, setLang] = useState('id');
+  const [selectedCert, setSelectedCert] = useState(null);
 
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setSelectedCert(null);
+      }
+    };
+    if (selectedCert) {
+      window.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [selectedCert]);
 
   const t = content[lang];
 
@@ -514,14 +557,22 @@ export default function App() {
               return (
                 <div
                   key={cert.title}
-                  className="border border-neutral-200 rounded-2xl p-6 bg-white/40 hover:border-neutral-300 transition-colors flex items-start gap-4"
+                  onClick={() => setSelectedCert(cert.certificateImage)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      setSelectedCert(cert.certificateImage);
+                    }
+                  }}
+                  className="border border-neutral-200 rounded-2xl p-6 bg-white/40 hover:border-neutral-300 hover:-translate-y-1 hover:shadow-md transition-all duration-300 flex items-start gap-4 cursor-pointer group select-none"
                 >
-                  <div className="p-2.5 rounded-xl bg-neutral-100 border border-neutral-200 text-neutral-800 shrink-0">
-                    <Icon className="w-5 h-5 text-neutral-800" />
+                  <div className="p-2.5 rounded-xl bg-neutral-100 border border-neutral-200 text-neutral-800 shrink-0 group-hover:bg-neutral-900 group-hover:text-white transition-colors duration-200">
+                    <Icon className="w-5 h-5 text-neutral-800 group-hover:text-white transition-colors duration-200" />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between gap-2">
-                      <h3 className="font-serif text-xl font-medium text-neutral-900">
+                      <h3 className="font-serif text-xl font-medium text-neutral-900 group-hover:text-neutral-700 transition-colors">
                         {cert.title}
                       </h3>
                       <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
@@ -589,22 +640,57 @@ export default function App() {
                 <span>GitHub</span>
               </a>
               <a
-                href="mailto:iqbaldwifathonah@example.com"
-                id="link-email"
+                href="https://wa.me/"
+                target="_blank"
+                rel="noreferrer"
+                id="link-whatsapp"
                 className="flex items-center gap-1.5 hover:text-neutral-900 transition-colors"
               >
-                <Mail className="w-4 h-4 text-neutral-700" />
-                <span>Email</span>
+                <WhatsappIcon className="w-4 h-4 text-neutral-700" />
+                <span>WhatsApp</span>
               </a>
             </div>
 
             {/* Copyright */}
-            <p className="text-xs text-neutral-600 mt-10">
+            <p className="text-sm text-neutral-500 mt-10">
               {t.footer.copyright}
             </p>
           </div>
         </footer>
       </main>
+
+      {/* 7. Certificate Lightbox Modal */}
+      {selectedCert && (
+        <div
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity"
+          onClick={() => setSelectedCert(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className="relative max-w-5xl max-h-[90vh] flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              type="button"
+              id="close-cert-modal"
+              onClick={() => setSelectedCert(null)}
+              aria-label="Close certificate modal"
+              className="absolute -top-12 right-0 p-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors cursor-pointer select-none"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {/* Certificate Image */}
+            <img
+              src={selectedCert}
+              alt="Certificate"
+              className="max-w-5xl max-h-[90vh] w-auto h-auto object-contain rounded-lg shadow-2xl select-none"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
