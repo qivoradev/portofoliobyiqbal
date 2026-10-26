@@ -143,6 +143,7 @@ const content = {
           issuer: 'Badan Nasional Sertifikasi Profesi (BNSP)',
           code: 'Sertifikasi Kompetensi Nasional',
           certificateImage: '/certificates/bnsp-web-dev.jpg',
+          modalTitle: 'Sertifikat Kompetensi: Web Developer (BNSP)',
           description:
             'Kualifikasi nasional yang mengesahkan standar kompetensi arsitektur sistem, desain basis data relasional, dan siklus pengembangan web.',
           icon: ShieldCheck,
@@ -152,6 +153,7 @@ const content = {
           issuer: 'Certiport - Pearson VUE',
           code: 'Sertifikasi Spesialis TI',
           certificateImage: '/certificates/certiport-ai.jpg',
+          modalTitle: 'Certiport: Artificial Intelligence Specialist',
           description:
             'Akreditasi terverifikasi dalam konsep dasar kecerdasan buatan, persiapan data machine learning, dan tata kelola data yang etis.',
           icon: Award,
@@ -230,6 +232,7 @@ const content = {
           issuer: 'Badan Nasional Sertifikasi Profesi (BNSP)',
           code: 'Competency Certified',
           certificateImage: '/certificates/bnsp-web-dev.jpg',
+          modalTitle: 'Sertifikat Kompetensi: Web Developer (BNSP)',
           description:
             'National qualification certifying systematic system architecture, database design standards, and web application lifecycle.',
           icon: ShieldCheck,
@@ -239,6 +242,7 @@ const content = {
           issuer: 'Certiport - Pearson VUE',
           code: 'IT Specialist Certification',
           certificateImage: '/certificates/certiport-ai.jpg',
+          modalTitle: 'Certiport: Artificial Intelligence Specialist',
           description:
             'Verified accreditation in foundational artificial intelligence concepts, machine learning data preparation, and ethical data handling.',
           icon: Award,
@@ -557,12 +561,20 @@ export default function App() {
               return (
                 <div
                   key={cert.title}
-                  onClick={() => setSelectedCert(cert.certificateImage)}
+                  onClick={() =>
+                    setSelectedCert({
+                      url: cert.certificateImage,
+                      title: cert.modalTitle,
+                    })
+                  }
                   role="button"
                   tabIndex={0}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
-                      setSelectedCert(cert.certificateImage);
+                      setSelectedCert({
+                        url: cert.certificateImage,
+                        title: cert.modalTitle,
+                      });
                     }
                   }}
                   className="border border-neutral-200 rounded-2xl p-6 bg-white/40 hover:border-neutral-300 hover:-translate-y-1 hover:shadow-md transition-all duration-300 flex items-start gap-4 cursor-pointer group select-none"
@@ -662,31 +674,37 @@ export default function App() {
       {/* 7. Certificate Lightbox Modal */}
       {selectedCert && (
         <div
-          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity"
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-neutral-900/90 p-4 md:p-8 backdrop-blur-sm"
           onClick={() => setSelectedCert(null)}
           role="dialog"
           aria-modal="true"
         >
+          {/* Close Button at top-right */}
+          <button
+            type="button"
+            id="close-cert-modal"
+            onClick={() => setSelectedCert(null)}
+            aria-label="Close certificate modal"
+            className="absolute top-6 right-6 text-white hover:text-neutral-300 cursor-pointer select-none transition-colors p-2"
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          {/* Modal Content */}
           <div
-            className="relative max-w-5xl max-h-[90vh] flex items-center justify-center"
+            className="flex flex-col items-center justify-center max-w-5xl w-full"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
-            <button
-              type="button"
-              id="close-cert-modal"
-              onClick={() => setSelectedCert(null)}
-              aria-label="Close certificate modal"
-              className="absolute -top-12 right-0 p-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors cursor-pointer select-none"
-            >
-              <X className="w-6 h-6" />
-            </button>
+            {/* Title Text */}
+            <h3 className="text-white font-serif text-xl md:text-2xl mb-6 text-center">
+              {selectedCert.title}
+            </h3>
 
             {/* Certificate Image */}
             <img
-              src={selectedCert}
-              alt="Certificate"
-              className="max-w-5xl max-h-[90vh] w-auto h-auto object-contain rounded-lg shadow-2xl select-none"
+              src={selectedCert.url}
+              alt={selectedCert.title}
+              className="w-auto max-w-full max-h-[70vh] md:max-h-[80vh] object-contain rounded-md shadow-2xl"
             />
           </div>
         </div>
