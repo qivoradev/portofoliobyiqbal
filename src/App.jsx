@@ -409,6 +409,39 @@ export default function App() {
   const [selectedCert, setSelectedCert] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
 
+  // Typewriter effect state for "Analyst"
+  const [typedText, setTypedText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const word = 'Analyst';
+    let timer;
+
+    if (!isDeleting) {
+      if (typedText.length < word.length) {
+        timer = setTimeout(() => {
+          setTypedText(word.slice(0, typedText.length + 1));
+        }, 150);
+      } else {
+        timer = setTimeout(() => {
+          setIsDeleting(true);
+        }, 2000);
+      }
+    } else {
+      if (typedText.length > 0) {
+        timer = setTimeout(() => {
+          setTypedText(word.slice(0, typedText.length - 1));
+        }, 80);
+      } else {
+        timer = setTimeout(() => {
+          setIsDeleting(false);
+        }, 500);
+      }
+    }
+
+    return () => clearTimeout(timer);
+  }, [typedText, isDeleting]);
+
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);
@@ -538,9 +571,10 @@ export default function App() {
                 {t.hero.name}
               </span>
 
-              {/* Main Title */}
-              <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-normal text-neutral-900 dark:text-neutral-50 tracking-tight leading-[1.05] mb-6 transition-colors">
-                {t.hero.title}
+              {/* Main Title with Typewriter Effect on "Analyst" */}
+              <h1 className="font-serif text-4xl md:text-6xl lg:text-[4.5rem] xl:text-7xl text-neutral-900 dark:text-white mb-4 leading-tight">
+                Data <span className="text-neutral-500 dark:text-neutral-400">{typedText}</span>
+                <span className="animate-pulse font-sans font-light ml-0.5 text-neutral-400 dark:text-neutral-500 select-none">|</span>
               </h1>
 
               {/* Sub-headline */}
@@ -572,7 +606,7 @@ export default function App() {
 
             {/* Right Column (Profile Picture) */}
             <div className="relative flex justify-center lg:justify-end order-last">
-              <div className="relative w-full max-w-[320px] md:max-w-[400px] aspect-[4/5] rounded-2xl overflow-hidden bg-neutral-100 dark:bg-neutral-800 shadow-xl border border-neutral-200 dark:border-neutral-800 mx-auto lg:mx-0 lg:ml-auto">
+              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden bg-neutral-100 dark:bg-neutral-800 shadow-xl border-4 border-white dark:border-neutral-900 mx-auto lg:mx-0 lg:ml-auto">
                 <img
                   src="/profile-picture.png"
                   alt="Iqbal Dwi Fathonah"
