@@ -101,27 +101,91 @@ const content = {
       overline: 'Etalase Portofolio',
       title: 'Analisis Unggulan',
       subtitle:
-        'Mentransformasi catatan transaksi mentah menjadi model analitis yang siap pakai untuk pengambilan keputusan strategis.',
+        'Mentransformasi catatan transaksi dan data operasional menjadi model analitis, wawasan mendalam, dan rekomendasi strategis.',
       items: [
         {
-          id: 'project-1',
-          caseStudy: 'STUDI KASUS 01',
-          metrics: 'Reduksi latensi query 42%',
-          schemaTag: 'SKEMA RELASIONAL • SQL / EXCEL',
-          title: 'Basis Data Penjualan Relasional & Pemodelan Pendapatan',
-          description:
-            'Merancang skema relasional 3NF untuk transaksi ritel bervolume tinggi. Membangun kueri SQL terindeks, pipeline penyerapan ETL otomatis, dan kalkulasi metrik retensi pendapatan kohort secara real-time.',
-          tools: ['SQL', 'PostgreSQL', 'Excel', 'ETL Modeling'],
+          id: 'nyc-traffic-safety',
+          title: 'NYC Traffic Safety',
+          shortDesc:
+            'Dashboard Excel interaktif untuk menganalisis 238rb+ data kecelakaan NYC. Memetakan zona rawan, tren waktu, dan penyebab utama guna mendukung rekomendasi keselamatan jalan.',
+          tools: ['Excel', 'Data Modeling', 'Root Cause Analysis', 'Dashboard'],
+          modal: {
+            metrics: [
+              { label: 'Total Kasus', value: '238.421' },
+              { label: 'Korban Cedera', value: '116.227' },
+              { label: 'Rasio Cedera', value: '48,7%' },
+            ],
+            problemLabel: 'The Problem',
+            problem:
+              'Di mana kecelakaan paling sering terjadi, kapan waktu paling rawan, dan apa akar penyebab utamanya?',
+            insightsLabel: 'Insights & Recommendations (What, So What, Now What)',
+            insights: [
+              {
+                title: 'Faktor Distraksi',
+                finding: '1 dari 4 insiden (25%) dipicu kelalaian pengemudi.',
+                recommendation:
+                  'Prioritaskan kampanye edukasi anti-distraksi dan tilang elektronik.',
+              },
+              {
+                title: 'Konsentrasi Wilayah',
+                finding: '59% kecelakaan terpusat di Brooklyn & Queens.',
+                recommendation:
+                  'Alokasikan patroli fisik dan rambu di persimpangan rawan pada dua area ini.',
+              },
+              {
+                title: 'Jam Rawan',
+                finding: 'Puncak insiden terjadi pukul 16:00–17:00.',
+                recommendation:
+                  'Perketat rekayasa lalu lintas menjelang jam 14:00-18:00.',
+              },
+            ],
+          },
         },
         {
-          id: 'project-2',
-          caseStudy: 'STUDI KASUS 02',
-          metrics: 'Mengotomasi 15+ jam/minggu pelaporan',
-          schemaTag: 'DASBOR EKSEKUTIF • EXCEL / POWER BI',
-          title: 'Dasbor Kinerja & Operasional Eksekutif',
-          description:
-            'Mengembangkan suite pelaporan Microsoft Excel multi-sheet otomatis dengan tabel pivot dinamis, model matriks VLOOKUP/INDEX-MATCH terotomatisasi, dan dasbor varians eksekutif.',
-          tools: ['Excel', 'Pivot Tables', 'SQL', 'Power BI'],
+          id: 'superstore-profitability',
+          title: 'Superstore Sales & Profitability',
+          shortDesc:
+            'Analisis data ritel untuk mengevaluasi profitabilitas regional, tren musiman, dan mengukur dampak pemberian tingkat diskon terhadap margin keuntungan bersih.',
+          tools: [
+            'Excel',
+            'Financial Modeling',
+            'Profitability Analysis',
+            'Pricing Strategy',
+          ],
+          modal: {
+            metrics: [
+              { label: 'Total Sales', value: '$2.29M' },
+              { label: 'Profit', value: '$285K' },
+              { label: 'Profit Margin', value: '12.5%' },
+            ],
+            problemLabel: 'The Problem',
+            problem:
+              'Margin 12.5% tampak sehat, namun 19% transaksi berujung rugi. Di mana profit bocor dan apakah diskon menjadi penyebabnya?',
+            insightsLabel: 'Insights & Recommendations (What, So What, Now What)',
+            insights: [
+              {
+                title: 'Dampak Diskon',
+                finding:
+                  'Profit positif pada diskon <20%, berbalik rugi signifikan di atas 20%.',
+                recommendation:
+                  'Batasi batas atas diskon di angka 20% tanpa persetujuan khusus.',
+              },
+              {
+                title: 'Kinerja Kategori & Wilayah',
+                finding:
+                  'Kategori Tables dan wilayah Texas mencatat kerugian terbesar.',
+                recommendation:
+                  'Tinjau ulang struktur harga produk yang merugi dan telusuri inefisiensi operasional di Texas.',
+              },
+              {
+                title: 'Musiman',
+                finding:
+                  'Q1 lambat, memuncak di September & November.',
+                recommendation:
+                  'Siapkan stok sebelum September, dorong promo Q1 di bawah batas diskon 20%.',
+              },
+            ],
+          },
         },
       ],
     },
@@ -190,27 +254,94 @@ const content = {
       overline: 'Portfolio Showcase',
       title: 'Featured Analysis',
       subtitle:
-        'Transforming raw transactional records into actionable, decision-grade models.',
+        'Transforming operational and transactional records into decision-grade models, executive insights, and strategic recommendations.',
       items: [
         {
-          id: 'project-1',
-          caseStudy: 'CASE STUDY 01',
-          metrics: '42% query latency reduction',
-          schemaTag: 'RELATIONAL SCHEMA • SQL / EXCEL',
-          title: 'Relational Sales Database & Revenue Modeling',
-          description:
-            'Engineered 3NF relational schemas for high-volume retail transactions. Built indexed SQL queries, automated ETL ingestion pipelines, and calculated real-time cohort revenue retention metrics.',
-          tools: ['SQL', 'PostgreSQL', 'Excel', 'ETL Modeling'],
+          id: 'nyc-traffic-safety',
+          title: 'NYC Traffic Safety',
+          shortDesc:
+            'Interactive Excel dashboard analyzing 238k+ NYC collision records to map high-risk zones, time trends, and root causes for actionable safety recommendations.',
+          tools: ['Excel', 'Data Modeling', 'Root Cause Analysis', 'Dashboard'],
+          modal: {
+            metrics: [
+              { label: 'Total Collisions', value: '238,421' },
+              { label: 'Injuries', value: '116,227' },
+              { label: 'Injury Rate', value: '48.7%' },
+            ],
+            problemLabel: 'The Problem',
+            problem:
+              'Where do collisions occur most frequently, when are peak risk hours, and what are the primary root causes?',
+            insightsLabel: 'Insights & Recommendations (What, So What, Now What)',
+            insights: [
+              {
+                title: 'Distraction Factor',
+                finding:
+                  '1 in 4 incidents (25%) were triggered by driver inattention.',
+                recommendation:
+                  'Prioritize anti-distraction educational campaigns and automated camera enforcement.',
+              },
+              {
+                title: 'Geographic Concentration',
+                finding:
+                  '59% of collisions are concentrated in Brooklyn & Queens.',
+                recommendation:
+                  'Deploy targeted physical patrols and signage to high-risk intersections in these two boroughs.',
+              },
+              {
+                title: 'Peak Danger Hours',
+                finding:
+                  'Incident peaks consistently between 16:00–17:00.',
+                recommendation:
+                  'Tighten proactive traffic engineering and signal timing ahead of the 14:00–18:00 window.',
+              },
+            ],
+          },
         },
         {
-          id: 'project-2',
-          caseStudy: 'CASE STUDY 02',
-          metrics: 'Automated 15+ hours/wk reporting',
-          schemaTag: 'EXECUTIVE DASHBOARD • EXCEL / POWER BI',
-          title: 'Executive Operations & KPI Performance Dashboard',
-          description:
-            'Developed an automated multi-sheet Microsoft Excel reporting suite with dynamic pivot tables, automated VLOOKUP/INDEX-MATCH matrix models, and executive variance dashboards.',
-          tools: ['Excel', 'Pivot Tables', 'SQL', 'Power BI'],
+          id: 'superstore-profitability',
+          title: 'Superstore Sales & Profitability',
+          shortDesc:
+            'Retail data analysis to evaluate regional profitability, seasonal sales trends, and the direct impact of discount tiers on net profit margins.',
+          tools: [
+            'Excel',
+            'Financial Modeling',
+            'Profitability Analysis',
+            'Pricing Strategy',
+          ],
+          modal: {
+            metrics: [
+              { label: 'Total Sales', value: '$2.29M' },
+              { label: 'Profit', value: '$285K' },
+              { label: 'Profit Margin', value: '12.5%' },
+            ],
+            problemLabel: 'The Problem',
+            problem:
+              'A 12.5% margin seems healthy, yet 19% of transactions resulted in net losses. Where is profit leaking, and are excessive discount tiers responsible?',
+            insightsLabel: 'Insights & Recommendations (What, So What, Now What)',
+            insights: [
+              {
+                title: 'Discount Impact',
+                finding:
+                  'Profit remains positive at discounts <20%, turning into steep losses beyond 20%.',
+                recommendation:
+                  'Enforce a strict 20% discount ceiling without executive override.',
+              },
+              {
+                title: 'Category & Regional Breakdown',
+                finding:
+                  'The Tables sub-category and the Texas region register the heaviest deficits.',
+                recommendation:
+                  'Restructure pricing on deficit product lines and audit operational costs in Texas.',
+              },
+              {
+                title: 'Seasonality',
+                finding:
+                  'Q1 sales remain slow, surging in September & November.',
+                recommendation:
+                  'Build warehouse inventory ahead of September and run selective Q1 promotions capped under 20% discount.',
+              },
+            ],
+          },
         },
       ],
     },
@@ -263,6 +394,7 @@ const content = {
 export default function App() {
   const [lang, setLang] = useState('id');
   const [selectedCert, setSelectedCert] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
     document.documentElement.lang = lang;
@@ -272,9 +404,10 @@ export default function App() {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
         setSelectedCert(null);
+        setSelectedProject(null);
       }
     };
-    if (selectedCert) {
+    if (selectedCert || selectedProject) {
       window.addEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'hidden';
     } else {
@@ -284,7 +417,7 @@ export default function App() {
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = '';
     };
-  }, [selectedCert]);
+  }, [selectedCert, selectedProject]);
 
   const t = content[lang];
 
@@ -431,54 +564,46 @@ export default function App() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {t.projects.items.map((project) => (
+            {t.projects.items.map((project, index) => (
               <article
                 key={project.id}
                 id={project.id}
-                className="group border border-neutral-200 rounded-2xl overflow-hidden bg-white/40 hover:border-neutral-400/80 hover:bg-white transition-all duration-300 flex flex-col justify-between"
+                onClick={() => setSelectedProject(project)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    setSelectedProject(project);
+                  }
+                }}
+                className="group border border-neutral-200 rounded-2xl p-7 sm:p-8 bg-neutral-50 hover:bg-white hover:border-neutral-400 hover:shadow-md transition-all duration-300 flex flex-col justify-between cursor-pointer select-none"
               >
                 <div>
-                  {/* Thumbnail Placeholder */}
-                  <div className="bg-neutral-200 h-56 relative overflow-hidden flex flex-col justify-between p-6 select-none">
-                    <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(#171717_1px,transparent_1px)] [background-size:16px_16px]" />
-                    <div className="flex items-center justify-between z-10">
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-mono font-medium tracking-wide bg-neutral-900/10 text-neutral-800 backdrop-blur-xs">
-                        <Layers className="w-3 h-3 text-neutral-700" />
-                        {project.caseStudy}
-                      </span>
-                      <span className="text-xs font-mono text-neutral-600">
-                        {project.metrics}
-                      </span>
-                    </div>
-
-                    <div className="z-10 mt-auto flex items-end justify-between">
-                      <div className="font-mono text-xs text-neutral-600">
-                        {project.schemaTag}
-                      </div>
-                      <div className="w-8 h-8 rounded-full bg-white/80 border border-neutral-300/80 flex items-center justify-center text-neutral-700 group-hover:bg-neutral-900 group-hover:text-white transition-colors duration-200">
-                        <ArrowUpRight className="w-4 h-4" />
-                      </div>
-                    </div>
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="text-[11px] font-mono tracking-widest uppercase text-neutral-500">
+                      CASE STUDY 0{index + 1}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 text-xs font-medium text-neutral-500 group-hover:text-neutral-900 transition-colors">
+                      <span>{lang === 'id' ? 'Buka Analisis' : 'View Deep Dive'}</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </span>
                   </div>
 
-                  {/* Card Content */}
-                  <div className="p-6">
-                    <h3 className="font-serif text-2xl font-normal text-neutral-900 tracking-tight group-hover:text-neutral-700 transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-neutral-600 text-sm leading-relaxed mt-2.5">
-                      {project.description}
-                    </p>
-                  </div>
+                  <h3 className="font-serif text-2xl sm:text-3xl font-medium text-neutral-900 tracking-tight group-hover:text-neutral-700 transition-colors">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mt-3.5">
+                    {project.shortDesc}
+                  </p>
                 </div>
 
-                {/* Tool Tags */}
-                <div className="px-6 pb-6 pt-2">
+                <div className="pt-6 mt-6 border-t border-neutral-200/80">
                   <div className="flex flex-wrap gap-2">
                     {project.tools.map((tool) => (
                       <span
                         key={tool}
-                        className="bg-[#DBEAFE] text-[#1E3A8A] text-xs font-medium px-3 py-1 rounded-full"
+                        className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md border border-neutral-200 text-neutral-600 bg-white"
                       >
                         {tool}
                       </span>
@@ -706,6 +831,123 @@ export default function App() {
               alt={selectedCert.title}
               className="w-auto max-w-full max-h-[70vh] md:max-h-[80vh] object-contain rounded-md shadow-2xl"
             />
+          </div>
+        </div>
+      )}
+      {/* 8. Project Detail Modal */}
+      {selectedProject && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-neutral-900/80 backdrop-blur-sm p-4"
+          onClick={() => setSelectedProject(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className="bg-white max-w-3xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 rounded-xl shadow-2xl relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Sticky Header */}
+            <div className="sticky -top-6 sm:-top-8 -mt-6 sm:-mt-8 pt-6 sm:pt-8 bg-white/95 backdrop-blur-xs pb-4 mb-6 border-b border-neutral-200 flex items-start justify-between gap-4 z-10">
+              <div>
+                <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 block mb-1">
+                  {lang === 'id' ? 'Detail Analisis Kasus' : 'Case Study Deep Dive'}
+                </span>
+                <h2 className="font-serif text-2xl sm:text-3xl text-neutral-900 tracking-tight">
+                  {selectedProject.title}
+                </h2>
+              </div>
+              <button
+                type="button"
+                id="close-project-modal"
+                onClick={() => setSelectedProject(null)}
+                aria-label="Close project modal"
+                className="p-2 rounded-full text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 transition-colors cursor-pointer shrink-0"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Key Metrics */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
+              {selectedProject.modal.metrics.map((metric) => (
+                <div
+                  key={metric.label}
+                  className="bg-neutral-50 border border-neutral-200 rounded-lg p-4 text-center sm:text-left"
+                >
+                  <div className="text-xs font-mono uppercase tracking-wider text-neutral-500 mb-1">
+                    {metric.label}
+                  </div>
+                  <div className="font-serif text-2xl sm:text-3xl font-medium text-neutral-900 tracking-tight">
+                    {metric.value}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* The Problem */}
+            <div className="mb-8">
+              <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight mb-3">
+                {selectedProject.modal.problemLabel}
+              </h3>
+              <div className="bg-neutral-50 border-l-2 border-neutral-900 p-4 rounded-r-lg">
+                <p className="text-neutral-700 text-sm sm:text-base leading-relaxed">
+                  {selectedProject.modal.problem}
+                </p>
+              </div>
+            </div>
+
+            {/* Insights & Recommendations */}
+            <div className="mb-6">
+              <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight mb-4">
+                {selectedProject.modal.insightsLabel}
+              </h3>
+              <div className="space-y-4">
+                {selectedProject.modal.insights.map((item, idx) => (
+                  <div
+                    key={item.title}
+                    className="border border-neutral-200 rounded-lg p-5 bg-neutral-50/60"
+                  >
+                    <div className="flex items-center gap-2.5 mb-2.5">
+                      <span className="w-5 h-5 rounded-full bg-neutral-900 text-white text-[11px] font-mono flex items-center justify-center font-medium shrink-0">
+                        {idx + 1}
+                      </span>
+                      <h4 className="font-serif text-lg font-medium text-neutral-900">
+                        {item.title}
+                      </h4>
+                    </div>
+                    <p className="text-neutral-700 text-sm sm:text-base leading-relaxed mb-2.5">
+                      <strong className="font-medium text-neutral-900">
+                        {lang === 'id' ? 'Temuan: ' : 'Finding: '}
+                      </strong>
+                      {item.finding}
+                    </p>
+                    <div className="pt-2.5 border-t border-neutral-200/80">
+                      <p className="text-neutral-700 text-sm sm:text-base leading-relaxed">
+                        <strong className="font-medium text-neutral-900">
+                          {lang === 'id' ? 'Rekomendasi: ' : 'Recommendation: '}
+                        </strong>
+                        {item.recommendation}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Tools */}
+            <div className="pt-6 mt-8 border-t border-neutral-200 flex flex-wrap items-center gap-2">
+              <span className="text-xs font-mono uppercase tracking-wider text-neutral-500 mr-2">
+                {lang === 'id' ? 'Alat Analisis:' : 'Analysis Stack:'}
+              </span>
+              {selectedProject.tools.map((tool) => (
+                <span
+                  key={tool}
+                  className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md border border-neutral-200 text-neutral-600 bg-neutral-50"
+                >
+                  {tool}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       )}
