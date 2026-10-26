@@ -409,21 +409,56 @@ export default function App() {
   const [selectedCert, setSelectedCert] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // Cinematic Curtain Preloader States
-  const [isPreloading, setIsPreloading] = useState(true);
+  // Smart Cinematic Curtain Preloader States (Runs once per session)
+  const [isPreloading, setIsPreloading] = useState(() => {
+    try {
+      return !sessionStorage.getItem('hasSeenPreloader');
+    } catch {
+      return false;
+    }
+  });
   const [progress, setProgress] = useState(0);
-  const [hideCurtain, setHideCurtain] = useState(false);
+  const [isRevealed, setIsRevealed] = useState(false);
 
   useEffect(() => {
-    const pTimer = setTimeout(() => setProgress(100), 100);
-    const cTimer = setTimeout(() => setHideCurtain(true), 2100);
-    const rTimer = setTimeout(() => setIsPreloading(false), 3000);
+    if (!isPreloading) return;
+
+    // Smooth dynamic counter from 0 to 100%
+    const duration = 1800; // ms
+    const intervalTime = 20; // updates every 20ms
+    const step = 100 / (duration / intervalTime);
+
+    const progressTimer = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(progressTimer);
+          return 100;
+        }
+        return Math.min(100, Math.floor(prev + step));
+      });
+    }, intervalTime);
+
+    // Slide curtain up after counter completes
+    const revealTimer = setTimeout(() => {
+      setIsRevealed(true);
+      try {
+        sessionStorage.setItem('hasSeenPreloader', 'true');
+      } catch {
+        // ignore
+      }
+    }, 2100);
+
+    // Unmount from DOM after slide-up animation
+    const removeTimer = setTimeout(() => {
+      setIsPreloading(false);
+    }, 3100);
+
     return () => {
-      clearTimeout(pTimer);
-      clearTimeout(cTimer);
-      clearTimeout(rTimer);
+      clearInterval(progressTimer);
+      clearTimeout(revealTimer);
+      clearTimeout(removeTimer);
     };
-  }, []);
+  }, [isPreloading]);
 
   // Typewriter effect state for "Analyst"
   const [typedText, setTypedText] = useState('');
@@ -504,9 +539,9 @@ export default function App() {
       {isPreloading && (
         <div
           id="cinematic-preloader"
-          aria-hidden={hideCurtain}
+          aria-hidden={isRevealed}
           className={`fixed inset-0 z-[100] flex flex-col justify-between p-6 sm:p-10 md:p-14 bg-neutral-950 text-white transition-transform duration-1000 ease-[cubic-bezier(0.76,0,0.24,1)] ${
-            hideCurtain ? '-translate-y-full pointer-events-none' : 'translate-y-0'
+            isRevealed ? '-translate-y-full pointer-events-none' : 'translate-y-0'
           }`}
         >
           {/* Top Row: Brand & Role */}
@@ -518,28 +553,34 @@ export default function App() {
             <span>PORTFOLIO / 2026</span>
           </div>
 
-          {/* Center: Minimalist Statement */}
-          <div className="max-w-2xl my-auto py-12">
+          {/* Center: Minimalist Statement & Centered Progress Bar */}
+          <div className="max-w-2xl my-auto py-8 sm:py-12 w-full mx-auto">
             <span className="text-xs font-mono tracking-widest text-neutral-500 uppercase block mb-3">
               Data Analyst
             </span>
-            <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white leading-[1.15]">
+            <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white leading-[1.15] mb-8">
               Transforming raw data into clear, decisive business actions.
             </h2>
+
+            {/* Centered Progress Bar & Counter (Safe from mobile browser UI cutoffs) */}
+            <div className="w-full max-w-sm">
+              <div className="flex items-center justify-between text-xs font-mono tracking-widest text-neutral-400 mb-2.5 uppercase">
+                <span>{progress >= 100 ? 'READY' : 'INITIALIZING'}</span>
+                <span className="tabular-nums font-medium text-white">{progress}%</span>
+              </div>
+              <div className="w-full h-[1px] bg-neutral-800 relative overflow-hidden">
+                <div
+                  className="h-full bg-white transition-all duration-75 ease-out"
+                  style={{ width: `${progress}%` }}
+                />
+              </div>
+            </div>
           </div>
 
-          {/* Bottom Row: Minimal Status & 1px Progress Bar */}
-          <div className="w-full">
-            <div className="flex items-center justify-between text-xs font-mono tracking-widest text-neutral-400 mb-3 uppercase">
-              <span>{progress === 100 ? 'READY' : 'INITIALIZING WORKSPACE'}</span>
-              <span>{progress}%</span>
-            </div>
-            <div className="w-full h-[1px] bg-neutral-800 relative overflow-hidden">
-              <div
-                className="h-full bg-white transition-all duration-[2000ms] ease-out"
-                style={{ width: `${progress}%` }}
-              />
-            </div>
+          {/* Bottom Row */}
+          <div className="flex items-center justify-between text-[11px] font-mono tracking-widest text-neutral-500 uppercase">
+            <span>SQL • EXCEL • AI FUNDAMENTALS</span>
+            <span>2026</span>
           </div>
         </div>
       )}
