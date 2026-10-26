@@ -409,6 +409,22 @@ export default function App() {
   const [selectedCert, setSelectedCert] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
 
+  // Cinematic Curtain Preloader States
+  const [isPreloading, setIsPreloading] = useState(true);
+  const [progress, setProgress] = useState(0);
+  const [hideCurtain, setHideCurtain] = useState(false);
+
+  useEffect(() => {
+    const pTimer = setTimeout(() => setProgress(100), 100);
+    const cTimer = setTimeout(() => setHideCurtain(true), 2100);
+    const rTimer = setTimeout(() => setIsPreloading(false), 3000);
+    return () => {
+      clearTimeout(pTimer);
+      clearTimeout(cTimer);
+      clearTimeout(rTimer);
+    };
+  }, []);
+
   // Typewriter effect state for "Analyst"
   const [typedText, setTypedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -463,20 +479,71 @@ export default function App() {
     };
     if (selectedCert || selectedProject) {
       window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedCert, selectedProject]);
+
+  useEffect(() => {
+    if (isPreloading || selectedCert || selectedProject) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = '';
     };
-  }, [selectedCert, selectedProject]);
+  }, [isPreloading, selectedCert, selectedProject]);
 
   const t = content[lang];
 
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-50 font-sans selection:bg-neutral-900 selection:text-white dark:selection:bg-white dark:selection:text-neutral-950 transition-colors duration-300">
+      {/* Cinematic Curtain Reveal Preloader */}
+      {isPreloading && (
+        <div
+          id="cinematic-preloader"
+          aria-hidden={hideCurtain}
+          className={`fixed inset-0 z-[100] flex flex-col justify-between p-6 sm:p-10 md:p-14 bg-neutral-950 text-white transition-transform duration-1000 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+            hideCurtain ? '-translate-y-full pointer-events-none' : 'translate-y-0'
+          }`}
+        >
+          {/* Top Row: Brand & Role */}
+          <div className="flex items-center justify-between text-xs font-mono tracking-widest text-neutral-400 uppercase">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>IQBAL DWI FATHONAH</span>
+            </div>
+            <span>PORTFOLIO / 2026</span>
+          </div>
+
+          {/* Center: Minimalist Statement */}
+          <div className="max-w-2xl my-auto py-12">
+            <span className="text-xs font-mono tracking-widest text-neutral-500 uppercase block mb-3">
+              Data Analyst
+            </span>
+            <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white leading-[1.15]">
+              Transforming raw data into clear, decisive business actions.
+            </h2>
+          </div>
+
+          {/* Bottom Row: Minimal Status & 1px Progress Bar */}
+          <div className="w-full">
+            <div className="flex items-center justify-between text-xs font-mono tracking-widest text-neutral-400 mb-3 uppercase">
+              <span>{progress === 100 ? 'READY' : 'INITIALIZING WORKSPACE'}</span>
+              <span>{progress}%</span>
+            </div>
+            <div className="w-full h-[1px] bg-neutral-800 relative overflow-hidden">
+              <div
+                className="h-full bg-white transition-all duration-[2000ms] ease-out"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* 1. Floating Navbar with Compact Single-Button Language Switch and Dark Mode Toggle */}
       <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-5 px-4 pointer-events-none">
         <nav
