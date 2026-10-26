@@ -101,7 +101,6 @@ const content = {
         'Lulusan Teknologi Informasi (2026). Berspesialisasi dalam mentransformasi data menjadi wawasan bisnis yang jelas melalui SQL dan Excel, didukung oleh pemahaman fundamental Artificial Intelligence.',
       viewProjects: 'Lihat Proyek',
       downloadResume: 'Unduh Resume',
-      assetCaption: 'Arsitektur Data & Struktur Analitis',
     },
     projects: {
       overline: 'Etalase Portofolio',
@@ -260,7 +259,6 @@ const content = {
         'Information Technology Graduate (2026). Specializing in transforming data into actionable business insights through SQL and Excel, backed by a foundational understanding of Artificial Intelligence.',
       viewProjects: 'View Projects',
       downloadResume: 'Download Resume',
-      assetCaption: 'Data Architecture & Analytical Structure',
     },
     projects: {
       overline: 'Portfolio Showcase',
@@ -522,62 +520,64 @@ export default function App() {
       </header>
 
       <main>
-        {/* 2. Hero Section */}
+        {/* 2. Hero Section (Split Two-Column Design) */}
         <section
           id="about"
-          className="pt-32 pb-20 sm:pt-40 sm:pb-24 md:pt-48 md:pb-28 px-4 sm:px-6 max-w-4xl mx-auto text-center flex flex-col items-center"
+          className="pt-32 pb-20 sm:pt-40 sm:pb-24 md:pt-48 md:pb-28 px-4 sm:px-6 max-w-6xl mx-auto"
         >
-          {/* Status Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white/60 dark:bg-neutral-900/60 mb-6 text-xs font-medium text-neutral-600 dark:text-neutral-300 transition-colors">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            {t.hero.badge}
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center max-w-6xl mx-auto">
+            {/* Left Column (Text Content) */}
+            <div className="text-center lg:text-left flex flex-col items-center lg:items-start">
+              {/* Status Badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white/60 dark:bg-neutral-900/60 mb-6 text-xs font-medium text-neutral-600 dark:text-neutral-300 transition-colors">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                {t.hero.badge}
+              </div>
 
-          <span className="text-xs sm:text-sm font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 block mb-3">
-            {t.hero.name}
-          </span>
+              <span className="text-xs sm:text-sm font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 block mb-3">
+                {t.hero.name}
+              </span>
 
-          {/* Main Title */}
-          <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl font-normal text-neutral-900 dark:text-neutral-50 tracking-tight leading-[1.05] mb-6 transition-colors">
-            {t.hero.title}
-          </h1>
+              {/* Main Title */}
+              <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-normal text-neutral-900 dark:text-neutral-50 tracking-tight leading-[1.05] mb-6 transition-colors">
+                {t.hero.title}
+              </h1>
 
-          {/* Sub-headline */}
-          <p className="max-w-2xl mx-auto text-neutral-600 dark:text-neutral-400 text-base sm:text-lg leading-relaxed mb-8 transition-colors">
-            {t.hero.subheadline}
-          </p>
+              {/* Sub-headline */}
+              <p className="max-w-xl text-neutral-600 dark:text-neutral-400 text-base sm:text-lg leading-relaxed mb-8 transition-colors">
+                {t.hero.subheadline}
+              </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-3.5 mb-14">
-            <a
-              href="#projects"
-              id="btn-view-projects"
-              className="rounded-full px-6 py-2.5 bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-neutral-50 dark:text-neutral-950 dark:hover:bg-neutral-200 font-medium text-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] inline-flex items-center gap-2 shadow-xs"
-            >
-              <span>{t.hero.viewProjects}</span>
-              <ArrowDownRight className="w-4 h-4" />
-            </a>
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start w-full sm:w-auto">
+                <a
+                  href="#projects"
+                  id="btn-view-projects"
+                  className="rounded-full px-6 py-2.5 bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-neutral-50 dark:text-neutral-950 dark:hover:bg-neutral-200 font-medium text-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] inline-flex items-center justify-center gap-2 shadow-xs"
+                >
+                  <span>{t.hero.viewProjects}</span>
+                  <ArrowDownRight className="w-4 h-4" />
+                </a>
 
-            <a
-              href="#contact"
-              id="btn-download-resume"
-              className="rounded-full px-6 py-2.5 bg-neutral-100 text-neutral-800 border border-neutral-200 hover:bg-neutral-200/80 hover:border-neutral-300 dark:bg-neutral-900 dark:text-neutral-200 dark:border-neutral-800 dark:hover:bg-neutral-800 dark:hover:border-neutral-700 font-medium text-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] inline-flex items-center gap-2"
-            >
-              <FileText className="w-4 h-4 text-neutral-600 dark:text-neutral-400" />
-              <span>{t.hero.downloadResume}</span>
-            </a>
-          </div>
+                <a
+                  href="#contact"
+                  id="btn-download-resume"
+                  className="rounded-full px-6 py-2.5 bg-neutral-100 text-neutral-800 border border-neutral-200 hover:bg-neutral-200/80 hover:border-neutral-300 dark:bg-neutral-900 dark:text-neutral-200 dark:border-neutral-800 dark:hover:bg-neutral-800 dark:hover:border-neutral-700 font-medium text-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] inline-flex items-center justify-center gap-2"
+                >
+                  <FileText className="w-4 h-4 text-neutral-600 dark:text-neutral-400" />
+                  <span>{t.hero.downloadResume}</span>
+                </a>
+              </div>
+            </div>
 
-          {/* Visual Asset Area */}
-          <div className="w-full max-w-sm mx-auto">
-            <div className="relative group">
-              <img
-                src="/hero-asset.jpg"
-                alt="Visual Concept"
-                className="w-full max-w-sm mx-auto object-contain pointer-events-none select-none rounded-2xl border border-neutral-200/80 dark:border-neutral-800 shadow-xs transition-transform duration-500 group-hover:scale-[1.01]"
-              />
-              <div className="mt-3 text-[11px] font-mono tracking-widest uppercase text-neutral-600 dark:text-neutral-400 transition-colors">
-                {t.hero.assetCaption}
+            {/* Right Column (Profile Picture) */}
+            <div className="relative flex justify-center lg:justify-end order-last">
+              <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px] rounded-full lg:rounded-2xl overflow-hidden bg-neutral-100 dark:bg-neutral-800 shadow-xl border border-neutral-200 dark:border-neutral-800">
+                <img
+                  src="/profile-picture.png"
+                  alt="Iqbal Dwi Fathonah"
+                  className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
+                />
               </div>
             </div>
           </div>
