@@ -721,7 +721,7 @@ export default function App() {
         {/* 3. About Me Section */}
         <section
           id="about"
-          className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 border-t border-neutral-200 dark:border-neutral-800 transition-colors"
+          className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 transition-colors"
         >
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 pb-4 border-b border-neutral-200 dark:border-neutral-800 transition-colors">
             <div>
@@ -747,7 +747,7 @@ export default function App() {
         {/* 4. Featured Projects */}
         <section
           id="projects"
-          className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 border-t border-neutral-200 dark:border-neutral-800 transition-colors"
+          className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 transition-colors"
         >
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 pb-4 border-b border-neutral-200 dark:border-neutral-800 transition-colors">
             <div>
@@ -818,7 +818,7 @@ export default function App() {
         {/* 4. Core Capabilities (Infinite Horizontal Text Marquee) */}
         <section
           id="capabilities"
-          className="py-20 md:py-28 border-t border-neutral-200 dark:border-neutral-800 overflow-hidden transition-colors"
+          className="py-20 md:py-28 overflow-hidden transition-colors"
         >
           <div className="max-w-5xl mx-auto px-4 sm:px-6 mb-12">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between">
@@ -864,7 +864,7 @@ export default function App() {
         {/* 5. Certifications */}
         <section
           id="certifications"
-          className="py-16 md:py-24 max-w-5xl mx-auto px-4 sm:px-6 border-t border-neutral-200 dark:border-neutral-800 transition-colors"
+          className="py-16 md:py-24 max-w-5xl mx-auto px-4 sm:px-6 transition-colors"
         >
           <div className="mb-10">
             <p className="text-xs tracking-[0.2em] font-mono text-neutral-400 uppercase mb-2">
@@ -920,7 +920,7 @@ export default function App() {
         {/* 6. Get In Touch (Footer) */}
         <footer
           id="contact"
-          className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 border-t border-neutral-200 dark:border-neutral-800 text-center transition-colors"
+          className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 text-center transition-colors"
         >
           <div className="max-w-xl mx-auto">
             <span className="text-xs font-mono uppercase tracking-widest text-neutral-600 dark:text-neutral-400 block mb-2">
