@@ -187,6 +187,10 @@ const content = {
           id: 'nyc-traffic-safety',
           title: 'NYC Traffic Safety',
           imageUrl: '/projects/nyc-dashboard.png',
+          link: 'https://docs.google.com/spreadsheets/d/14tUDF0U0uOKbzDJWcWhTAp6HI32FQJAM/edit?usp=sharing&ouid=103313291434112811548&rtpof=true&sd=true',
+          liveUrl:
+            'https://docs.google.com/spreadsheets/d/14tUDF0U0uOKbzDJWcWhTAp6HI32FQJAM/edit?usp=sharing&ouid=103313291434112811548&rtpof=true&sd=true',
+          url: 'https://docs.google.com/spreadsheets/d/14tUDF0U0uOKbzDJWcWhTAp6HI32FQJAM/edit?usp=sharing&ouid=103313291434112811548&rtpof=true&sd=true',
           shortDesc:
             'Dashboard Excel interaktif untuk menganalisis 238rb+ data kecelakaan NYC. Memetakan zona rawan, tren waktu, dan penyebab utama guna mendukung rekomendasi keselamatan jalan.',
           tools: ['Excel', 'Data Modeling', 'Root Cause Analysis', 'Dashboard'],
@@ -417,6 +421,10 @@ const content = {
           id: 'nyc-traffic-safety',
           title: 'NYC Traffic Safety',
           imageUrl: '/projects/nyc-dashboard.png',
+          link: 'https://docs.google.com/spreadsheets/d/14tUDF0U0uOKbzDJWcWhTAp6HI32FQJAM/edit?usp=sharing&ouid=103313291434112811548&rtpof=true&sd=true',
+          liveUrl:
+            'https://docs.google.com/spreadsheets/d/14tUDF0U0uOKbzDJWcWhTAp6HI32FQJAM/edit?usp=sharing&ouid=103313291434112811548&rtpof=true&sd=true',
+          url: 'https://docs.google.com/spreadsheets/d/14tUDF0U0uOKbzDJWcWhTAp6HI32FQJAM/edit?usp=sharing&ouid=103313291434112811548&rtpof=true&sd=true',
           shortDesc:
             'Interactive Excel dashboard analyzing 238k+ NYC collision records to map high-risk zones, time trends, and root causes for actionable safety recommendations.',
           tools: ['Excel', 'Data Modeling', 'Root Cause Analysis', 'Dashboard'],
@@ -957,10 +965,10 @@ export default function App() {
                     ))}
                   </div>
 
-                  {(project.link || project.liveUrl) && (
+                  {(project.link || project.liveUrl || project.url) && (
                     <div className="pt-1">
                       <a
-                        href={project.link || project.liveUrl}
+                        href={project.link || project.liveUrl || project.url}
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
@@ -1210,9 +1218,9 @@ export default function App() {
                 </h2>
               </div>
               <div className="flex items-center gap-2 shrink-0">
-                {(selectedProject.link || selectedProject.liveUrl) && (
+                {(selectedProject.link || selectedProject.liveUrl || selectedProject.url) && (
                   <a
-                    href={selectedProject.link || selectedProject.liveUrl}
+                    href={selectedProject.link || selectedProject.liveUrl || selectedProject.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-neutral-100 dark:text-neutral-950 dark:hover:bg-white transition-all shadow-xs"
