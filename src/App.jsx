@@ -7,6 +7,7 @@ import {
   X,
   Sun,
   Moon,
+  ExternalLink,
 } from 'lucide-react';
 
 function GithubIcon(props) {
@@ -115,6 +116,73 @@ const content = {
       subtitle:
         'Mentransformasi catatan transaksi dan data operasional menjadi model analitis, wawasan mendalam, dan rekomendasi strategis.',
       items: [
+        {
+          id: 'pizza-sales-performance',
+          title: 'Pizza Sales Performance Dashboard',
+          description:
+            'Interactive Business Intelligence dashboard dibangun menggunakan Google Looker Studio untuk mengevaluasi kinerja penjualan tahunan ($817K+), menganalisis pola jam sibuk operasional, dan meninjau kontribusi menu untuk efisiensi bisnis.',
+          shortDesc:
+            'Interactive Business Intelligence dashboard dibangun menggunakan Google Looker Studio untuk mengevaluasi kinerja penjualan tahunan ($817K+), menganalisis pola jam sibuk operasional, dan meninjau kontribusi menu untuk efisiensi bisnis.',
+          technologies: [
+            'Looker Studio',
+            'Excel',
+            'Data Visualization',
+            'Business Intelligence',
+          ],
+          tags: [
+            'Looker Studio',
+            'Excel',
+            'Data Visualization',
+            'Business Intelligence',
+          ],
+          tools: [
+            'Looker Studio',
+            'Excel',
+            'Data Visualization',
+            'Business Intelligence',
+          ],
+          link: 'https://datastudio.google.com/reporting/81574dad-5d2d-4a15-aafb-eefb54548a3e',
+          liveUrl:
+            'https://datastudio.google.com/reporting/81574dad-5d2d-4a15-aafb-eefb54548a3e',
+          image:
+            'https://github.com/user-attachments/assets/3796a228-1677-4d5c-8af4-a43cbd412148',
+          imageUrl:
+            'https://github.com/user-attachments/assets/3796a228-1677-4d5c-8af4-a43cbd412148',
+          modal: {
+            metrics: [
+              { label: 'Total Sales', value: '$817.8K' },
+              { label: 'Total Pizzas Sold', value: '49.574' },
+              { label: 'Avg Order Value', value: '$38,31' },
+            ],
+            problemLabel: 'The Problem',
+            problem:
+              'Bagaimana tren penjualan pizza sepanjang tahun, kapan jam sibuk operasional terjadi, dan menu mana yang paling berkontribusi terhadap pendapatan bisnis?',
+            insightsLabel: 'Insights & Recommendations',
+            insights: [
+              {
+                title: 'Pola Jam Sibuk Operasional',
+                finding:
+                  'Pesanan memuncak pada jam makan siang (12:00–13:00) dan makan malam (17:00–19:00), dengan hari Jumat dan Sabtu mencatat volume pesanan tertinggi.',
+                recommendation:
+                  'Optimalkan alokasi staf dapur dan persiapan inventaris menjelang jam sibuk akhir pekan.',
+              },
+              {
+                title: 'Kontribusi Kategori Menu',
+                finding:
+                  'Kategori Classic dan The Classic Deluxe Pizza menjadi kontributor pendapatan terbesar dalam total penjualan $817K+.',
+                recommendation:
+                  'Amankan pasokan bahan baku produk terlaris dan terapkan strategi bundling untuk mendongkrak kategori menu lainnya.',
+              },
+              {
+                title: 'Distribusi Ukuran Pizza',
+                finding:
+                  'Ukuran Large (L) mendominasi pembelian pelanggan dengan kontribusi lebih dari 45% terhadap total pendapatan.',
+                recommendation:
+                  'Terapkan strategi upselling ukuran Large dengan penawaran add-on minuman atau makanan pendamping.',
+              },
+            ],
+          },
+        },
         {
           id: 'nyc-traffic-safety',
           title: 'NYC Traffic Safety',
@@ -278,6 +346,73 @@ const content = {
       subtitle:
         'Transforming operational and transactional records into decision-grade models, executive insights, and strategic recommendations.',
       items: [
+        {
+          id: 'pizza-sales-performance',
+          title: 'Pizza Sales Performance Dashboard',
+          description:
+            'Interactive Business Intelligence dashboard built using Google Looker Studio to evaluate annual sales performance ($817K+), analyze peak operational hours, and assess menu category contributions for business efficiency.',
+          shortDesc:
+            'Interactive Business Intelligence dashboard built using Google Looker Studio to evaluate annual sales performance ($817K+), analyze peak operational hours, and assess menu category contributions for business efficiency.',
+          technologies: [
+            'Looker Studio',
+            'Excel',
+            'Data Visualization',
+            'Business Intelligence',
+          ],
+          tags: [
+            'Looker Studio',
+            'Excel',
+            'Data Visualization',
+            'Business Intelligence',
+          ],
+          tools: [
+            'Looker Studio',
+            'Excel',
+            'Data Visualization',
+            'Business Intelligence',
+          ],
+          link: 'https://datastudio.google.com/reporting/81574dad-5d2d-4a15-aafb-eefb54548a3e',
+          liveUrl:
+            'https://datastudio.google.com/reporting/81574dad-5d2d-4a15-aafb-eefb54548a3e',
+          image:
+            'https://github.com/user-attachments/assets/3796a228-1677-4d5c-8af4-a43cbd412148',
+          imageUrl:
+            'https://github.com/user-attachments/assets/3796a228-1677-4d5c-8af4-a43cbd412148',
+          modal: {
+            metrics: [
+              { label: 'Total Sales', value: '$817.8K' },
+              { label: 'Total Pizzas Sold', value: '49,574' },
+              { label: 'Avg Order Value', value: '$38.31' },
+            ],
+            problemLabel: 'The Problem',
+            problem:
+              'How does sales performance trend throughout the year, when are peak operational hours, and which menu categories drive the greatest revenue contribution?',
+            insightsLabel: 'Insights & Recommendations',
+            insights: [
+              {
+                title: 'Peak Operational Hours',
+                finding:
+                  'Orders peak consistently during lunch (12:00–13:00) and dinner (17:00–19:00), with Friday and Saturday registering highest order volumes.',
+                recommendation:
+                  'Optimize kitchen staffing and inventory prep ahead of peak weekend evening rushes.',
+              },
+              {
+                title: 'Menu Category Contribution',
+                finding:
+                  'The Classic category and The Classic Deluxe Pizza lead total revenue contribution across the $817K+ annual sales.',
+                recommendation:
+                  'Ensure high availability of best-selling ingredients and implement combo bundling to lift underperforming menu categories.',
+              },
+              {
+                title: 'Pizza Size Distribution',
+                finding:
+                  'Large (L) size pizzas dominate customer orders, generating over 45% of total sales revenue.',
+                recommendation:
+                  'Implement upselling prompts for Large sizes paired with beverage and side offerings.',
+              },
+            ],
+          },
+        },
         {
           id: 'nyc-traffic-safety',
           title: 'NYC Traffic Safety',
@@ -763,7 +898,7 @@ export default function App() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {t.projects.items.map((project, index) => (
               <article
                 key={project.id}
@@ -776,10 +911,10 @@ export default function App() {
                     setSelectedProject(project);
                   }
                 }}
-                className="group border border-neutral-200 dark:border-neutral-800 rounded-2xl p-7 sm:p-8 bg-neutral-50 dark:bg-neutral-900/60 hover:bg-white dark:hover:bg-neutral-900 hover:border-neutral-400 dark:hover:border-neutral-700 hover:shadow-md transition-all duration-300 flex flex-col justify-between cursor-pointer select-none"
+                className="group border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 sm:p-7 bg-neutral-50 dark:bg-neutral-900/60 hover:bg-white dark:hover:bg-neutral-900 hover:border-neutral-400 dark:hover:border-neutral-700 hover:shadow-md transition-all duration-300 flex flex-col justify-between cursor-pointer select-none"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-5">
+                  <div className="flex items-center justify-between mb-4">
                     <span className="text-[11px] font-mono tracking-widest uppercase text-neutral-500 dark:text-neutral-400">
                       CASE STUDY 0{index + 1}
                     </span>
@@ -789,18 +924,30 @@ export default function App() {
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-2xl sm:text-3xl font-medium text-neutral-900 dark:text-neutral-50 tracking-tight group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors">
+                  {/* Thumbnail Image */}
+                  {(project.image || project.imageUrl) && (
+                    <div className="w-full h-48 sm:h-52 mb-5 rounded-xl overflow-hidden bg-neutral-100 dark:bg-neutral-800/80 border border-neutral-200/80 dark:border-neutral-800 relative">
+                      <img
+                        src={project.image || project.imageUrl}
+                        alt={project.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                      />
+                    </div>
+                  )}
+
+                  <h3 className="font-serif text-2xl font-medium text-neutral-900 dark:text-neutral-50 tracking-tight group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors">
                     {project.title}
                   </h3>
 
-                  <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base leading-relaxed mt-3.5 transition-colors">
-                    {project.shortDesc}
+                  <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed mt-3 transition-colors">
+                    {project.shortDesc || project.description}
                   </p>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-neutral-200/80 dark:border-neutral-800/80">
+                <div className="pt-5 mt-5 border-t border-neutral-200/80 dark:border-neutral-800/80 flex flex-col gap-4">
                   <div className="flex flex-wrap gap-2">
-                    {project.tools.map((tool) => (
+                    {(project.tools || project.technologies || project.tags || []).map((tool) => (
                       <span
                         key={tool}
                         className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-300 bg-white dark:bg-neutral-800 transition-colors"
@@ -809,6 +956,23 @@ export default function App() {
                       </span>
                     ))}
                   </div>
+
+                  {(project.link || project.liveUrl) && (
+                    <div className="pt-1">
+                      <a
+                        href={project.link || project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        id={`project-link-${project.id}`}
+                        aria-label={`Link to ${project.title}`}
+                        className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-neutral-100 dark:text-neutral-950 dark:hover:bg-white transition-all duration-200 hover:scale-[1.01] active:scale-[0.99] shadow-xs cursor-pointer"
+                      >
+                        <span>{lang === 'id' ? 'Buka Live Dashboard' : 'Open Live Dashboard'}</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
+                  )}
                 </div>
               </article>
             ))}
@@ -1045,21 +1209,34 @@ export default function App() {
                   {selectedProject.title}
                 </h2>
               </div>
-              <button
-                type="button"
-                id="close-project-modal"
-                onClick={() => setSelectedProject(null)}
-                aria-label="Close project modal"
-                className="p-2 rounded-full text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer shrink-0"
-              >
-                <X className="w-5 h-5" />
-              </button>
+              <div className="flex items-center gap-2 shrink-0">
+                {(selectedProject.link || selectedProject.liveUrl) && (
+                  <a
+                    href={selectedProject.link || selectedProject.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-neutral-100 dark:text-neutral-950 dark:hover:bg-white transition-all shadow-xs"
+                  >
+                    <span>Live Dashboard</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                )}
+                <button
+                  type="button"
+                  id="close-project-modal"
+                  onClick={() => setSelectedProject(null)}
+                  aria-label="Close project modal"
+                  className="p-2 rounded-full text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer shrink-0"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
             </div>
 
             {/* Dashboard Showcase Screenshot */}
-            {selectedProject.imageUrl && (
+            {(selectedProject.image || selectedProject.imageUrl) && (
               <img
-                src={selectedProject.imageUrl}
+                src={selectedProject.image || selectedProject.imageUrl}
                 alt={selectedProject.title}
                 className="w-full h-auto max-h-[60vh] object-contain rounded-lg border border-neutral-200 dark:border-neutral-800 mb-8"
               />
@@ -1067,7 +1244,7 @@ export default function App() {
 
             {/* Key Metrics */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-6 mb-8 border-y border-neutral-200 dark:border-neutral-800">
-              {selectedProject.modal.metrics.map((metric) => (
+              {selectedProject.modal?.metrics?.map((metric) => (
                 <div key={metric.label}>
                   <div className="text-xs font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-1">
                     {metric.label}
