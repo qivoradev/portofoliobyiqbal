@@ -103,36 +103,43 @@ export default function ResumeModal({ isOpen, onClose, lang = 'id' }) {
     >
       {/* ── Modal Container ── */}
       <div
-        className="relative flex flex-col w-full max-w-4xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl shadow-2xl overflow-hidden transition-colors"
+        className="relative flex flex-col w-full max-w-4xl max-h-[90vh] md:h-[88vh] md:max-h-[88vh] bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl shadow-2xl overflow-hidden transition-colors"
         style={{
-          maxHeight: '90vh',
           animation: 'resumeSlideUp 0.25s cubic-bezier(0.22,1,0.36,1)',
         }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* ══ HEADER / ACTION BAR ══ */}
-        <div className="flex items-center justify-between gap-3 px-4 sm:px-6 py-3.5 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/80 shrink-0 transition-colors">
+        <div className="flex items-center justify-between gap-2.5 sm:gap-4 px-3.5 sm:px-6 py-3 sm:py-3.5 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/80 shrink-0 transition-colors">
           {/* Left: Title */}
-          <div className="flex items-center gap-2.5 min-w-0">
+          <div className="flex items-center gap-2 sm:gap-2.5 min-w-0 flex-1">
             <FileText className="w-4 h-4 text-neutral-500 dark:text-neutral-400 shrink-0" />
             <div className="min-w-0">
-              <p className="text-xs font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 leading-none mb-0.5 hidden sm:block">
+              {/* Mobile (< md): Ringkas, "Curriculum Vitae" tanpa terpotong */}
+              <h2 className="md:hidden text-sm font-semibold text-neutral-900 dark:text-neutral-50 truncate leading-snug">
                 {t.title}
-              </p>
-              <h2 className="text-sm sm:text-base font-medium text-neutral-900 dark:text-neutral-50 truncate leading-snug">
-                {t.subtitle}
               </h2>
+
+              {/* Desktop (md+): Overline + Judul Lengkap beserta role */}
+              <div className="hidden md:block">
+                <p className="text-[11px] font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 leading-none mb-1">
+                  {t.title}
+                </p>
+                <h2 className="text-base font-medium text-neutral-900 dark:text-neutral-50 truncate leading-snug">
+                  {t.subtitle}
+                </h2>
+              </div>
             </div>
           </div>
 
           {/* Right: Action Buttons */}
-          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <div className="flex items-center gap-1 sm:gap-2 shrink-0 flex-shrink-0">
             {/* Download PDF */}
             <a
               href={PDF_PATH}
               download={PDF_DOWNLOAD_NAME}
               title={t.download}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-neutral-900 text-white hover:bg-neutral-700 dark:bg-neutral-50 dark:text-neutral-950 dark:hover:bg-neutral-200 transition-all duration-150 hover:scale-[1.02] active:scale-[0.98] shadow-sm"
+              className="inline-flex items-center justify-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium bg-neutral-900 text-white hover:bg-neutral-700 dark:bg-neutral-50 dark:text-neutral-950 dark:hover:bg-neutral-200 transition-all duration-150 hover:scale-[1.02] active:scale-[0.98] shadow-sm shrink-0"
             >
               <Download className="w-3.5 h-3.5 shrink-0" />
               <span className="hidden sm:inline">{t.download}</span>
@@ -144,14 +151,14 @@ export default function ResumeModal({ isOpen, onClose, lang = 'id' }) {
               target="_blank"
               rel="noopener noreferrer"
               title={t.openTab}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 bg-white dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600 transition-all duration-150 hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center justify-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 bg-white dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600 transition-all duration-150 hover:scale-[1.02] active:scale-[0.98] shrink-0"
             >
               <ExternalLink className="w-3.5 h-3.5 shrink-0" />
               <span className="hidden sm:inline">{t.openTab}</span>
             </a>
 
             {/* Divider */}
-            <div className="w-px h-5 bg-neutral-200 dark:bg-neutral-700 hidden sm:block" />
+            <div className="w-px h-4 sm:h-5 bg-neutral-200 dark:bg-neutral-700 mx-0.5 sm:mx-1 hidden sm:block" />
 
             {/* Close */}
             <button
@@ -159,7 +166,7 @@ export default function ResumeModal({ isOpen, onClose, lang = 'id' }) {
               onClick={onClose}
               aria-label={t.close}
               title={t.close}
-              className="inline-flex items-center justify-center w-8 h-8 rounded-lg text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
+              className="inline-flex items-center justify-center w-8 h-8 rounded-lg text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer shrink-0"
             >
               <X className="w-4 h-4" />
             </button>
@@ -167,10 +174,10 @@ export default function ResumeModal({ isOpen, onClose, lang = 'id' }) {
         </div>
 
         {/* ══ BODY: PDF Viewer ══ */}
-        <div className="flex-1 overflow-hidden bg-neutral-100 dark:bg-neutral-950 min-h-0">
+        <div className="flex-1 overflow-hidden bg-neutral-100 dark:bg-neutral-950 min-h-0 w-full flex flex-col">
           {isMobile ? (
             /* ── Mobile Fallback Banner ── */
-            <div className="flex flex-col items-center justify-center h-full min-h-[55vh] px-6 py-10 text-center gap-5">
+            <div className="flex flex-col items-center justify-center h-full min-h-[50vh] px-6 py-8 text-center gap-5 my-auto">
               <div className="w-14 h-14 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center">
                 <Smartphone className="w-7 h-7 text-neutral-500 dark:text-neutral-400" />
               </div>
@@ -204,13 +211,14 @@ export default function ResumeModal({ isOpen, onClose, lang = 'id' }) {
             </div>
           ) : (
             /* ── Desktop: iframe PDF Preview ── */
-            <iframe
-              src={`${PDF_PATH}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-              title={`${t.title} – ${t.subtitle}`}
-              className="w-full border-0"
-              style={{ height: 'calc(85vh - 62px)' }}
-              loading="lazy"
-            />
+            <div className="w-full h-full min-h-0 flex-1 overflow-hidden">
+              <iframe
+                src={`${PDF_PATH}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
+                title={`${t.title} – ${t.subtitle}`}
+                className="w-full h-full border-0 block"
+                loading="lazy"
+              />
+            </div>
           )}
         </div>
       </div>
