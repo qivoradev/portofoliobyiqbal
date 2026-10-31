@@ -9,6 +9,7 @@ import {
   Moon,
   ExternalLink,
 } from 'lucide-react';
+import ResumeModal, { ResumeButton } from './ResumeModal';
 
 function GithubIcon(props) {
   return (
@@ -558,6 +559,7 @@ export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [selectedCert, setSelectedCert] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   // Smart Cinematic Curtain Preloader States (Runs once per session)
   const [isPreloading, setIsPreloading] = useState(() => {
@@ -671,7 +673,7 @@ export default function App() {
   }, [selectedCert, selectedProject]);
 
   useEffect(() => {
-    if (isPreloading || selectedCert || selectedProject) {
+    if (isPreloading || selectedCert || selectedProject || isResumeOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -679,7 +681,7 @@ export default function App() {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [isPreloading, selectedCert, selectedProject]);
+  }, [isPreloading, selectedCert, selectedProject, isResumeOpen]);
 
   const t = content[lang];
 
@@ -837,14 +839,10 @@ export default function App() {
                   <ArrowDownRight className="w-4 h-4" />
                 </a>
 
-                <a
-                  href="#contact"
-                  id="btn-download-resume"
-                  className="w-full max-w-[260px] sm:w-auto rounded-full px-6 py-2.5 bg-neutral-100 text-neutral-800 border border-neutral-200 hover:bg-neutral-200/80 hover:border-neutral-300 dark:bg-neutral-900 dark:text-neutral-200 dark:border-neutral-800 dark:hover:bg-neutral-800 dark:hover:border-neutral-700 font-medium text-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] inline-flex items-center justify-center gap-2"
-                >
-                  <FileText className="w-4 h-4 text-neutral-600 dark:text-neutral-400" />
-                  <span>{t.hero.downloadResume}</span>
-                </a>
+                <ResumeButton
+                  lang={lang}
+                  onClick={() => setIsResumeOpen(true)}
+                />
               </div>
             </div>
 
@@ -1319,6 +1317,12 @@ export default function App() {
           </div>
         </div>
       )}
+      {/* 9. Resume / CV Preview Modal */}
+      <ResumeModal
+        isOpen={isResumeOpen}
+        onClose={() => setIsResumeOpen(false)}
+        lang={lang}
+      />
     </div>
   );
 }
