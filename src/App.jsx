@@ -848,11 +848,12 @@ export default function App() {
 
             {/* Right Column (Profile Picture) */}
             <div className="relative flex justify-center lg:justify-end order-last">
-              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden bg-neutral-100 dark:bg-neutral-800 shadow-xl border-4 border-white dark:border-neutral-900 mx-auto lg:mx-0 lg:ml-auto">
+              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden bg-neutral-100 dark:bg-neutral-800 shadow-xl border-4 border-white dark:border-neutral-900 mx-auto lg:mx-0 lg:ml-auto aspect-square">
                 <img
-                  src="/profile-picture.png"
+                  src="/assets/fotoiqbalnew.png"
                   alt="Iqbal Dwi Fathonah"
-                  className="w-full h-full object-cover transition-all duration-500 grayscale-0 md:grayscale md:hover:grayscale-0"
+                  className="w-full h-full rounded-full object-cover object-top transition-all duration-500 grayscale-0 md:grayscale md:hover:grayscale-0"
+                  style={{ objectPosition: 'center top' }}
                 />
               </div>
             </div>
