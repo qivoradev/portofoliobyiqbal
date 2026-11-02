@@ -13,8 +13,8 @@ import { X, Download, ExternalLink, FileText, Eye, Smartphone } from 'lucide-rea
  * It will be accessible at the path /cv.pdf in your Vite app.
  */
 
-const PDF_PATH = '/CV_IQBALDWIFATHONAH.pdf';
-const PDF_DOWNLOAD_NAME = 'CV_IQBALDWIFATHONAH.pdf';
+const PDF_PATH = '/Resume_Iqbal_Dwi_Fathonah.pdf';
+const PDF_DOWNLOAD_NAME = 'Resume_Iqbal_Dwi_Fathonah.pdf';
 
 const labels = {
   id: {
