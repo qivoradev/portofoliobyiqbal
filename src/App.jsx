@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
 import { content } from './content';
 import Preloader from './components/Preloader';
-import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import ProjectLedger from './components/ProjectLedger';
+import CompetencyStrip from './components/CompetencyStrip';
+import ProfileCardsSection from './components/ProfileCardsSection';
 import ProjectDrawer from './components/ProjectDrawer';
-import Credentials from './components/Credentials';
 import CertificateLightbox from './components/CertificateLightbox';
 import Footer from './components/Footer';
 import ResumeModal from './ResumeModal';
@@ -48,7 +47,7 @@ export default function App() {
   const project = t.projects.items.find((item) => item.id === projectId);
 
   return (
-    <div className="min-h-screen bg-[#0C0D0E] font-sans text-[#F5F3ED] selection:bg-white selection:text-black antialiased overflow-x-hidden">
+    <div className="min-h-screen bg-[#0A0A0B] font-sans text-white selection:bg-[#FF511A] selection:text-white antialiased overflow-x-hidden">
       {isPreloading && <Preloader onFinish={finishPreload} />}
 
       <a
@@ -58,36 +57,30 @@ export default function App() {
         {t.nav.skip}
       </a>
 
-      <Navbar
-        t={t.nav}
-        lang={lang}
-        onToggleLang={() => setLang(lang === 'id' ? 'en' : 'id')}
-      />
-
       <main id="main">
-        {/* 1. Master Hero Bento Card */}
+        {/* 1. Folioblox Sunset Hero Section (Transparent Navbar + Real Portrait + Asymmetric Typography) */}
         <Hero
-          t={t.hero}
+          lang={lang}
+          onToggleLang={() => setLang(lang === 'id' ? 'en' : 'id')}
           onOpenResume={() => setIsResumeOpen(true)}
         />
 
-        {/* 2. Curated Projects Section (2 Real Data Analyst Projects Only) */}
-        <ProjectLedger
-          t={t.projects}
-          onOpenProject={setProjectId}
-        />
+        {/* 2. Secondary Stack / Competency Strip */}
+        <CompetencyStrip lang={lang} />
 
-        {/* 3. Verified Credentials */}
-        <Credentials
-          t={t.credentials}
-          onOpenCertificate={setCertificate}
+        {/* 3. Profile & Approach with 3 High-Contrast Cards */}
+        <ProfileCardsSection
+          lang={lang}
+          onOpenProject={setProjectId}
+          onOpenCertificate={() => setCertificate(t.credentials.items[0])}
+          onOpenResume={() => setIsResumeOpen(true)}
         />
       </main>
 
-      {/* 4. Contact Footer */}
-      <Footer t={t.footer} />
+      {/* 4. Minimalist Footer */}
+      <Footer lang={lang} />
 
-      {/* Modals & Lightboxes */}
+      {/* Modals & Drawers */}
       {project && (
         <ProjectDrawer
           key={project.id}
@@ -100,6 +93,7 @@ export default function App() {
       {certificate && (
         <CertificateLightbox
           certificate={certificate}
+          allCertificates={t.credentials.items}
           closeLabel={t.credentials.closeLabel}
           onClose={closeCertificate}
         />

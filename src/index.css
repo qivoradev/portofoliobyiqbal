@@ -1,68 +1,59 @@
 @import "tailwindcss";
 
 /* ──────────────────────────────────────────────────────────────
-   Design tokens — Studio Keffi Aesthetic
-   Canvas: Deep Obsidian Charcoal (#0C0D0E)
-   Master Bento Card: Warm Editorial Sand (#F5F3ED) & Charcoal (#111215)
+   Folioblox Design Tokens
+   Base Page: #0A0A0B (Matte Black)
+   Secondary Surface: #141416 (Dark Charcoal)
+   Primary Accent: #FF511A (Flame Orange)
+   Hero Gradient: Sunset Flame Orange to Dark Burgundy/Black
    ────────────────────────────────────────────────────────────── */
 @theme inline {
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-display: "Inter Tight", "Inter", system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
+  --color-page: #0a0a0b;
+  --color-surface-dark: #141416;
+  --color-flame: #ff511a;
   --color-paper: var(--paper);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-line: var(--line);
-  --color-surface: var(--surface);
-  --color-surface-hover: var(--surface-hover);
 
-  /* Spring physics curve — every interaction transition uses this. */
   --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root {
-  --paper: #0c0d0e; /* Deep Obsidian Charcoal canvas */
-  --ink: #f5f3ed; /* Warm Sand Typography */
-  --muted: #8e8d88; /* Slate Olive / Muted Stone */
-  --line: rgb(245 243 237 / 0.12);
-  --surface: rgb(245 243 237 / 0.05);
-  --surface-hover: rgb(245 243 237 / 0.09);
+  --paper: #0a0a0b;
+  --ink: #ffffff;
+  --muted: #8e8d88;
+  --line: rgba(255, 255, 255, 0.1);
   color-scheme: dark;
 }
 
 body {
-  background-color: #0c0d0e;
-  color: var(--ink);
+  background-color: #0a0a0b;
+  color: #ffffff;
   font-family: var(--font-sans);
   min-height: 100vh;
-  transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
-/* ── Hide all Spline watermarks, anchor links, and badges ── */
-a[href*="spline.design"],
-#spline-canvas-wrapper a,
-#spline-canvas-wrapper a[href*="spline"],
-#spline-canvas-wrapper [class*="watermark"],
-#spline-canvas-wrapper [id*="watermark"],
-#spline-canvas-wrapper svg[aria-label*="Spline"] {
-  display: none !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  visibility: hidden !important;
+/* ── Hero Sunset Gradient ── */
+.bg-hero-gradient {
+  background: linear-gradient(125deg, #ff551a 0%, #df360d 42%, #481108 78%, #140806 100%);
 }
 
 /* ── Type primitives ── */
 @layer components {
-  /* Headings: bold, tight tracking (-0.03em) */
   .type-display {
     font-family: var(--font-display);
     font-weight: 700;
     letter-spacing: -0.03em;
   }
 
-  /* Micro-labels: mono, uppercase, wide tracking */
   .type-micro {
     @apply font-mono text-[11px] uppercase tracking-widest;
     line-height: 1.4;
@@ -72,7 +63,7 @@ a[href*="spline.design"],
 /* ── Scroll reveal (spring, 700ms) ── */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(20px);
   transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
     transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: var(--d, 0ms);
@@ -82,13 +73,13 @@ a[href*="spline.design"],
   transform: none;
 }
 
-/* ── Interactive underline (fills left → right on hover/focus) ── */
+/* ── Interactive underline ── */
 .link-line {
   display: inline;
   padding-bottom: 0.12em;
   background:
     linear-gradient(currentColor, currentColor) left bottom / 0% 1px no-repeat,
-    linear-gradient(var(--line), var(--line)) left bottom / 100% 1px no-repeat;
+    linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)) left bottom / 100% 1px no-repeat;
   transition: background-size 600ms cubic-bezier(0.16, 1, 0.3, 1);
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
@@ -99,66 +90,12 @@ a[href*="spline.design"],
   background-size: 100% 1px, 100% 1px;
 }
 
-/* ── Bento panel + terminal ── */
-@keyframes panel-in {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-.panel-in {
-  animation: panel-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@keyframes term-line {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-.term-line {
-  opacity: 0;
-  animation: term-line 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: calc(var(--i, 0) * 85ms + 120ms);
-}
-
-@keyframes term-blink {
-  50% {
-    opacity: 0;
-  }
-}
-.term-cursor {
-  display: inline-block;
-  width: 0.55em;
-  height: 1em;
-  margin-left: 2px;
-  vertical-align: text-bottom;
-  background: currentColor;
-  animation: term-blink 1s steps(1) infinite;
-}
-
 /* ── Respect reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
     transform: none;
     transition: none;
-  }
-  .panel-in,
-  .term-line {
-    animation: none;
-    opacity: 1;
-  }
-  .term-cursor {
-    animation: none;
   }
   html {
     scroll-behavior: auto !important;

@@ -1,147 +1,85 @@
+import Navbar from './Navbar';
 import { Reveal } from './ui';
 
 /**
- * The Master Hero Bento Card (Studio Keffi Aesthetic)
- * - Container: max-w-6xl mx-auto px-4 sm:px-6 pt-24 sm:pt-28 pb-12
- * - Card: Warm Editorial Sand (#F5F3ED), rounded-[28px] sm:rounded-[36px] lg:rounded-[44px]
- * - 2-Column Asymmetric Grid (grid-cols-1 lg:grid-cols-12):
- *   * SISI KIRI (lg:col-span-7): Headline, Deskripsi, Table Divider Keffi, CTA Button
- *   * SISI KANAN (lg:col-span-5): Pure Editorial Metric Snapshot (NYC & Maven Pizza)
+ * Hero Section — 100% Folioblox Composition + Real Portrait Photo
+ * - Sunset Orange Gradient to Dark Burgundy/Black
+ * - Large rounded bottom corners: rounded-b-[32px] sm:rounded-b-[48px]
+ * - Transparent Navbar inside top
+ * - Centerpiece Portrait Photo (Iqbal Dwi Fathonah in suit)
+ * - Asymmetric Text: Left giant "Data Analyst", Right bold statement
+ * - Bottom row of 4 numbered pillars (#01-#04)
  */
-export default function Hero({ t, onOpenResume }) {
+export default function Hero({ lang = 'id', onToggleLang }) {
+  const isId = lang === 'id';
+
+  const pillars = [
+    { num: '#01', title: isId ? 'Pemodelan SQL' : 'SQL Modeling' },
+    { num: '#02', title: isId ? 'Visualisasi BI' : 'BI Visualization' },
+    { num: '#03', title: isId ? 'Analisis Excel' : 'Excel Analytics' },
+    { num: '#04', title: isId ? 'Validasi Data' : 'Data Validation' },
+  ];
+
   return (
     <section
       id="top"
-      className="mx-auto max-w-6xl px-4 pt-24 pb-12 sm:px-6 sm:pt-28 sm:pb-16"
+      className="relative w-full overflow-hidden rounded-b-[32px] sm:rounded-b-[48px] bg-hero-gradient text-white shadow-2xl"
     >
-      <Reveal>
-        <article
-          aria-label="Studio Keffi Master Hero Card"
-          className="relative w-full overflow-hidden rounded-[28px] border border-stone-300/80 bg-[#F5F3ED] p-5 text-[#111215] shadow-2xl transition-all duration-500 ease-spring sm:rounded-[36px] sm:p-10 lg:rounded-[44px] lg:p-12"
-        >
-          <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-12 lg:gap-12">
-            {/* ── SISI KIRI (lg:col-span-7) ── */}
-            <div className="flex flex-col justify-between space-y-6 lg:col-span-7">
-              <div>
-                {/* Header Kategori */}
-                <p className="font-mono text-[11px] uppercase tracking-widest text-stone-500 font-medium">
-                  {t.kicker}
-                </p>
+      {/* 1. Navbar Transparan di Atas Hero */}
+      <Navbar lang={lang} onToggleLang={onToggleLang} />
 
-                {/* Headline Utama */}
-                <h1 className="type-display mt-3 text-balance text-3xl font-bold tracking-tight text-[#111215] sm:text-4xl md:text-5xl lg:text-6xl leading-[1.05]">
-                  {t.headline}
-                </h1>
+      {/* 2. Main Hero Viewport */}
+      <div className="relative mx-auto max-w-6xl px-6 pt-8 sm:pt-14 pb-8 min-h-[560px] sm:min-h-[640px] flex flex-col justify-between">
+        {/* Foto Potret Asli Saya (Centerpiece di Tengah Bawah) */}
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-0 z-10 pointer-events-none flex justify-center items-end">
+          <img
+            src="/fotoiqbalnew.png"
+            alt="Iqbal Dwi Fathonah"
+            className="h-[380px] sm:h-[480px] w-auto max-w-none object-contain object-bottom grayscale contrast-125 mix-blend-luminosity opacity-90 [mask-image:linear-gradient(to_bottom,black_65%,transparent_100%)] select-none"
+          />
+        </div>
 
-                {/* Deskripsi */}
-                <p className="mt-4 text-sm leading-relaxed text-stone-600 sm:text-base">
-                  {t.description}
-                </p>
-              </div>
+        {/* Teks Asimetris di Atas Foto (z-20) */}
+        <div className="relative z-20 flex flex-col md:flex-row md:items-end md:justify-between gap-8 pt-4 sm:pt-6">
+          {/* Sisi Kiri */}
+          <Reveal className="flex flex-col max-w-xl">
+            <span className="text-white/90 text-sm sm:text-base font-medium mb-2 tracking-wide">
+              {isId ? 'Halo, Saya Iqbal Dwi Fathonah' : 'Hello, I am Iqbal Dwi Fathonah'}
+            </span>
+            <h1 className="type-display text-5xl sm:text-7xl lg:text-[84px] font-bold leading-[0.95] tracking-tight text-white">
+              Data<br />Analyst
+            </h1>
+          </Reveal>
 
-              {/* Table Divider Keffi (Border tipis border-b border-black/15) */}
-              <div className="flex flex-col border-t border-black/15 py-1">
-                {/* Baris 1: [SCOPE] */}
-                <div className="flex flex-col gap-1 py-3 border-b border-black/15 sm:flex-row sm:items-baseline sm:gap-4 text-xs">
-                  <span className="font-mono text-[11px] uppercase tracking-wider text-stone-500 shrink-0 sm:w-20 font-medium">
-                    {t.scopeLabel}
-                  </span>
-                  <span className="font-medium text-stone-800 leading-relaxed">
-                    {t.scopeValue}
-                  </span>
-                </div>
+          {/* Sisi Kanan */}
+          <Reveal delay={120} className="flex flex-col md:text-right max-w-sm md:self-end">
+            <p className="text-white font-semibold text-base sm:text-lg leading-snug">
+              {isId
+                ? 'Data yang presisi harus terasa jelas.'
+                : 'Precise data must feel unmistakable.'}
+            </p>
+            <p className="text-white/80 text-xs sm:text-sm mt-2 max-w-[280px] md:ml-auto leading-relaxed">
+              {isId
+                ? 'Dari kueri relasional hingga dasbor interaktif, saya membangun model analitik yang terukur.'
+                : 'From relational queries to interactive dashboards, I build measurable analytical models.'}
+            </p>
+          </Reveal>
+        </div>
 
-                {/* Baris 2: [STACK] */}
-                <div className="flex flex-col gap-1 py-3 border-b border-black/15 sm:flex-row sm:items-baseline sm:gap-4 text-xs">
-                  <span className="font-mono text-[11px] uppercase tracking-wider text-stone-500 shrink-0 sm:w-20 font-medium">
-                    {t.stackLabel}
-                  </span>
-                  <span className="font-medium text-stone-800 leading-relaxed">
-                    {t.stackValue}
-                  </span>
-                </div>
-
-                {/* Baris 3: [STATUS] */}
-                <div className="flex flex-col gap-1 py-3 border-b border-black/15 sm:flex-row sm:items-baseline sm:gap-4 text-xs">
-                  <span className="font-mono text-[11px] uppercase tracking-wider text-stone-500 shrink-0 sm:w-20 font-medium">
-                    {t.statusLabel}
-                  </span>
-                  <span className="font-medium text-stone-800 leading-relaxed">
-                    {t.statusValue}
-                  </span>
-                </div>
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
-                <a
-                  href="#proyek"
-                  className="inline-flex items-center justify-center rounded-full bg-[#111215] px-8 py-4 text-xs font-semibold text-white transition-all duration-300 ease-spring hover:bg-stone-900 hover:scale-105 active:scale-95 text-center w-full sm:w-fit shadow-md"
-                >
-                  {t.ctaPrimary}
-                </a>
-
-                {onOpenResume && (
-                  <button
-                    type="button"
-                    onClick={onOpenResume}
-                    className="inline-flex cursor-pointer items-center justify-center rounded-full border border-black/20 bg-transparent px-6 py-4 text-xs font-semibold text-[#111215] transition-all duration-300 ease-spring hover:border-black/50 hover:bg-black/5 hover:scale-105 active:scale-95 text-center w-full sm:w-fit"
-                  >
-                    {t.ctaResume}
-                  </button>
-                )}
-              </div>
+        {/* 3. Baris 4 Pilar Bernomor di Bagian Bawah Hero */}
+        <Reveal delay={200} className="relative z-20 grid grid-cols-2 sm:grid-cols-4 gap-6 pt-10 sm:pt-14 pb-2 border-t border-white/15 mt-8 sm:mt-12">
+          {pillars.map((item) => (
+            <div key={item.num} className="flex flex-col">
+              <span className="font-mono text-sm sm:text-base font-bold text-[#FF511A] tracking-wider">
+                {item.num}
+              </span>
+              <span className="text-white text-xs sm:text-sm font-semibold tracking-wide mt-1">
+                {item.title}
+              </span>
             </div>
-
-            {/* ── SISI KANAN (lg:col-span-5) Metric Snapshot ── */}
-            <div className="flex flex-col justify-between rounded-2xl border border-stone-200/90 bg-white/85 p-6 shadow-sm sm:rounded-3xl sm:p-8 lg:col-span-5">
-              {/* Sudut Atas */}
-              <div className="flex items-center justify-between border-b border-stone-200/80 pb-4">
-                <span className="font-mono text-[11px] font-medium uppercase tracking-widest text-stone-500">
-                  {t.metrics.header}
-                </span>
-                <span className="font-mono text-[11px] uppercase tracking-widest text-stone-400">
-                  {t.metrics.series}
-                </span>
-              </div>
-
-              {/* Tengah: Highlight Metrik Utama Nyata */}
-              <div className="flex flex-col gap-6 py-6 sm:py-8">
-                {/* Kartu mini 1: NYC */}
-                <div>
-                  <p className="type-display text-4xl font-bold tracking-tight text-[#111215] sm:text-5xl lg:text-[3.25rem] leading-none">
-                    {t.metrics.metric1.value}
-                  </p>
-                  <p className="mt-2 text-xs font-medium leading-relaxed text-stone-600 sm:text-sm">
-                    {t.metrics.metric1.label}
-                  </p>
-                </div>
-
-                {/* Divider tipis horizontal */}
-                <div className="h-px w-full bg-stone-200/90" />
-
-                {/* Kartu mini 2: Maven Pizza */}
-                <div>
-                  <p className="type-display text-4xl font-bold tracking-tight text-[#111215] sm:text-5xl lg:text-[3.25rem] leading-none">
-                    {t.metrics.metric2.value}
-                  </p>
-                  <p className="mt-2 text-xs font-medium leading-relaxed text-stone-600 sm:text-sm">
-                    {t.metrics.metric2.label}
-                  </p>
-                </div>
-              </div>
-
-              {/* Sudut Bawah: Badge status minimalis */}
-              <div className="flex items-center gap-2 border-t border-stone-200/80 pt-4">
-                <span className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-emerald-500" />
-                <span className="font-mono text-[11px] font-medium uppercase tracking-wider text-stone-600">
-                  {t.metrics.badge}
-                </span>
-              </div>
-            </div>
-          </div>
-        </article>
-      </Reveal>
+          ))}
+        </Reveal>
+      </div>
     </section>
   );
 }

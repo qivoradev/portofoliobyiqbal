@@ -2,46 +2,77 @@ import { ArrowUpRight } from 'lucide-react';
 import { CONTACT } from '../content';
 import { Reveal } from './ui';
 
-/** Large editorial contact rows with a spring-filled underline. */
-export default function Footer({ t }) {
+/**
+ * Footer Minimalis & Kontak (Folioblox Matte Black #0A0A0B)
+ * - Garis batas tipis border-white/10
+ * - Tautan kontak: Email, LinkedIn, GitHub, WhatsApp
+ * - Copyright: "© 2026 Iqbal Dwi Fathonah"
+ */
+export default function Footer({ lang = 'id' }) {
+  const isId = lang === 'id';
+
   const links = [
-    { label: t.labels.email, value: CONTACT.email, href: `mailto:${CONTACT.email}?subject=Peluang%20Kerja%20Data%20%26%20QA`, external: false },
-    { label: t.labels.whatsapp, value: CONTACT.whatsappDisplay, href: CONTACT.whatsappUrl, external: true },
-    { label: t.labels.github, value: CONTACT.githubHandle, href: CONTACT.githubUrl, external: true },
-    { label: t.labels.linkedin, value: t.linkedinValue, href: CONTACT.linkedinUrl, external: true },
+    {
+      label: 'Email',
+      value: CONTACT.email,
+      href: CONTACT.mailtoUrl,
+      external: false,
+    },
+    {
+      label: 'WhatsApp',
+      value: CONTACT.whatsappDisplay,
+      href: CONTACT.whatsappUrl,
+      external: true,
+    },
+    {
+      label: 'LinkedIn',
+      value: 'Iqbal Dwi Fathonah',
+      href: CONTACT.linkedinUrl,
+      external: true,
+    },
+    {
+      label: 'GitHub',
+      value: CONTACT.githubHandle,
+      href: CONTACT.githubUrl,
+      external: true,
+    },
   ];
 
   return (
-    <footer id="kontak" className="scroll-mt-20 border-t border-line">
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-28">
+    <footer id="kontak" className="scroll-mt-14 border-t border-white/10 bg-[#0A0A0B]">
+      <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
         <Reveal>
-          <p className="type-micro text-muted">{t.overline}</p>
-          <h2 className="type-display mt-6 max-w-5xl text-balance text-[clamp(2.25rem,6vw,5.5rem)] leading-[1.05]">
-            {t.statement}
+          <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#FF511A] block mb-3">
+            {isId ? '[ HUBUNGI SAYA ]' : '[ GET IN TOUCH ]'}
+          </span>
+          <h2 className="type-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white max-w-3xl leading-[1.08]">
+            {isId
+              ? 'Mari Membangun Solusi Berbasis Data & Keputusan Strategis.'
+              : 'Let’s Build Data-Driven Solutions & Strategic Insights.'}
           </h2>
         </Reveal>
 
-        <address className="mt-16 not-italic md:mt-24">
-          <ul className="border-t border-line">
+        <address className="mt-14 not-italic">
+          <ul className="border-t border-white/10">
             {links.map((link, i) => (
-              <Reveal as="li" key={link.label} delay={i * 70} className="border-b border-line">
+              <Reveal as="li" key={link.label} delay={i * 60} className="border-b border-white/10">
                 <a
                   href={link.href}
                   {...(link.external
                     ? { target: '_blank', rel: 'noopener noreferrer' }
                     : {})}
-                  className="group flex flex-col gap-2 py-6 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink md:flex-row md:items-baseline md:justify-between md:gap-8"
+                  className="group flex flex-col gap-2 py-6 transition-colors hover:text-[#FF511A] sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
                 >
-                  <span className="type-micro text-muted md:w-40 md:shrink-0">
+                  <span className="font-mono text-xs font-medium uppercase tracking-wider text-stone-400 sm:w-36 shrink-0 group-hover:text-stone-300">
                     {link.label}
                   </span>
-                  <span className="flex flex-1 items-baseline justify-between gap-4 md:justify-end">
-                    <span className="type-display text-[1.4rem] leading-tight [overflow-wrap:anywhere] sm:text-4xl md:text-right">
-                      <span className="link-line">{link.value}</span>
+                  <span className="flex flex-1 items-baseline justify-between gap-4 sm:justify-end">
+                    <span className="type-display text-xl sm:text-3xl font-semibold text-white group-hover:text-[#FF511A] transition-colors">
+                      {link.value}
                     </span>
                     <ArrowUpRight
                       aria-hidden="true"
-                      className="h-5 w-5 shrink-0 text-muted transition-[transform,color] duration-500 ease-spring group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-ink sm:h-7 sm:w-7"
+                      className="h-5 w-5 shrink-0 text-stone-400 transition-transform duration-300 ease-spring group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#FF511A]"
                     />
                   </span>
                 </a>
@@ -50,9 +81,15 @@ export default function Footer({ t }) {
           </ul>
         </address>
 
-        <p className="type-micro mt-16 text-muted">{t.copyright}</p>
+        <div className="mt-14 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="font-mono text-xs text-stone-400">
+            © 2026 Iqbal Dwi Fathonah. All rights reserved.
+          </p>
+          <span className="font-mono text-[11px] text-stone-500 uppercase tracking-widest">
+            Data Analyst Portfolio
+          </span>
+        </div>
       </div>
     </footer>
   );
 }
-
