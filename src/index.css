@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 /* ──────────────────────────────────────────────────────────────
-   Design tokens — "Warm Paper" editorial system
-   Semantic tokens are CSS variables so light/dark share one set
-   of utility classes (bg-paper, text-ink, text-muted, border-line…)
+   Design tokens — Studio Keffi Aesthetic
+   Canvas: Deep Obsidian Charcoal (#0C0D0E)
+   Master Bento Card: Warm Editorial Sand (#F5F3ED) & Charcoal (#111215)
    ────────────────────────────────────────────────────────────── */
 @theme inline {
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
@@ -22,34 +22,35 @@
 }
 
 :root {
-  --paper: #f5f3ed; /* Warm Paper / Sand canvas */
-  --ink: #121316; /* Deep Obsidian Charcoal */
-  --muted: #6e6d68; /* Slate Olive / Muted Stone */
-  --line: rgb(214 211 209 / 0.8); /* stone-300 @ 80% */
-  --surface: rgb(231 229 228 / 0.4); /* stone-200 @ 40% */
-  --surface-hover: rgb(231 229 228 / 0.5); /* stone-200 @ 50% */
-  color-scheme: light;
-}
-
-html.dark {
-  --paper: #121316;
-  --ink: #f5f3ed;
-  --muted: #a3a199;
-  --line: rgb(245 243 237 / 0.14);
+  --paper: #0c0d0e; /* Deep Obsidian Charcoal canvas */
+  --ink: #f5f3ed; /* Warm Sand Typography */
+  --muted: #8e8d88; /* Slate Olive / Muted Stone */
+  --line: rgb(245 243 237 / 0.12);
   --surface: rgb(245 243 237 / 0.05);
-  --surface-hover: rgb(245 243 237 / 0.08);
+  --surface-hover: rgb(245 243 237 / 0.09);
   color-scheme: dark;
 }
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 body {
-  background-color: var(--paper);
+  background-color: #0c0d0e;
   color: var(--ink);
   font-family: var(--font-sans);
   min-height: 100vh;
   transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
     color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Hide all Spline watermarks, anchor links, and badges ── */
+a[href*="spline.design"],
+#spline-canvas-wrapper a,
+#spline-canvas-wrapper a[href*="spline"],
+#spline-canvas-wrapper [class*="watermark"],
+#spline-canvas-wrapper [id*="watermark"],
+#spline-canvas-wrapper svg[aria-label*="Spline"] {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
 }
 
 /* ── Type primitives ── */

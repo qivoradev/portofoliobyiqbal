@@ -20,14 +20,14 @@ function StageMessage({ label, pulse = false, visible = true }) {
   return (
     <div
       role="status"
-      className={`absolute inset-0 flex flex-col items-center justify-center gap-3 bg-transparent text-muted transition-opacity duration-700 ease-spring ${
+      className={`absolute inset-0 flex flex-col items-center justify-center gap-3 bg-transparent text-stone-500 transition-opacity duration-700 ease-spring ${
         visible ? 'opacity-100' : 'pointer-events-none opacity-0'
       }`}
     >
       {pulse && (
         <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
       )}
-      <span className="type-micro rounded-full border border-line bg-paper/80 px-4 py-1.5 backdrop-blur-sm">
+      <span className="font-mono text-[11px] uppercase tracking-widest text-stone-600">
         {label}
       </span>
     </div>
@@ -35,10 +35,11 @@ function StageMessage({ label, pulse = false, visible = true }) {
 }
 
 /**
- * Panggung 3D Komputer (Center Stage Workstation)
- * - Full-width stage (w-full max-w-5xl h-[520px] sm:h-[600px])
- * - Canvas background transparan menyatu dengan warna dasar #F5F3ED
- * - Watermark-safe layout: node badge di kiri atas, micro-hint di kanan atas / dock di bawah
+ * 3D Workstation Canvas (Studio Keffi Right Column)
+ * - Container: id="spline-canvas-wrapper" (w-full aspect-square max-h-[480px] rounded-2xl)
+ * - Transparansi kanvas 100% menyatu dengan kartu Sand (#F5F3ED)
+ * - Bebas watermark & anchor link luar
+ * - Label mikro: "WORKSTATION // (01)" di atas & "INTERACTIVE // DRAG TO ROTATE" di bawah
  */
 export default function SplineStage({ t }) {
   const [loaded, setLoaded] = useState(false);
@@ -61,15 +62,24 @@ export default function SplineStage({ t }) {
     setLoaded(true);
   };
 
-  const fallback = <StageMessage label={t.stageFallback} />;
+  const fallback = <StageMessage label={t?.stageFallback || '3D Workstation Offline'} />;
 
   return (
     <div
-      aria-label={t.stageAria}
-      className="relative mx-auto h-[520px] w-full max-w-5xl overflow-hidden rounded-3xl bg-transparent sm:h-[600px]"
+      id="spline-canvas-wrapper"
+      aria-label="3D Workstation"
+      className="relative w-full aspect-square max-h-[480px] overflow-hidden rounded-2xl bg-transparent select-none"
     >
+      {/* Label Micro Atas */}
+      <div className="pointer-events-none absolute left-3 top-3 z-10 sm:left-4 sm:top-4">
+        <span className="font-mono text-[11px] uppercase tracking-widest text-stone-500/90">
+          WORKSTATION // (01)
+        </span>
+      </div>
+
+      {/* 3D Spline Canvas */}
       <StageBoundary fallback={fallback}>
-        <Suspense fallback={<StageMessage label={t.stageLoading} pulse />}>
+        <Suspense fallback={<StageMessage label={t?.stageLoading || 'Loading 3D Workstation...'} pulse />}>
           <div className="h-full w-full">
             <Spline
               scene={SPLINE_SCENE}
@@ -81,18 +91,15 @@ export default function SplineStage({ t }) {
           {timedOut && !loaded ? (
             fallback
           ) : (
-            <StageMessage label={t.stageLoading} pulse visible={!loaded} />
+            <StageMessage label={t?.stageLoading || 'Loading 3D Workstation...'} pulse visible={!loaded} />
           )}
         </Suspense>
       </StageBoundary>
 
-      {/* Top badges — positioned away from Spline's bottom-right watermark */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-between p-4 sm:p-6">
-        <span className="type-micro rounded-full border border-line bg-paper/85 px-3.5 py-1.5 text-ink shadow-xs backdrop-blur-md">
-          {t.stageBadge}
-        </span>
-        <span className="type-micro hidden rounded-full border border-line bg-paper/85 px-3.5 py-1.5 text-muted shadow-xs backdrop-blur-md sm:inline-flex">
-          {t.stageHint}
+      {/* Label Micro Bawah */}
+      <div className="pointer-events-none absolute bottom-3 right-3 z-10 sm:bottom-4 sm:right-4">
+        <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-stone-500/90">
+          INTERACTIVE // DRAG TO ROTATE
         </span>
       </div>
     </div>

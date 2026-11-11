@@ -1,28 +1,31 @@
-import { Moon, Sun } from 'lucide-react';
-
-export default function Navbar({ t, lang, onToggleLang, isDark, onToggleTheme }) {
-  const iconBtn =
-    'inline-flex h-9 items-center justify-center rounded-full px-3 text-muted transition-colors duration-500 ease-spring hover:bg-surface-hover hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink';
-
+/**
+ * Floating Capsule Navbar (Studio Keffi Replicant)
+ * Centered floating pill with deep obsidian/stone blur background,
+ * tracked uppercase brand on the left, navigation in the middle,
+ * and white action capsule "Hubungi Saya" on the right.
+ */
+export default function Navbar({ t, lang, onToggleLang }) {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-paper/80 backdrop-blur-md transition-colors duration-500">
+    <header className="fixed inset-x-0 top-5 z-50 flex justify-center px-4 pointer-events-none">
       <nav
         aria-label={t.ariaLabel}
-        className="mx-auto flex h-14 max-w-7xl items-center justify-between px-5 sm:px-8"
+        className="pointer-events-auto flex items-center justify-between gap-4 sm:gap-8 rounded-full border border-white/10 bg-stone-900/90 px-6 py-2.5 shadow-2xl backdrop-blur-md transition-all duration-300"
       >
+        {/* Brand Kiri */}
         <a
           href="#top"
-          className="text-xs font-semibold uppercase tracking-widest transition-opacity duration-500 ease-spring hover:opacity-60"
+          className="text-xs font-bold uppercase tracking-widest text-white transition-opacity duration-300 ease-spring hover:opacity-75"
         >
           iqbaldf
         </a>
 
-        <ul className="hidden items-center gap-8 md:flex">
+        {/* Menu Navigasi Tengah */}
+        <ul className="hidden items-center gap-6 md:flex">
           {t.links.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="type-micro text-muted transition-colors duration-500 ease-spring hover:text-ink"
+                className="text-xs font-medium text-stone-400 transition-colors duration-300 ease-spring hover:text-white"
               >
                 {link.label}
               </a>
@@ -30,26 +33,25 @@ export default function Navbar({ t, lang, onToggleLang, isDark, onToggleTheme })
           ))}
         </ul>
 
-        <div className="flex items-center gap-1">
+        {/* Tombol Aksi Kanan: Language Switch + Kapsul Putih "Hubungi Saya" */}
+        <div className="flex items-center gap-2.5">
           <button
             type="button"
             onClick={onToggleLang}
             aria-label={t.langAria}
-            className={`${iconBtn} type-micro cursor-pointer`}
+            className="rounded-full px-2 py-0.5 text-[11px] font-mono text-stone-400 transition-colors hover:text-white cursor-pointer"
           >
             {lang.toUpperCase()}
           </button>
-          <button
-            type="button"
-            onClick={onToggleTheme}
-            aria-label={isDark ? t.themeToLight : t.themeToDark}
-            className={`${iconBtn} cursor-pointer`}
+
+          <a
+            href="#kontak"
+            className="rounded-full bg-white px-4 py-1.5 text-xs font-semibold text-black transition-all duration-300 ease-spring hover:bg-stone-200 hover:scale-105 active:scale-95"
           >
-            {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-          </button>
+            {lang === 'id' ? 'Hubungi Saya' : 'Contact Me'}
+          </a>
         </div>
       </nav>
     </header>
   );
 }
-

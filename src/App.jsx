@@ -23,7 +23,6 @@ function shouldPreload() {
 
 export default function App() {
   const [lang, setLang] = useState('id');
-  const [isDark, setIsDark] = useState(false);
   const [projectId, setProjectId] = useState(null);
   const [certificate, setCertificate] = useState(null);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
@@ -39,10 +38,6 @@ export default function App() {
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', isDark);
-  }, [isDark]);
 
   // Lock scroll while the curtain is up (dialogs lock scroll themselves).
   useEffect(() => {
@@ -74,15 +69,12 @@ export default function App() {
         t={t.nav}
         lang={lang}
         onToggleLang={() => setLang(lang === 'id' ? 'en' : 'id')}
-        isDark={isDark}
-        onToggleTheme={() => setIsDark((v) => !v)}
       />
 
       <main id="main">
         <Hero
-          t={t.hero}
+          lang={lang}
           onOpenResume={() => setIsResumeOpen(true)}
-          onOpenStack={() => setIsStackOpen(true)}
         />
         <FocusBento t={t.focus} onOpenProject={setProjectId} />
         <ProjectLedger t={t.projects} onOpenProject={setProjectId} />
