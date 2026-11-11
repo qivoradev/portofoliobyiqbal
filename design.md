@@ -34,7 +34,8 @@ Root Container → Media Box (locked aspect ratio) → Meta Stack → Body Stack
 | Section | File | Notes |
 |---|---|---|
 | Navigation | `components/Navbar.jsx` | Full-width hairline bar, `iqbaldf` left. |
-| Hero | `components/Hero.jsx`, `SplineStage.jsx` | `lg:grid-cols-12` → 7 / 5. Lazy Spline in a locked `4:3 → 1:1` box. |
+| Hero | `components/Hero.jsx`, `SplineStage.jsx` | Center Stage Workstation (vertical layout, full-width transparent Spline stage, Studio Keffi glassmorphism Mode Selector Dock). |
+| Stack Drawer | `components/StackDrawer.jsx`, `Drawer.jsx` | Logic Stack panel triggered by dock keyboard button. |
 | Focus Bento | `components/FocusBento.jsx` | ARIA tabs (arrow keys), context-aware terminal. |
 | Project Ledger | `components/ProjectLedger.jsx` | Editorial rows; click opens the PAR drawer. |
 | Project Drawer | `components/ProjectDrawer.jsx` | Problem · Action · Result, spring slide, focus-trapped. |

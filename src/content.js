@@ -8,6 +8,8 @@ export const SPLINE_SCENE =
 
 export const CONTACT = {
   email: 'iqbalfathonah20@gmail.com',
+  mailtoUrl:
+    'mailto:iqbalfathonah20@gmail.com?subject=Peluang%20Kerja%20Data%20%26%20QA',
   whatsappDisplay: '+6282322231710',
   whatsappUrl:
     'https://api.whatsapp.com/send?phone=6282322231710&text=Halo%20Iqbal,%20saya%20melihat%20portofolio%20Anda%20dan%20ingin%20berdiskusi%20lebih%20lanjut.',
@@ -88,22 +90,59 @@ export const content = {
       skip: 'Lewati ke konten utama',
     },
     hero: {
-      status: '[ STATUS: TERSEDIA UNTUK ROLE DATA & QA ]',
+      kicker: '[ 01 / VIRTUAL WORKSTATION HUB ]',
       headline: 'Menghubungkan Logika Data dengan Presisi Sistem.',
-      intro:
-        'Lulusan baru Teknologi Informasi (2026) yang memadukan ekstraksi basis data relasional (SQL & Excel), penjaminan mutu sistem (QA), dan fondasi kecerdasan buatan (AI) — mengubah data mentah menjadi keputusan yang terukur dan sistem yang dapat diandalkan.',
-      stackLabel: 'Core Stack',
-      stack: ['SQL / PostgreSQL', 'Excel Pivot', 'Postman', 'Supabase'],
-      ctaPrimary: 'Eksplorasi Analisis',
-      ctaSecondary: 'Resume / CV',
+      subheadline:
+        'Lulusan Baru TI (2026). Eksplorasi ekosistem kerja melalui terminal meja interaktif di bawah ini.',
+      status: '[ STATUS: TERSEDIA UNTUK ROLE DATA & QA ]',
       stageBadge: '[ WORKSTATION NODE: ACTIVE ]',
-      stageHint: 'Gunakan kursor untuk berinteraksi',
+      stageHint: 'Pilih objek atau gunakan menu untuk mengeksplorasi profil.',
       stageLoading: 'Memuat workstation 3D',
       stageFallback: 'Pratinjau 3D tidak tersedia di perangkat ini.',
       stageAria: 'Workstation 3D interaktif',
+      dock: {
+        ariaLabel: 'Pemilih mode workstation',
+        items: [
+          { id: 'screen', eyebrow: 'Layar', label: 'Proyek Unggulan' },
+          { id: 'keyboard', eyebrow: 'Keyboard', label: 'Stack Logika' },
+          { id: 'notes', eyebrow: 'Catatan', label: 'Resume & PAR' },
+          { id: 'coffee', eyebrow: 'Kopi', label: 'Kolaborasi' },
+        ],
+        coffeeMenu: { email: 'Kirim Email', whatsapp: 'Chat via WhatsApp' },
+      },
+    },
+    stack: {
+      eyebrow: 'Keyboard · Stack Logika',
+      title: 'Stack yang saya pakai sehari-hari.',
+      intro:
+        'Empat alat inti untuk mengekstrak data, memodelkannya, menguji sistem, dan membangun fondasinya.',
+      seeIn: 'Lihat di',
+      close: 'Tutup panel stack',
+      items: [
+        {
+          name: 'SQL / PostgreSQL',
+          use: 'Ekstraksi dan pemodelan basis data relasional: tabel, relasi, key, dan constraint.',
+          projectId: 'antigravity-tracker',
+        },
+        {
+          name: 'Excel Pivot',
+          use: 'Pemodelan data, matriks KPI, dan dashboard interaktif untuk analisis skala ratusan ribu baris.',
+          projectId: 'nyc-traffic-safety',
+        },
+        {
+          name: 'Postman',
+          use: 'Pengujian API dengan skenario positif dan negatif beserta assertion otomatis.',
+          projectId: 'qa-testing-suite',
+        },
+        {
+          name: 'Supabase',
+          use: 'Backend cloud berbasis PostgreSQL dengan API siap pakai untuk penyimpanan data.',
+          projectId: 'antigravity-tracker',
+        },
+      ],
     },
     focus: {
-      overline: '[ 01 ] Area Fokus',
+      overline: '[ 02 ] Area Fokus',
       title: 'Tiga disiplin, satu pola pikir analitis.',
       tabsAria: 'Area fokus',
       labels: { scope: 'Scope', tools: 'Tools', outcome: 'Outcome' },
@@ -149,7 +188,7 @@ export const content = {
       ],
     },
     projects: {
-      overline: '[ 02 ] Indeks Proyek',
+      overline: '[ 03 ] Indeks Proyek',
       title: 'Studi kasus terpilih.',
       subtitle:
         'Empat pekerjaan yang memperlihatkan cara saya memodelkan data, menguji sistem, dan merancang fondasinya.',
@@ -337,7 +376,7 @@ export const content = {
       ],
     },
     credentials: {
-      overline: '[ 03 ] Kredensial',
+      overline: '[ 04 ] Kredensial',
       title: 'Sertifikasi.',
       listAria: 'Daftar sertifikasi',
       hint: 'Lihat sertifikat',
@@ -363,7 +402,7 @@ export const content = {
       ],
     },
     footer: {
-      overline: '[ 04 ] Kontak',
+      overline: '[ 05 ] Kontak',
       statement: 'Mari Membangun Solusi Berbasis Data & Logika Sistem.',
       labels: {
         email: 'Email',
@@ -391,22 +430,59 @@ export const content = {
       skip: 'Skip to main content',
     },
     hero: {
-      status: '[ STATUS: AVAILABLE FOR DATA & QA ROLES ]',
+      kicker: '[ 01 / VIRTUAL WORKSTATION HUB ]',
       headline: 'Connecting Data Logic with System Precision.',
-      intro:
-        'Recent Information Technology graduate (2026) combining relational database extraction (SQL & Excel), system quality assurance (QA), and artificial intelligence (AI) foundations — turning raw data into measurable decisions and dependable systems.',
-      stackLabel: 'Core Stack',
-      stack: ['SQL / PostgreSQL', 'Excel Pivot', 'Postman', 'Supabase'],
-      ctaPrimary: 'Explore the Analysis',
-      ctaSecondary: 'Resume / CV',
+      subheadline:
+        'IT Graduate (2026). Explore my working ecosystem through the interactive desk terminal below.',
+      status: '[ STATUS: AVAILABLE FOR DATA & QA ROLES ]',
       stageBadge: '[ WORKSTATION NODE: ACTIVE ]',
-      stageHint: 'Use your cursor to interact',
+      stageHint: 'Pick an object or use the menu to explore the profile.',
       stageLoading: 'Loading 3D workstation',
       stageFallback: '3D preview is unavailable on this device.',
       stageAria: 'Interactive 3D workstation',
+      dock: {
+        ariaLabel: 'Workstation mode selector',
+        items: [
+          { id: 'screen', eyebrow: 'Screen', label: 'Featured Projects' },
+          { id: 'keyboard', eyebrow: 'Keyboard', label: 'Logic Stack' },
+          { id: 'notes', eyebrow: 'Notes', label: 'Resume & PAR' },
+          { id: 'coffee', eyebrow: 'Coffee', label: 'Collaborate' },
+        ],
+        coffeeMenu: { email: 'Send an Email', whatsapp: 'Chat on WhatsApp' },
+      },
+    },
+    stack: {
+      eyebrow: 'Keyboard · Logic Stack',
+      title: 'The stack I work with daily.',
+      intro:
+        'Four core tools to extract data, model it, test systems, and build their foundations.',
+      seeIn: 'See in',
+      close: 'Close stack panel',
+      items: [
+        {
+          name: 'SQL / PostgreSQL',
+          use: 'Relational database extraction and modeling: tables, relations, keys, and constraints.',
+          projectId: 'antigravity-tracker',
+        },
+        {
+          name: 'Excel Pivot',
+          use: 'Data modeling, KPI matrices, and interactive dashboards for analysis at hundreds-of-thousands-of-rows scale.',
+          projectId: 'nyc-traffic-safety',
+        },
+        {
+          name: 'Postman',
+          use: 'API testing with positive and negative scenarios and automated assertions.',
+          projectId: 'qa-testing-suite',
+        },
+        {
+          name: 'Supabase',
+          use: 'PostgreSQL-based cloud backend with a ready-to-use API for data storage.',
+          projectId: 'antigravity-tracker',
+        },
+      ],
     },
     focus: {
-      overline: '[ 01 ] Focus Areas',
+      overline: '[ 02 ] Focus Areas',
       title: 'Three disciplines, one analytical mindset.',
       tabsAria: 'Focus areas',
       labels: { scope: 'Scope', tools: 'Tools', outcome: 'Outcome' },
@@ -452,7 +528,7 @@ export const content = {
       ],
     },
     projects: {
-      overline: '[ 02 ] Project Index',
+      overline: '[ 03 ] Project Index',
       title: 'Selected case studies.',
       subtitle:
         'Four pieces of work showing how I model data, test systems, and design their foundations.',
@@ -640,7 +716,7 @@ export const content = {
       ],
     },
     credentials: {
-      overline: '[ 03 ] Credentials',
+      overline: '[ 04 ] Credentials',
       title: 'Certifications.',
       listAria: 'Certification list',
       hint: 'View certificate',
@@ -666,7 +742,7 @@ export const content = {
       ],
     },
     footer: {
-      overline: '[ 04 ] Contact',
+      overline: '[ 05 ] Contact',
       statement: 'Let’s Build Data-Driven Solutions & Sound System Logic.',
       labels: {
         email: 'Email',

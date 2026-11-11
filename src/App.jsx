@@ -6,6 +6,7 @@ import Hero from './components/Hero';
 import FocusBento from './components/FocusBento';
 import ProjectLedger from './components/ProjectLedger';
 import ProjectDrawer from './components/ProjectDrawer';
+import StackDrawer from './components/StackDrawer';
 import Credentials from './components/Credentials';
 import CertificateLightbox from './components/CertificateLightbox';
 import Footer from './components/Footer';
@@ -26,12 +27,14 @@ export default function App() {
   const [projectId, setProjectId] = useState(null);
   const [certificate, setCertificate] = useState(null);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [isStackOpen, setIsStackOpen] = useState(false);
   const [isPreloading, setIsPreloading] = useState(shouldPreload);
 
   const finishPreload = useCallback(() => setIsPreloading(false), []);
   const closeProject = useCallback(() => setProjectId(null), []);
   const closeCertificate = useCallback(() => setCertificate(null), []);
   const closeResume = useCallback(() => setIsResumeOpen(false), []);
+  const closeStack = useCallback(() => setIsStackOpen(false), []);
 
   useEffect(() => {
     document.documentElement.lang = lang;
@@ -52,6 +55,9 @@ export default function App() {
 
   const t = content[lang];
   const project = t.projects.items.find((item) => item.id === projectId);
+  const projectTitles = Object.fromEntries(
+    t.projects.items.map((item) => [item.id, item.title])
+  );
 
   return (
     <div className="min-h-screen bg-paper font-sans text-ink transition-colors duration-500">
@@ -73,7 +79,11 @@ export default function App() {
       />
 
       <main id="main">
-        <Hero t={t.hero} onOpenResume={() => setIsResumeOpen(true)} />
+        <Hero
+          t={t.hero}
+          onOpenResume={() => setIsResumeOpen(true)}
+          onOpenStack={() => setIsStackOpen(true)}
+        />
         <FocusBento t={t.focus} onOpenProject={setProjectId} />
         <ProjectLedger t={t.projects} onOpenProject={setProjectId} />
         <Credentials t={t.credentials} onOpenCertificate={setCertificate} />
@@ -87,6 +97,18 @@ export default function App() {
           project={project}
           labels={t.projects.labels}
           onClose={closeProject}
+        />
+      )}
+
+      {isStackOpen && (
+        <StackDrawer
+          t={t.stack}
+          projectTitles={projectTitles}
+          onOpenProject={(id) => {
+            setIsStackOpen(false);
+            setProjectId(id);
+          }}
+          onClose={closeStack}
         />
       )}
 
