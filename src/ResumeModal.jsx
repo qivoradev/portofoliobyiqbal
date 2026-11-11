@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { X, Download, ExternalLink, FileText, Eye, Smartphone } from 'lucide-react';
+﻿import { useEffect, useRef, useState } from 'react';
+import { X, Download, ExternalLink, FileText, Smartphone } from 'lucide-react';
 
 /**
  * ResumeModal — PDF CV Preview Modal
@@ -9,8 +9,8 @@ import { X, Download, ExternalLink, FileText, Eye, Smartphone } from 'lucide-rea
  *   onClose  {function} — callback to close the modal
  *   lang     {string}   — 'id' | 'en' for bilingual label support
  *
- * File location: Place your CV file at /public/cv.pdf
- * It will be accessible at the path /cv.pdf in your Vite app.
+ * File location: the PDF lives in /public (see PDF_PATH below) and is served
+ * by Vite from the site root.
  */
 
 const PDF_PATH = '/Resume_Iqbal_Dwi_Fathonah.pdf';
@@ -103,29 +103,29 @@ export default function ResumeModal({ isOpen, onClose, lang = 'id' }) {
     >
       {/* ── Modal Container ── */}
       <div
-        className="relative flex flex-col w-full max-w-4xl max-h-[90vh] md:h-[88vh] md:max-h-[88vh] bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl shadow-2xl overflow-hidden transition-colors"
+        className="relative flex flex-col w-full max-w-4xl max-h-[90vh] md:h-[88vh] md:max-h-[88vh] bg-paper border border-line rounded-2xl shadow-2xl overflow-hidden transition-colors"
         style={{
           animation: 'resumeSlideUp 0.25s cubic-bezier(0.22,1,0.36,1)',
         }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* ══ HEADER / ACTION BAR ══ */}
-        <div className="flex items-center justify-between gap-2.5 sm:gap-4 px-3.5 sm:px-6 py-3 sm:py-3.5 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/80 shrink-0 transition-colors">
+        <div className="flex items-center justify-between gap-2.5 sm:gap-4 px-3.5 sm:px-6 py-3 sm:py-3.5 border-b border-line bg-surface shrink-0 transition-colors">
           {/* Left: Title */}
           <div className="flex items-center gap-2 sm:gap-2.5 min-w-0 flex-1">
-            <FileText className="w-4 h-4 text-neutral-500 dark:text-neutral-400 shrink-0" />
+            <FileText className="w-4 h-4 text-muted shrink-0" />
             <div className="min-w-0">
               {/* Mobile (< md): Ringkas, "Curriculum Vitae" tanpa terpotong */}
-              <h2 className="md:hidden text-sm font-semibold text-neutral-900 dark:text-neutral-50 truncate leading-snug">
+              <h2 className="md:hidden text-sm font-semibold text-ink truncate leading-snug">
                 {t.title}
               </h2>
 
               {/* Desktop (md+): Overline + Judul Lengkap beserta role */}
               <div className="hidden md:block">
-                <p className="text-[11px] font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 leading-none mb-1">
+                <p className="text-[11px] font-mono uppercase tracking-widest text-muted leading-none mb-1">
                   {t.title}
                 </p>
-                <h2 className="text-base font-medium text-neutral-900 dark:text-neutral-50 truncate leading-snug">
+                <h2 className="text-base font-medium text-ink truncate leading-snug">
                   {t.subtitle}
                 </h2>
               </div>
@@ -139,7 +139,7 @@ export default function ResumeModal({ isOpen, onClose, lang = 'id' }) {
               href={PDF_PATH}
               download={PDF_DOWNLOAD_NAME}
               title={t.download}
-              className="inline-flex items-center justify-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium bg-neutral-900 text-white hover:bg-neutral-700 dark:bg-neutral-50 dark:text-neutral-950 dark:hover:bg-neutral-200 transition-all duration-150 hover:scale-[1.02] active:scale-[0.98] shadow-sm shrink-0"
+              className="inline-flex items-center justify-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium bg-ink text-paper hover:opacity-85 transition-all duration-150 hover:scale-[1.02] active:scale-[0.98] shadow-sm shrink-0"
             >
               <Download className="w-3.5 h-3.5 shrink-0" />
               <span className="hidden sm:inline">{t.download}</span>
@@ -151,14 +151,14 @@ export default function ResumeModal({ isOpen, onClose, lang = 'id' }) {
               target="_blank"
               rel="noopener noreferrer"
               title={t.openTab}
-              className="inline-flex items-center justify-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 bg-white dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600 transition-all duration-150 hover:scale-[1.02] active:scale-[0.98] shrink-0"
+              className="inline-flex items-center justify-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium border border-line text-ink bg-paper hover:bg-surface-hover transition-all duration-150 hover:scale-[1.02] active:scale-[0.98] shrink-0"
             >
               <ExternalLink className="w-3.5 h-3.5 shrink-0" />
               <span className="hidden sm:inline">{t.openTab}</span>
             </a>
 
             {/* Divider */}
-            <div className="w-px h-4 sm:h-5 bg-neutral-200 dark:bg-neutral-700 mx-0.5 sm:mx-1 hidden sm:block" />
+            <div className="w-px h-4 sm:h-5 bg-line mx-0.5 sm:mx-1 hidden sm:block" />
 
             {/* Close */}
             <button
@@ -166,7 +166,7 @@ export default function ResumeModal({ isOpen, onClose, lang = 'id' }) {
               onClick={onClose}
               aria-label={t.close}
               title={t.close}
-              className="inline-flex items-center justify-center w-8 h-8 rounded-lg text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer shrink-0"
+              className="inline-flex items-center justify-center w-8 h-8 rounded-lg text-muted hover:text-ink hover:bg-surface-hover transition-colors cursor-pointer shrink-0"
             >
               <X className="w-4 h-4" />
             </button>
@@ -174,18 +174,18 @@ export default function ResumeModal({ isOpen, onClose, lang = 'id' }) {
         </div>
 
         {/* ══ BODY: PDF Viewer ══ */}
-        <div className="flex-1 overflow-hidden bg-neutral-100 dark:bg-neutral-950 min-h-0 w-full flex flex-col">
+        <div className="flex-1 overflow-hidden bg-surface min-h-0 w-full flex flex-col">
           {isMobile ? (
             /* ── Mobile Fallback Banner ── */
             <div className="flex flex-col items-center justify-center h-full min-h-[50vh] px-6 py-8 text-center gap-5 my-auto">
-              <div className="w-14 h-14 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center">
-                <Smartphone className="w-7 h-7 text-neutral-500 dark:text-neutral-400" />
+              <div className="w-14 h-14 rounded-full bg-surface flex items-center justify-center">
+                <Smartphone className="w-7 h-7 text-muted" />
               </div>
               <div>
-                <p className="font-medium text-neutral-900 dark:text-neutral-50 mb-1.5">
+                <p className="font-medium text-ink mb-1.5">
                   {t.mobileTitle}
                 </p>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 max-w-xs leading-relaxed">
+                <p className="text-sm text-muted max-w-xs leading-relaxed">
                   {t.mobileDesc}
                 </p>
               </div>
@@ -194,7 +194,7 @@ export default function ResumeModal({ isOpen, onClose, lang = 'id' }) {
                   href={PDF_PATH}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-neutral-900 dark:bg-neutral-50 text-white dark:text-neutral-950 hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-all duration-150 hover:scale-[1.01] active:scale-[0.99]"
+                  className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-ink text-paper hover:opacity-85 transition-all duration-150 hover:scale-[1.01] active:scale-[0.99]"
                 >
                   <ExternalLink className="w-4 h-4" />
                   {t.mobileOpen}
@@ -202,7 +202,7 @@ export default function ResumeModal({ isOpen, onClose, lang = 'id' }) {
                 <a
                   href={PDF_PATH}
                   download={PDF_DOWNLOAD_NAME}
-                  className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium border border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 bg-white dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-all duration-150 hover:scale-[1.01] active:scale-[0.99]"
+                  className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium border border-line text-ink bg-paper hover:bg-surface-hover transition-all duration-150 hover:scale-[1.01] active:scale-[0.99]"
                 >
                   <Download className="w-4 h-4" />
                   {t.mobileDownload}
@@ -237,27 +237,3 @@ export default function ResumeModal({ isOpen, onClose, lang = 'id' }) {
     </div>
   );
 }
-
-/* ─────────────────────────────────────────────
-   ResumeButton — standalone trigger button
-   Usage: drop anywhere (Hero, About, Footer)
-   ───────────────────────────────────────────── */
-export function ResumeButton({ onClick, lang = 'id', variant = 'outline' }) {
-  const label = lang === 'id' ? 'Lihat Resume / CV' : 'View Resume / CV';
-
-  const base =
-    'w-full max-w-[260px] sm:w-auto rounded-full px-6 py-2.5 font-medium text-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] inline-flex items-center justify-center gap-2 cursor-pointer select-none';
-
-  const styles =
-    variant === 'solid'
-      ? 'bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-neutral-50 dark:text-neutral-950 dark:hover:bg-neutral-200 shadow-xs'
-      : 'bg-neutral-100 text-neutral-800 border border-neutral-200 hover:bg-neutral-200/80 hover:border-neutral-300 dark:bg-neutral-900 dark:text-neutral-200 dark:border-neutral-800 dark:hover:bg-neutral-800 dark:hover:border-neutral-700';
-
-  return (
-    <button type="button" onClick={onClick} className={`${base} ${styles}`}>
-      <Eye className="w-4 h-4 text-neutral-600 dark:text-neutral-400" />
-      <span>{label}</span>
-    </button>
-  );
-}
-

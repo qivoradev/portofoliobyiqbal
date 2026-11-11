@@ -1,60 +1,165 @@
 @import "tailwindcss";
 
-@theme {
-  --font-serif: "Newsreader", "Playfair Display", Georgia, serif;
+/* ──────────────────────────────────────────────────────────────
+   Design tokens — "Warm Paper" editorial system
+   Semantic tokens are CSS variables so light/dark share one set
+   of utility classes (bg-paper, text-ink, text-muted, border-line…)
+   ────────────────────────────────────────────────────────────── */
+@theme inline {
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Inter Tight", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --color-neutral-50: #fafafa;
-  --color-neutral-100: #f5f5f5;
-  --color-neutral-200: #e5e5e5;
-  --color-neutral-300: #d4d4d4;
-  --color-neutral-400: #a3a3a3;
-  --color-neutral-500: #737373;
-  --color-neutral-600: #525252;
-  --color-neutral-700: #404040;
-  --color-neutral-800: #262626;
-  --color-neutral-900: #171717;
-  --color-neutral-950: #0a0a0a;
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+
+  /* Spring physics curve — every interaction transition uses this. */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@custom-variant dark (&:where(.dark, .dark *));
-
-html {
+:root {
+  --paper: #f5f3ed; /* Warm Paper / Sand canvas */
+  --ink: #121316; /* Deep Obsidian Charcoal */
+  --muted: #6e6d68; /* Slate Olive / Muted Stone */
+  --line: rgb(214 211 209 / 0.8); /* stone-300 @ 80% */
+  --surface: rgb(231 229 228 / 0.4); /* stone-200 @ 40% */
+  --surface-hover: rgb(231 229 228 / 0.5); /* stone-200 @ 50% */
   color-scheme: light;
 }
 
 html.dark {
+  --paper: #121316;
+  --ink: #f5f3ed;
+  --muted: #a3a199;
+  --line: rgb(245 243 237 / 0.14);
+  --surface: rgb(245 243 237 / 0.05);
+  --surface-hover: rgb(245 243 237 / 0.08);
   color-scheme: dark;
 }
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 body {
-  background-color: var(--color-neutral-50);
-  color: var(--color-neutral-900);
+  background-color: var(--paper);
+  color: var(--ink);
   font-family: var(--font-sans);
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-html.dark body {
-  background-color: var(--color-neutral-950);
-  color: var(--color-neutral-50);
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
+/* ── Type primitives ── */
+@layer components {
+  /* Headings: bold, tight tracking (-0.03em) */
+  .type-display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.03em;
   }
-  100% {
-    transform: translateX(-50%);
+
+  /* Micro-labels: mono, uppercase, wide tracking */
+  .type-micro {
+    @apply font-mono text-[11px] uppercase tracking-widest;
+    line-height: 1.4;
   }
 }
 
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 35s linear infinite;
+/* ── Scroll reveal (spring, 700ms) ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--d, 0ms);
+}
+.reveal[data-in="true"] {
+  opacity: 1;
+  transform: none;
 }
 
-.animate-marquee:hover {
-  animation-play-state: paused;
+/* ── Interactive underline (fills left → right on hover/focus) ── */
+.link-line {
+  display: inline;
+  padding-bottom: 0.12em;
+  background:
+    linear-gradient(currentColor, currentColor) left bottom / 0% 1px no-repeat,
+    linear-gradient(var(--line), var(--line)) left bottom / 100% 1px no-repeat;
+  transition: background-size 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.group:hover .link-line,
+.group:focus-visible .link-line,
+.link-line:hover {
+  background-size: 100% 1px, 100% 1px;
+}
+
+/* ── Bento panel + terminal ── */
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.panel-in {
+  animation: panel-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes term-line {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.term-line {
+  opacity: 0;
+  animation: term-line 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--i, 0) * 85ms + 120ms);
+}
+
+@keyframes term-blink {
+  50% {
+    opacity: 0;
+  }
+}
+.term-cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: currentColor;
+  animation: term-blink 1s steps(1) infinite;
+}
+
+/* ── Respect reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .panel-in,
+  .term-line {
+    animation: none;
+    opacity: 1;
+  }
+  .term-cursor {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto !important;
+  }
 }
