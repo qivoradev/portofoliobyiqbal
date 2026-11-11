@@ -1,18 +1,15 @@
 /**
- * Portfolio content — bilingual (id / en).
- * Presentation lives in src/components; this file is data only.
+ * Content definition for iqbaldf portfolio
+ * Studio Keffi Editorial Architecture (Bilingual ID / EN)
  */
-
-export const SPLINE_SCENE =
-  'https://prod.spline.design/iMpB0532LSESjGkI/scene.splinecode';
 
 export const CONTACT = {
   email: 'iqbalfathonah20@gmail.com',
   mailtoUrl:
-    'mailto:iqbalfathonah20@gmail.com?subject=Peluang%20Kerja%20Data%20%26%20QA',
+    'mailto:iqbalfathonah20@gmail.com?subject=Peluang%20Kerja%20Data%20Analyst',
   whatsappDisplay: '+6282322231710',
   whatsappUrl:
-    'https://api.whatsapp.com/send?phone=6282322231710&text=Halo%20Iqbal,%20saya%20melihat%20portofolio%20Anda%20dan%20ingin%20berdiskusi%20lebih%20lanjut.',
+    'https://api.whatsapp.com/send?phone=6282322231710&text=Halo%20Iqbal,%20saya%20melihat%20portofolio%20Data%20Analyst%20Anda%20dan%20ingin%20berdiskusi%20lebih%20lanjut.',
   githubHandle: 'qivoradev',
   githubUrl: 'https://github.com/qivoradev',
   linkedinUrl: 'https://www.linkedin.com/in/iqbal-dwi-fathonah-56ba2a3b0/',
@@ -25,175 +22,56 @@ const PIZZA_DASHBOARD_URL =
 const PIZZA_IMAGE =
   'https://github.com/user-attachments/assets/3796a228-1677-4d5c-8af4-a43cbd412148';
 
-/**
- * Terminal scripts for the Focus Bento (language neutral — it is code).
- * k: cmd | out | ok | comment
- */
-export const TERMINALS = {
-  data: {
-    file: 'nyc_collisions.sql',
-    lines: [
-      { k: 'comment', t: '-- collisions by borough' },
-      { k: 'cmd', t: 'SELECT borough, COUNT(*) AS collisions' },
-      { k: 'cmd', t: 'FROM nyc_collisions' },
-      { k: 'cmd', t: 'GROUP BY borough' },
-      { k: 'cmd', t: 'ORDER BY collisions DESC;' },
-      { k: 'out', t: '' },
-      { k: 'out', t: '-- 238,421 rows scanned' },
-      { k: 'ok', t: '✓ KPI matrix refreshed: injuries 116,227 · rate 48.7%' },
-      { k: 'ok', t: '✓ Brooklyn + Queens = 59% of incidents' },
-    ],
-  },
-  qa: {
-    file: 'reqres.collection_run.log',
-    lines: [
-      { k: 'comment', t: '# Postman · Collection Runner · ReqRes API' },
-      { k: 'out', t: 'GET   /api/users?page=2          200 OK' },
-      { k: 'out', t: 'POST  /api/login                 200 OK' },
-      { k: 'out', t: 'POST  /api/login (no password)   400 Bad Request' },
-      { k: 'out', t: '' },
-      { k: 'ok', t: '✓ status code matches expectation' },
-      { k: 'ok', t: '✓ error message validated (negative case)' },
-      { k: 'ok', t: '✓ critical flows covered: 100%' },
-    ],
-  },
-  ai: {
-    file: 'schema.sql · supabase',
-    lines: [
-      { k: 'comment', t: '-- postgresql relational schema on supabase' },
-      { k: 'cmd', t: 'create table tasks (' },
-      { k: 'cmd', t: '  id uuid primary key default gen_random_uuid(),' },
-      { k: 'cmd', t: '  user_id uuid references auth.users not null,' },
-      { k: 'cmd', t: '  title text not null,' },
-      { k: 'cmd', t: "  status text default 'todo'," },
-      { k: 'cmd', t: '  created_at timestamptz default now()' },
-      { k: 'cmd', t: ');' },
-      { k: 'cmd', t: 'alter table tasks enable row level security;' },
-      { k: 'ok', t: '✓ schema applied on supabase cloud' },
-    ],
-  },
-};
-
 export const content = {
   id: {
     nav: {
+      brand: 'iqbaldf',
       links: [
-        { href: '#fokus', label: 'Fokus' },
+        { href: '#top', label: 'Fokus' },
         { href: '#proyek', label: 'Proyek' },
-        { href: '#kredensial', label: 'Kredensial' },
         { href: '#kontak', label: 'Kontak' },
       ],
+      cta: 'Hubungi Saya',
       ariaLabel: 'Navigasi utama',
       langAria: 'Ganti bahasa. Saat ini: ID',
-      themeToLight: 'Beralih ke mode terang',
-      themeToDark: 'Beralih ke mode gelap',
       skip: 'Lewati ke konten utama',
     },
     hero: {
-      kicker: '[ 01 / VIRTUAL WORKSTATION HUB ]',
-      headline: 'Menghubungkan Logika Data dengan Presisi Sistem.',
-      subheadline:
-        'Lulusan Baru TI (2026). Eksplorasi ekosistem kerja melalui terminal meja interaktif di bawah ini.',
-      status: '[ STATUS: TERSEDIA UNTUK ROLE DATA & QA ]',
-      stageBadge: '[ WORKSTATION NODE: ACTIVE ]',
-      stageHint: 'Pilih objek atau gunakan menu untuk mengeksplorasi profil.',
-      stageLoading: 'Memuat workstation 3D',
-      stageFallback: 'Pratinjau 3D tidak tersedia di perangkat ini.',
-      stageAria: 'Workstation 3D interaktif',
-      dock: {
-        ariaLabel: 'Pemilih mode workstation',
-        items: [
-          { id: 'screen', eyebrow: 'Layar', label: 'Proyek Unggulan' },
-          { id: 'keyboard', eyebrow: 'Keyboard', label: 'Stack Logika' },
-          { id: 'notes', eyebrow: 'Catatan', label: 'Resume & PAR' },
-          { id: 'coffee', eyebrow: 'Kopi', label: 'Kolaborasi' },
-        ],
-        coffeeMenu: { email: 'Kirim Email', whatsapp: 'Chat via WhatsApp' },
+      kicker: '[ DATA INTELLIGENCE & INSIGHTS ]',
+      headline: 'Data yang Berbicara, Keputusan yang Terukur.',
+      description:
+        'Lulusan Baru Teknologi Informasi (2026). Mentransformasi jutaan baris data mentah dan catatan transaksi menjadi arsitektur analitik, visualisasi dasbor interaktif, serta wawasan bisnis strategis.',
+      scopeLabel: '[SCOPE]',
+      scopeValue:
+        'Pemodelan Data · Dashboard BI · Analisis Performa Penjualan · Keselamatan Publik',
+      stackLabel: '[STACK]',
+      stackValue:
+        'SQL (PostgreSQL) · Looker Studio · Advanced Microsoft Excel (Pivot Engine)',
+      statusLabel: '[STATUS]',
+      statusValue:
+        'Yudisium Selesai (2026) · Terbuka untuk Posisi Data Analyst',
+      ctaPrimary: 'Lihat Analisis Kasus ↓',
+      ctaResume: 'Resume / CV',
+      metrics: {
+        header: 'METRIC SNAPSHOT',
+        series: '(01)',
+        metric1: {
+          value: '238,421+',
+          label: 'Kasus Lalu Lintas Dianalisis (NYC Dataset)',
+        },
+        metric2: {
+          value: '$817.8K',
+          label: 'Volume Pendapatan Dimodelkan (Maven Pizza)',
+        },
+        badge: '100% Data Cleaning & Validation',
       },
     },
-    stack: {
-      eyebrow: 'Keyboard · Stack Logika',
-      title: 'Stack yang saya pakai sehari-hari.',
-      intro:
-        'Empat alat inti untuk mengekstrak data, memodelkannya, menguji sistem, dan membangun fondasinya.',
-      seeIn: 'Lihat di',
-      close: 'Tutup panel stack',
-      items: [
-        {
-          name: 'SQL / PostgreSQL',
-          use: 'Ekstraksi dan pemodelan basis data relasional: tabel, relasi, key, dan constraint.',
-          projectId: 'antigravity-tracker',
-        },
-        {
-          name: 'Excel Pivot',
-          use: 'Pemodelan data, matriks KPI, dan dashboard interaktif untuk analisis skala ratusan ribu baris.',
-          projectId: 'nyc-traffic-safety',
-        },
-        {
-          name: 'Postman',
-          use: 'Pengujian API dengan skenario positif dan negatif beserta assertion otomatis.',
-          projectId: 'qa-testing-suite',
-        },
-        {
-          name: 'Supabase',
-          use: 'Backend cloud berbasis PostgreSQL dengan API siap pakai untuk penyimpanan data.',
-          projectId: 'antigravity-tracker',
-        },
-      ],
-    },
-    focus: {
-      overline: '[ 02 ] Area Fokus',
-      title: 'Tiga disiplin, satu pola pikir analitis.',
-      tabsAria: 'Area fokus',
-      labels: { scope: 'Scope', tools: 'Tools', outcome: 'Outcome' },
-      cta: 'Buka Studi Kasus Terkait',
-      terminalAria: 'Cuplikan terminal untuk area fokus yang dipilih',
-      tabs: [
-        {
-          id: 'data',
-          index: '01',
-          label: 'Data Analytics & BI',
-          role: 'Data Analyst',
-          vision:
-            'Mengubah catatan transaksi dan operasional menjadi model analitis, KPI yang jelas, dan rekomendasi yang bisa langsung dieksekusi.',
-          scope: ['Relational Modeling', 'KPI Hierarchy', 'Root Cause Analysis'],
-          tools: ['PostgreSQL', 'Advanced Excel', 'Looker Studio'],
-          outcome: '238k+ Baris Insiden Terpetakan',
-          projectId: 'nyc-traffic-safety',
-        },
-        {
-          id: 'qa',
-          index: '02',
-          label: 'Quality Assurance (QA)',
-          role: 'QA Engineer',
-          vision:
-            'Menjamin alur kritis berjalan konsisten sebelum rilis lewat pengujian API otomatis dan validasi black box yang terdokumentasi.',
-          scope: ['Automated API Tests', 'Black Box Validation', 'Usability (SUS)'],
-          tools: ['Postman', 'ReqRes API', 'SauceDemo'],
-          outcome: '100% Test Coverage Alur Kritis',
-          projectId: 'qa-testing-suite',
-        },
-        {
-          id: 'ai',
-          index: '03',
-          label: 'AI & Web Systems',
-          role: 'Systems Builder',
-          vision:
-            'Merancang fondasi sistem yang rapi — skema relasional, backend cloud, dan alur kerja berbantuan AI — dengan dasar sertifikasi BNSP dan Certiport.',
-          scope: ['Relational Schema Design', 'Cloud Backend', 'AI-assisted Workflow'],
-          tools: ['Supabase', 'PostgreSQL', 'Antigravity IDE'],
-          outcome: 'Skema Relasional Terdeploy di Supabase Cloud',
-          projectId: 'antigravity-tracker',
-        },
-      ],
-    },
     projects: {
-      overline: '[ 03 ] Indeks Proyek',
-      title: 'Studi kasus terpilih.',
+      overline: '[ PROYEK PILIHAN ]',
+      title: 'Proyek Analisis Unggulan',
       subtitle:
-        'Empat pekerjaan yang memperlihatkan cara saya memodelkan data, menguji sistem, dan merancang fondasinya.',
-      listAria: 'Daftar proyek',
-      openLabel: 'Buka',
+        'Dua studi kasus analitik nyata yang menguji pemodelan data relasional, visualisasi dasbor bisnis, dan penarikan wawasan strategis.',
+      openLabel: 'Buka Studi Kasus',
       labels: {
         problem: 'Problem',
         action: 'Action',
@@ -209,11 +87,16 @@ export const content = {
         {
           id: 'nyc-traffic-safety',
           index: '01',
-          title: 'NYC Traffic Safety & Collision Analysis',
+          title: 'NYC Motor Vehicle Collisions Analysis',
           summary:
-            'Studi kasus 238k+ data kecelakaan: zona rawan, tren waktu, dan penyebab utama.',
+            'Dashboard Excel interaktif menganalisis 238k+ insiden NYC, memetakan zona rawan wilayah, rasio cedera/fatalitas, dan tren waktu.',
           kind: 'Data Analytics',
-          tags: ['Excel Pivot', 'Matriks KPI', 'Root Cause Analysis'],
+          tags: [
+            'Microsoft Excel',
+            'PivotTables',
+            'KPI Safety Slicers',
+            'Root Cause Analysis',
+          ],
           image: '/projects/nyc-dashboard.png',
           link: NYC_SHEET_URL,
           metrics: [
@@ -222,39 +105,49 @@ export const content = {
             { label: 'Rasio Cedera', value: '48,7%' },
           ],
           problem:
-            'Di mana kecelakaan paling sering terjadi, kapan waktu paling rawan, dan apa akar penyebab utamanya?',
+            'Di mana kecelakaan paling sering terjadi di New York City, kapan waktu paling rawan, dan apa akar penyebab utamanya?',
           action:
-            'Memodelkan 238.421 baris data insiden dalam Excel Pivot, menyusun matriks KPI (total kasus, korban cedera, rasio cedera), lalu menelusuri akar penyebab berdasarkan wilayah, jam, dan faktor kontribusi dalam satu dashboard interaktif.',
+            'Memodelkan 238.421 baris data insiden dalam Excel Pivot Engine, menyusun matriks KPI (total kasus, korban cedera, rasio cedera), lalu menelusuri akar penyebab berdasarkan wilayah (borough), jam operasional, dan faktor kelalaian pengemudi dalam satu dashboard interaktif.',
           result: [
             {
               title: 'Faktor Distraksi',
-              finding: '1 dari 4 insiden (25%) dipicu kelalaian pengemudi.',
+              finding: '1 dari 4 insiden (25%) dipicu kelalaian pengemudi (driver inattention).',
               recommendation:
-                'Prioritaskan kampanye edukasi anti-distraksi dan tilang elektronik.',
+                'Prioritaskan kampanye edukasi anti-distraksi dan penegakan tilang elektronik pada zona rawan.',
             },
             {
               title: 'Konsentrasi Wilayah',
-              finding: '59% kecelakaan terpusat di Brooklyn & Queens.',
+              finding: '59% kecelakaan terpusat di dua wilayah: Brooklyn & Queens.',
               recommendation:
-                'Alokasikan patroli fisik dan rambu di persimpangan rawan pada dua area ini.',
+                'Alokasikan patroli fisik dan rambu di persimpangan dengan frekuensi kecelakaan tertinggi.',
             },
             {
               title: 'Jam Rawan',
-              finding: 'Puncak insiden terjadi pukul 16:00–17:00.',
+              finding: 'Puncak insiden terjadi pada pukul 16:00–17:00 waktu setempat.',
               recommendation:
-                'Perketat rekayasa lalu lintas menjelang jam 14:00–18:00.',
+                'Perketat rekayasa lalu lintas dan sinkronisasi lampu persimpangan menjelang jam 14:00–18:00.',
             },
           ],
-          tools: ['Excel', 'Data Modeling', 'Root Cause Analysis', 'Dashboard'],
+          tools: [
+            'Microsoft Excel',
+            'PivotTables',
+            'Data Modeling',
+            'Root Cause Analysis',
+          ],
         },
         {
           id: 'pizza-sales-performance',
           index: '02',
           title: 'Pizza Sales Performance Dashboard',
           summary:
-            'Dashboard Looker Studio: pemodelan pendapatan $817.8K dan pola jam sibuk operasional.',
+            'Dasbor Business Intelligence via Looker Studio untuk mengevaluasi pendapatan tahunan ($817K+), pola jam operasional puncak, dan profit menu.',
           kind: 'Business Intelligence',
-          tags: ['Looker Studio', 'Revenue Modeling', 'Peak Hour Analysis'],
+          tags: [
+            'Google Looker Studio',
+            'SQL Extraction',
+            'Revenue Optimization',
+            'Menu Engineering',
+          ],
           image: PIZZA_IMAGE,
           link: PIZZA_DASHBOARD_URL,
           metrics: [
@@ -263,123 +156,46 @@ export const content = {
             { label: 'Avg Order Value', value: '$38,31' },
           ],
           problem:
-            'Bagaimana tren penjualan pizza sepanjang tahun, kapan jam sibuk operasional terjadi, dan menu mana yang paling berkontribusi terhadap pendapatan bisnis?',
+            'Bagaimana tren penjualan pizza sepanjang tahun, kapan jam operasional puncak terjadi, dan menu mana yang paling berkontribusi terhadap pendapatan bisnis?',
           action:
-            'Membangun dashboard Business Intelligence di Looker Studio untuk mengevaluasi kinerja penjualan tahunan, memetakan pola jam sibuk, dan meninjau kontribusi kategori menu serta ukuran produk terhadap pendapatan.',
+            'Membangun dashboard Business Intelligence interaktif di Google Looker Studio untuk mengevaluasi kinerja penjualan tahunan, memetakan pola jam sibuk makan siang dan malam, serta meninjau kontribusi kategori menu dan ukuran pizza terhadap margin pendapatan.',
           result: [
             {
               title: 'Pola Jam Sibuk Operasional',
               finding:
-                'Pesanan memuncak pada jam makan siang (12:00–13:00) dan makan malam (17:00–19:00), dengan hari Jumat dan Sabtu mencatat volume tertinggi.',
+                'Pesanan memuncak pada jam makan siang (12:00–13:00) dan makan malam (17:00–19:00), dengan hari Jumat dan Sabtu mencatat volume pesanan tertinggi.',
               recommendation:
-                'Optimalkan alokasi staf dapur dan persiapan inventaris menjelang jam sibuk akhir pekan.',
+                'Optimalkan alokasi staf dapur dan persiapan bahan baku menjelang jam sibuk akhir pekan.',
             },
             {
               title: 'Kontribusi Kategori Menu',
               finding:
                 'Kategori Classic dan The Classic Deluxe Pizza menjadi kontributor pendapatan terbesar dari total penjualan $817K+.',
               recommendation:
-                'Amankan pasokan bahan baku produk terlaris dan terapkan bundling untuk mendongkrak kategori lain.',
+                'Amankan pasokan bahan baku produk terlaris dan terapkan paket bundling untuk mendongkrak kategori menu lainnya.',
             },
             {
               title: 'Distribusi Ukuran Pizza',
               finding:
-                'Ukuran Large (L) mendominasi pembelian dengan kontribusi lebih dari 45% terhadap total pendapatan.',
+                'Ukuran Large (L) mendominasi pembelian pelanggan dengan kontribusi lebih dari 45% terhadap total pendapatan.',
               recommendation:
                 'Terapkan upselling ukuran Large dengan penawaran add-on minuman atau makanan pendamping.',
             },
           ],
           tools: [
-            'Looker Studio',
-            'Excel',
+            'Google Looker Studio',
+            'SQL Extraction',
             'Data Visualization',
             'Business Intelligence',
           ],
         },
-        {
-          id: 'qa-testing-suite',
-          index: '03',
-          title: 'End-to-End QA Testing Suite',
-          summary:
-            'Pengujian API ReqRes via Postman, test case SauceDemo, dan metrik usability SUS.',
-          kind: 'Quality Assurance',
-          tags: ['Postman', 'Black Box Testing', 'SUS'],
-          metrics: [
-            { label: 'Cakupan Alur Kritis', value: '100%' },
-            { label: 'API Target', value: 'ReqRes' },
-            { label: 'Aplikasi Uji', value: 'SauceDemo' },
-          ],
-          problem:
-            'Bagaimana memastikan alur kritis (autentikasi, manajemen pengguna, hingga checkout) berjalan konsisten sebelum rilis, tanpa bergantung pada pengujian manual yang berulang?',
-          action:
-            'Menyusun koleksi Postman untuk endpoint ReqRes (skenario positif dan negatif dengan assertion otomatis), merancang test case black box untuk alur login–keranjang–checkout di SauceDemo, serta mengukur kegunaan dengan kuesioner System Usability Scale (SUS).',
-          result: [
-            {
-              title: 'Cakupan Alur Kritis',
-              finding:
-                'Seluruh alur kritis tervalidasi melalui test case terdokumentasi (100% coverage).',
-              recommendation:
-                'Jalankan koleksi Postman sebagai regression check pada setiap perubahan API.',
-            },
-            {
-              title: 'Validasi Skenario Negatif',
-              finding:
-                'Kredensial kosong atau tidak valid diverifikasi terhadap kode status dan pesan galat yang diharapkan.',
-              recommendation:
-                'Tambahkan data-driven test untuk variasi input batas.',
-            },
-            {
-              title: 'Metrik Usability',
-              finding:
-                'Skor SUS dipakai sebagai ukuran kuantitatif pengalaman pengguna.',
-              recommendation:
-                'Ulangi pengukuran SUS setelah perbaikan untuk melihat tren.',
-            },
-          ],
-          tools: ['Postman', 'Black Box Testing', 'Test Case Design', 'SUS'],
-        },
-        {
-          id: 'antigravity-tracker',
-          index: '04',
-          title: 'Antigravity IDE Personal Tracker Architecture',
-          summary:
-            'Arsitektur Supabase Cloud DB dengan skema relasional PostgreSQL untuk pelacak personal.',
-          kind: 'AI & Web Systems',
-          tags: ['Supabase', 'PostgreSQL', 'Relational Schema'],
-          metrics: [
-            { label: 'Basis Data', value: 'PostgreSQL' },
-            { label: 'Backend', value: 'Supabase' },
-            { label: 'Pola Data', value: 'Relasional' },
-          ],
-          problem:
-            'Bagaimana merancang penyimpanan data pelacak personal yang terstruktur, konsisten, dan dapat diakses dari cloud tanpa membangun server sendiri?',
-          action:
-            'Merancang skema relasional PostgreSQL (tabel, primary/foreign key, dan constraint) di Supabase Cloud, lalu menyiapkan akses data melalui API bawaan Supabase dalam alur kerja Antigravity IDE.',
-          result: [
-            {
-              title: 'Skema Terstruktur',
-              finding:
-                'Relasi antar tabel menjaga integritas data lewat key dan constraint.',
-              recommendation:
-                'Dokumentasikan skema sebagai acuan sebelum menambah fitur baru.',
-            },
-            {
-              title: 'Backend Tanpa Server Sendiri',
-              finding:
-                'Supabase menyediakan basis data cloud dan API siap pakai sehingga fokus tetap pada model data.',
-              recommendation:
-                'Aktifkan Row Level Security untuk membatasi akses per pengguna.',
-            },
-          ],
-          tools: ['Supabase', 'PostgreSQL', 'Relational Schema', 'Antigravity IDE'],
-        },
       ],
     },
     credentials: {
-      overline: '[ 04 ] Kredensial',
-      title: 'Sertifikasi.',
+      overline: '[ KREDENSIAL TERVERIFIKASI ]',
+      title: 'Sertifikasi Kompetensi',
       listAria: 'Daftar sertifikasi',
-      hint: 'Lihat sertifikat',
+      hint: 'Lihat Sertifikat',
       closeLabel: 'Tutup pratinjau sertifikat',
       items: [
         {
@@ -402,7 +218,7 @@ export const content = {
       ],
     },
     footer: {
-      overline: '[ 05 ] Kontak',
+      overline: '[ HUBUNGI SAYA ]',
       statement: 'Mari Membangun Solusi Berbasis Data & Logika Sistem.',
       labels: {
         email: 'Email',
@@ -417,123 +233,53 @@ export const content = {
 
   en: {
     nav: {
+      brand: 'iqbaldf',
       links: [
-        { href: '#fokus', label: 'Focus' },
+        { href: '#top', label: 'Focus' },
         { href: '#proyek', label: 'Projects' },
-        { href: '#kredensial', label: 'Credentials' },
         { href: '#kontak', label: 'Contact' },
       ],
+      cta: 'Contact Me',
       ariaLabel: 'Main navigation',
       langAria: 'Switch language. Current: EN',
-      themeToLight: 'Switch to light mode',
-      themeToDark: 'Switch to dark mode',
       skip: 'Skip to main content',
     },
     hero: {
-      kicker: '[ 01 / VIRTUAL WORKSTATION HUB ]',
-      headline: 'Connecting Data Logic with System Precision.',
-      subheadline:
-        'IT Graduate (2026). Explore my working ecosystem through the interactive desk terminal below.',
-      status: '[ STATUS: AVAILABLE FOR DATA & QA ROLES ]',
-      stageBadge: '[ WORKSTATION NODE: ACTIVE ]',
-      stageHint: 'Pick an object or use the menu to explore the profile.',
-      stageLoading: 'Loading 3D workstation',
-      stageFallback: '3D preview is unavailable on this device.',
-      stageAria: 'Interactive 3D workstation',
-      dock: {
-        ariaLabel: 'Workstation mode selector',
-        items: [
-          { id: 'screen', eyebrow: 'Screen', label: 'Featured Projects' },
-          { id: 'keyboard', eyebrow: 'Keyboard', label: 'Logic Stack' },
-          { id: 'notes', eyebrow: 'Notes', label: 'Resume & PAR' },
-          { id: 'coffee', eyebrow: 'Coffee', label: 'Collaborate' },
-        ],
-        coffeeMenu: { email: 'Send an Email', whatsapp: 'Chat on WhatsApp' },
+      kicker: '[ DATA INTELLIGENCE & INSIGHTS ]',
+      headline: 'Data that Speaks, Decisions that Measure.',
+      description:
+        'Recent Information Technology Graduate (2026). Transforming millions of raw data points and transactional records into analytical architecture, interactive dashboards, and executive insights.',
+      scopeLabel: '[SCOPE]',
+      scopeValue:
+        'Data Modeling · BI Dashboards · Sales Performance Analytics · Public Safety Insights',
+      stackLabel: '[STACK]',
+      stackValue:
+        'SQL (PostgreSQL) · Looker Studio · Advanced Microsoft Excel (Pivot Engine)',
+      statusLabel: '[STATUS]',
+      statusValue:
+        'Graduated (2026) · Open for Data Analyst Opportunities',
+      ctaPrimary: 'View Case Studies ↓',
+      ctaResume: 'Resume / CV',
+      metrics: {
+        header: 'METRIC SNAPSHOT',
+        series: '(01)',
+        metric1: {
+          value: '238,421+',
+          label: 'Traffic Incidents Analyzed (NYC Dataset)',
+        },
+        metric2: {
+          value: '$817.8K',
+          label: 'Annual Revenue Modeled (Maven Pizza)',
+        },
+        badge: '100% Data Cleaning & Validation',
       },
     },
-    stack: {
-      eyebrow: 'Keyboard · Logic Stack',
-      title: 'The stack I work with daily.',
-      intro:
-        'Four core tools to extract data, model it, test systems, and build their foundations.',
-      seeIn: 'See in',
-      close: 'Close stack panel',
-      items: [
-        {
-          name: 'SQL / PostgreSQL',
-          use: 'Relational database extraction and modeling: tables, relations, keys, and constraints.',
-          projectId: 'antigravity-tracker',
-        },
-        {
-          name: 'Excel Pivot',
-          use: 'Data modeling, KPI matrices, and interactive dashboards for analysis at hundreds-of-thousands-of-rows scale.',
-          projectId: 'nyc-traffic-safety',
-        },
-        {
-          name: 'Postman',
-          use: 'API testing with positive and negative scenarios and automated assertions.',
-          projectId: 'qa-testing-suite',
-        },
-        {
-          name: 'Supabase',
-          use: 'PostgreSQL-based cloud backend with a ready-to-use API for data storage.',
-          projectId: 'antigravity-tracker',
-        },
-      ],
-    },
-    focus: {
-      overline: '[ 02 ] Focus Areas',
-      title: 'Three disciplines, one analytical mindset.',
-      tabsAria: 'Focus areas',
-      labels: { scope: 'Scope', tools: 'Tools', outcome: 'Outcome' },
-      cta: 'Open Related Case Study',
-      terminalAria: 'Terminal excerpt for the selected focus area',
-      tabs: [
-        {
-          id: 'data',
-          index: '01',
-          label: 'Data Analytics & BI',
-          role: 'Data Analyst',
-          vision:
-            'Turning transactional and operational records into analytical models, clear KPIs, and recommendations teams can act on right away.',
-          scope: ['Relational Modeling', 'KPI Hierarchy', 'Root Cause Analysis'],
-          tools: ['PostgreSQL', 'Advanced Excel', 'Looker Studio'],
-          outcome: '238k+ Incident Rows Mapped',
-          projectId: 'nyc-traffic-safety',
-        },
-        {
-          id: 'qa',
-          index: '02',
-          label: 'Quality Assurance (QA)',
-          role: 'QA Engineer',
-          vision:
-            'Making sure critical flows behave consistently before release through automated API tests and documented black box validation.',
-          scope: ['Automated API Tests', 'Black Box Validation', 'Usability (SUS)'],
-          tools: ['Postman', 'ReqRes API', 'SauceDemo'],
-          outcome: '100% Critical-Flow Test Coverage',
-          projectId: 'qa-testing-suite',
-        },
-        {
-          id: 'ai',
-          index: '03',
-          label: 'AI & Web Systems',
-          role: 'Systems Builder',
-          vision:
-            'Designing tidy system foundations — relational schemas, cloud backends, and AI-assisted workflows — backed by BNSP and Certiport certifications.',
-          scope: ['Relational Schema Design', 'Cloud Backend', 'AI-assisted Workflow'],
-          tools: ['Supabase', 'PostgreSQL', 'Antigravity IDE'],
-          outcome: 'Relational Schema Deployed on Supabase Cloud',
-          projectId: 'antigravity-tracker',
-        },
-      ],
-    },
     projects: {
-      overline: '[ 03 ] Project Index',
-      title: 'Selected case studies.',
+      overline: '[ SELECTED WORK ]',
+      title: 'Featured Data Analysis',
       subtitle:
-        'Four pieces of work showing how I model data, test systems, and design their foundations.',
-      listAria: 'Project list',
-      openLabel: 'Open',
+        'Two real analytical case studies demonstrating relational data modeling, BI visualization, and strategic business recommendations.',
+      openLabel: 'Open Case Study',
       labels: {
         problem: 'Problem',
         action: 'Action',
@@ -549,11 +295,16 @@ export const content = {
         {
           id: 'nyc-traffic-safety',
           index: '01',
-          title: 'NYC Traffic Safety & Collision Analysis',
+          title: 'NYC Motor Vehicle Collisions Analysis',
           summary:
-            'Case study of 238k+ collision records: high-risk zones, time trends, and root causes.',
+            'Interactive Excel dashboard analyzing 238k+ NYC collision records to map high-risk zones, casualty rates, and temporal trends.',
           kind: 'Data Analytics',
-          tags: ['Excel Pivot', 'KPI Matrix', 'Root Cause Analysis'],
+          tags: [
+            'Microsoft Excel',
+            'PivotTables',
+            'KPI Safety Slicers',
+            'Root Cause Analysis',
+          ],
           image: '/projects/nyc-dashboard.png',
           link: NYC_SHEET_URL,
           metrics: [
@@ -562,39 +313,49 @@ export const content = {
             { label: 'Injury Rate', value: '48.7%' },
           ],
           problem:
-            'Where do collisions occur most frequently, when are peak risk hours, and what are the primary root causes?',
+            'Where do collisions occur most frequently in NYC, when are peak danger hours, and what are the primary contributing factors?',
           action:
-            'Modeled 238,421 incident rows in Excel Pivot, built a KPI matrix (total collisions, injuries, injury rate), then traced root causes by borough, hour, and contributing factor in a single interactive dashboard.',
+            'Modeled 238,421 incident rows in the Excel Pivot Engine, built safety KPI matrices (total incidents, injuries, injury rate), and isolated root causes across boroughs, hours, and driver inattention in a single unified dashboard.',
           result: [
             {
               title: 'Distraction Factor',
               finding: '1 in 4 incidents (25%) were triggered by driver inattention.',
               recommendation:
-                'Prioritize anti-distraction educational campaigns and automated camera enforcement.',
+                'Prioritize anti-distraction educational campaigns and automated camera enforcement at risk intersections.',
             },
             {
               title: 'Geographic Concentration',
-              finding: '59% of collisions are concentrated in Brooklyn & Queens.',
+              finding: '59% of collisions are concentrated in Brooklyn and Queens.',
               recommendation:
-                'Deploy targeted patrols and signage to high-risk intersections in these two boroughs.',
+                'Deploy targeted physical patrols and signage to high-frequency collision corridors in these two boroughs.',
             },
             {
               title: 'Peak Danger Hours',
-              finding: 'Incident peaks consistently between 16:00–17:00.',
+              finding: 'Incident peaks consistently between 16:00 and 17:00.',
               recommendation:
-                'Tighten proactive traffic engineering and signal timing ahead of the 14:00–18:00 window.',
+                'Tighten proactive traffic engineering and signal timing ahead of the 14:00–18:00 rush.',
             },
           ],
-          tools: ['Excel', 'Data Modeling', 'Root Cause Analysis', 'Dashboard'],
+          tools: [
+            'Microsoft Excel',
+            'PivotTables',
+            'Data Modeling',
+            'Root Cause Analysis',
+          ],
         },
         {
           id: 'pizza-sales-performance',
           index: '02',
           title: 'Pizza Sales Performance Dashboard',
           summary:
-            'Looker Studio dashboard: $817.8K revenue modeling and operational peak-hour patterns.',
+            'Business Intelligence dashboard via Looker Studio evaluating annual sales ($817K+), peak operating hours, and menu profitability.',
           kind: 'Business Intelligence',
-          tags: ['Looker Studio', 'Revenue Modeling', 'Peak Hour Analysis'],
+          tags: [
+            'Google Looker Studio',
+            'SQL Extraction',
+            'Revenue Optimization',
+            'Menu Engineering',
+          ],
           image: PIZZA_IMAGE,
           link: PIZZA_DASHBOARD_URL,
           metrics: [
@@ -603,123 +364,46 @@ export const content = {
             { label: 'Avg Order Value', value: '$38.31' },
           ],
           problem:
-            'How does sales performance trend throughout the year, when are peak operational hours, and which menu categories drive the greatest revenue contribution?',
+            'How did annual sales trend over time, when were operational peak rushes, and which menu categories produced the greatest revenue?',
           action:
-            'Built a Business Intelligence dashboard in Looker Studio to evaluate annual sales performance, map peak-hour patterns, and review how menu categories and product sizes contribute to revenue.',
+            'Built an interactive Business Intelligence dashboard in Google Looker Studio to track annual sales velocity, analyze lunch vs dinner rushes, and review the revenue contribution of individual pizza categories and sizes.',
           result: [
             {
               title: 'Peak Operational Hours',
               finding:
-                'Orders peak during lunch (12:00–13:00) and dinner (17:00–19:00), with Friday and Saturday registering the highest volumes.',
+                'Orders peak consistently during lunch (12:00–13:00) and dinner (17:00–19:00), with Friday and Saturday recording highest volumes.',
               recommendation:
-                'Optimize kitchen staffing and inventory prep ahead of peak weekend evening rushes.',
+                'Optimize kitchen staffing and ingredient preparation ahead of peak weekend rushes.',
             },
             {
               title: 'Menu Category Contribution',
               finding:
-                'The Classic category and The Classic Deluxe Pizza lead revenue contribution across the $817K+ annual sales.',
+                'The Classic category and The Classic Deluxe Pizza lead total revenue across the $817K+ sales.',
               recommendation:
-                'Secure supply of best-selling ingredients and use combo bundling to lift other categories.',
+                'Secure supply of top-tier ingredients and bundle bestsellers to lift underperforming categories.',
             },
             {
               title: 'Pizza Size Distribution',
               finding:
-                'Large (L) pizzas dominate orders, generating over 45% of total sales revenue.',
+                'Large (L) size pizzas dominated customer orders, contributing over 45% of total sales revenue.',
               recommendation:
                 'Implement upselling prompts for Large sizes paired with beverage and side offerings.',
             },
           ],
           tools: [
-            'Looker Studio',
-            'Excel',
+            'Google Looker Studio',
+            'SQL Extraction',
             'Data Visualization',
             'Business Intelligence',
           ],
         },
-        {
-          id: 'qa-testing-suite',
-          index: '03',
-          title: 'End-to-End QA Testing Suite',
-          summary:
-            'ReqRes API testing in Postman, SauceDemo test cases, and SUS usability metrics.',
-          kind: 'Quality Assurance',
-          tags: ['Postman', 'Black Box Testing', 'SUS'],
-          metrics: [
-            { label: 'Critical-Flow Coverage', value: '100%' },
-            { label: 'Target API', value: 'ReqRes' },
-            { label: 'App Under Test', value: 'SauceDemo' },
-          ],
-          problem:
-            'How can critical flows (authentication, user management, through checkout) be confirmed to behave consistently before release, without relying on repetitive manual testing?',
-          action:
-            'Built a Postman collection for the ReqRes endpoints (positive and negative scenarios with automated assertions), designed black box test cases for the SauceDemo login–cart–checkout flow, and measured usability with the System Usability Scale (SUS) questionnaire.',
-          result: [
-            {
-              title: 'Critical-Flow Coverage',
-              finding:
-                'All critical flows were validated through documented test cases (100% coverage).',
-              recommendation:
-                'Run the Postman collection as a regression check on every API change.',
-            },
-            {
-              title: 'Negative Scenario Validation',
-              finding:
-                'Empty or invalid credentials were verified against expected status codes and error messages.',
-              recommendation:
-                'Add data-driven tests for boundary input variations.',
-            },
-            {
-              title: 'Usability Metric',
-              finding:
-                'The SUS score serves as a quantitative measure of user experience.',
-              recommendation:
-                'Re-measure SUS after fixes to observe the trend.',
-            },
-          ],
-          tools: ['Postman', 'Black Box Testing', 'Test Case Design', 'SUS'],
-        },
-        {
-          id: 'antigravity-tracker',
-          index: '04',
-          title: 'Antigravity IDE Personal Tracker Architecture',
-          summary:
-            'Supabase Cloud DB architecture with a PostgreSQL relational schema for a personal tracker.',
-          kind: 'AI & Web Systems',
-          tags: ['Supabase', 'PostgreSQL', 'Relational Schema'],
-          metrics: [
-            { label: 'Database', value: 'PostgreSQL' },
-            { label: 'Backend', value: 'Supabase' },
-            { label: 'Data Pattern', value: 'Relational' },
-          ],
-          problem:
-            'How can personal tracker data be stored in a structured, consistent way and reached from the cloud without building a custom server?',
-          action:
-            'Designed a PostgreSQL relational schema (tables, primary/foreign keys, constraints) on Supabase Cloud, then set up data access through Supabase’s built-in API within an Antigravity IDE workflow.',
-          result: [
-            {
-              title: 'Structured Schema',
-              finding:
-                'Relations between tables protect data integrity through keys and constraints.',
-              recommendation:
-                'Document the schema as the reference before adding new features.',
-            },
-            {
-              title: 'Backend Without a Custom Server',
-              finding:
-                'Supabase provides a cloud database and a ready-to-use API, keeping the focus on the data model.',
-              recommendation:
-                'Enable Row Level Security to restrict access per user.',
-            },
-          ],
-          tools: ['Supabase', 'PostgreSQL', 'Relational Schema', 'Antigravity IDE'],
-        },
       ],
     },
     credentials: {
-      overline: '[ 04 ] Credentials',
-      title: 'Certifications.',
+      overline: '[ VERIFIED CREDENTIALS ]',
+      title: 'Certifications',
       listAria: 'Certification list',
-      hint: 'View certificate',
+      hint: 'View Certificate',
       closeLabel: 'Close certificate preview',
       items: [
         {
@@ -742,8 +426,8 @@ export const content = {
       ],
     },
     footer: {
-      overline: '[ 05 ] Contact',
-      statement: 'Let’s Build Data-Driven Solutions & Sound System Logic.',
+      overline: '[ GET IN TOUCH ]',
+      statement: "Let's Build Data-Driven Solutions & Strategic Insights.",
       labels: {
         email: 'Email',
         whatsapp: 'WhatsApp',
@@ -755,4 +439,3 @@ export const content = {
     },
   },
 };
-

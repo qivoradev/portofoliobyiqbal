@@ -1,45 +1,29 @@
-# Design System — iqbaldf Portfolio (Studio Keffi Aesthetic)
+# Design System — iqbaldf Portfolio (Studio Keffi Editorial Architecture)
 
 ## 1. Core Vibe
-- 100% Studio Keffi design architecture with Deep Obsidian Charcoal canvas (#0C0D0E).
-- Floating Capsule Navbar in stone-900/90 with white action capsule.
-- The Master Bento Card in Warm Editorial Sand (#F5F3ED) with crisp Charcoal typography (#111215) and integrated 3D Spline Workstation.
-- Zero watermark, clean editorial divider tables, and spring physics micro-interactions.
+- 100% Studio Keffi design architecture: ultra-lightweight, instant loading, zero 3D overhead.
+- Deep Obsidian Charcoal canvas (#0C0D0E) across the whole body.
+- Floating Pill Navbar: glassmorphic pill in `#16171A]/90` with white solid action capsule.
+- The Master Hero Bento Card: Warm Editorial Sand (#F5F3ED) with crisp Obsidian Charcoal typography (#111215) and pure CSS real metric snapshot.
+- Curated Project Ledger: Exactly 2 real Data Analyst case studies (NYC Collisions & Maven Pizza Sales) with Problem-Action-Result (PAR) drawer.
 
-## 2. Tokens (CSS variables in `src/index.css`)
-| Token | Value | Utility |
+## 2. Palette & Tokens
+| Token | Value | Context |
 |---|---|---|
-| Page Canvas | `#0C0D0E` Deep Obsidian Charcoal | `bg-[#0C0D0E]` |
-| Master Bento Card | `#F5F3ED` Warm Editorial Sand | `bg-[#F5F3ED]` |
-| Card Typography | `#111215` Deep Charcoal | `text-[#111215]` |
-| Muted Accent | `#8E8D88` Slate Olive / Stone | `text-stone-500` / `text-stone-600` |
-| Divider Line | `stone-300/60` / `border-black/15` | `border-black/15` |
+| Page Background | `#0C0D0E` Deep Obsidian Charcoal | Entire canvas |
+| Navbar Pill | `#16171A]/90` + `border-white/10` | Floating header |
+| Master Bento Card | `#F5F3ED` Warm Sand | Central hero card |
+| Card Typography | `#111215` Deep Black/Charcoal | Headings & table values |
+| Muted Accent | `#8E8D88` / `text-stone-500` / `stone-600` | Micro-labels & descriptions |
+| Divider Line | `border-black/15` (card) / `border-line` (dark) | Hairline dividers |
 
-## 3. Typography
-- **Headings**: Sans-serif bold tight tracking (`tracking-tight`, `.type-display`).
-- **Body**: Inter.
-- **Micro-labels**: JetBrains Mono, uppercase, `text-[11px]`, `tracking-widest` → `.type-micro`.
-- Brand: `iqbaldf` — font-bold text-white text-xs tracking-widest uppercase.
-
-## 4. Motion (spring physics)
-- Single curve everywhere: `cubic-bezier(0.16, 1, 0.3, 1)` → `ease-spring`.
-- Micro-interactions: `hover:scale-105 active:scale-95`.
-- Respects `prefers-reduced-motion`.
-
-## 5. Component Anatomy
-Root Container → Media Box (locked aspect ratio) → Meta Stack → Body Stack → Action Base.
-
-| Section | File | Notes |
-|---|---|---|
-| Navigation | `components/Navbar.jsx` | Floating capsule centered at top: stone-900/90 border-white/10 backdrop-blur-md, brand left, nav center, white "Hubungi Saya" button right. |
-| Hero | `components/Hero.jsx`, `KeffiHeroCard.jsx` | The Master Bento Card (2-column grid: left = Keffi headline, divider table [SCOPE], [TOOLS], [METRIC], black capsule CTA; right = Spline 3D canvas). |
-| Spline 3D | `components/SplineStage.jsx` | `id="spline-canvas-wrapper"`, aspect-square max-h-[480px], transparent background, zero watermarks, micro-labels top & bottom. |
-| Focus Bento | `components/FocusBento.jsx` | ARIA tabs (arrow keys), context-aware terminal. |
-| Project Ledger | `components/ProjectLedger.jsx` | Editorial rows; click opens the PAR drawer. |
-| Project Drawer | `components/ProjectDrawer.jsx` | Problem · Action · Result, spring slide, focus-trapped. |
-| Stack Drawer | `components/StackDrawer.jsx`, `Drawer.jsx` | Logic Stack panel. |
-| Credentials | `components/Credentials.jsx` | Two hairline rows → certificate lightbox. |
-| Footer | `components/Footer.jsx` | Large statement + underline-fill contact links. |
-
-## 6. Content
-All copy (ID/EN) lives in `src/content.js`; components are presentation only.
+## 3. Layout Structure
+1. **Floating Pill Navbar**: `max-w-2xl mx-auto mt-4 px-6 py-3 bg-[#16171A]/90 border border-white/10 rounded-full`
+2. **Master Hero Bento Card**: `max-w-6xl mx-auto rounded-[28px] sm:rounded-[36px] lg:rounded-[44px] bg-[#F5F3ED]`
+   - Sisi Kiri: `[DATA INTELLIGENCE & INSIGHTS]`, Headline "Data yang Berbicara, Keputusan yang Terukur.", Narasi, Divider Table Keffi ([SCOPE], [STACK], [STATUS]), Tombol Kapsul Hitam "Lihat Analisis Kasus ↓"
+   - Sisi Kanan: Real Metric Snapshot (238,421+ Kasus NYC & $817.8K Volume Pizza), Status Badge "100% Data Cleaning & Validation"
+3. **Curated Project Ledger**: Exactly 2 real projects:
+   - Proyek 1: NYC Motor Vehicle Collisions Analysis (Excel Pivot, KPI Safety Slicers, 238k+ records)
+   - Proyek 2: Pizza Sales Performance Dashboard (Looker Studio, SQL, $817.8K revenue)
+4. **Verified Credentials**: BNSP Web Development & Certiport AI (minimalist 2-row ledger with lightbox)
+5. **Contact Footer**: Editorial large statement & direct links (Email, WhatsApp, GitHub, LinkedIn)

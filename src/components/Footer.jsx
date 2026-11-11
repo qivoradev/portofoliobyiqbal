@@ -12,8 +12,8 @@ export default function Footer({ t }) {
   ];
 
   return (
-    <footer id="kontak" className="scroll-mt-14 border-t border-line">
-      <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 md:py-32">
+    <footer id="kontak" className="scroll-mt-20 border-t border-line">
+      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-28">
         <Reveal>
           <p className="type-micro text-muted">{t.overline}</p>
           <h2 className="type-display mt-6 max-w-5xl text-balance text-[clamp(2.25rem,6vw,5.5rem)] leading-[1.05]">

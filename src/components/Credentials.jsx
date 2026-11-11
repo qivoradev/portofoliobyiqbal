@@ -6,7 +6,7 @@ export default function Credentials({ t, onOpenCertificate }) {
   return (
     <section
       id="kredensial"
-      className="mx-auto max-w-7xl scroll-mt-14 px-5 py-20 sm:px-8 md:py-28"
+      className="mx-auto max-w-6xl scroll-mt-20 px-4 py-16 sm:px-6 md:py-24"
     >
       <SectionHeader overline={t.overline} title={t.title} />
 
