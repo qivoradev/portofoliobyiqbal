@@ -1,50 +1,60 @@
-import { Database, BarChart3, Table2, Cpu } from 'lucide-react';
+/**
+ * CompetencyStrip — Seamless marquee OR tightly packed badge grid
+ * Perry Wang dark-secondary bar: bg-[#111113] border-b border-white/[0.06]
+ * Overlaps Hero with -mt-8, provides rounded-b continuation.
+ */
 import { Reveal } from './ui';
 
-/**
- * Strip Kompetensi / Tools (Folioblox Secondary Bar Stack)
- * - Container bg-[#141416] rounded-b-[32px] sm:rounded-b-[48px] -mt-6 pt-12 py-8
- * - Mobile: rapi dengan grid-cols-2 gap-3, overflow-x-hidden
- * - Desktop: horizontal row dengan ikon monokrom putih
- */
+const TOOLS = [
+  'Microsoft Excel',
+  'SQL · PostgreSQL',
+  'Looker Studio',
+  'Supabase',
+  'Git',
+  'Postman',
+  'API Testing',
+  'PivotTables',
+  'Data Modeling',
+  'Root Cause Analysis',
+  'BI Dashboards',
+  'Data Validation',
+];
+
 export default function CompetencyStrip({ lang = 'id' }) {
   const isId = lang === 'id';
-
-  const items = [
-    { name: 'PostgreSQL & SQL', icon: Database },
-    { name: 'Looker Studio', icon: BarChart3 },
-    { name: 'Microsoft Excel', icon: Table2 },
-    { name: 'Certiport AI', icon: Cpu },
-  ];
+  // Duplicate for seamless marquee loop
+  const doubled = [...TOOLS, ...TOOLS];
 
   return (
-    <section className="relative z-0 -mt-6 w-full overflow-x-hidden rounded-b-[32px] sm:rounded-b-[48px] bg-[#141416] px-5 py-8 pt-12 sm:px-8 lg:px-12 border-b border-white/5 shadow-xl">
-      <Reveal className="mx-auto flex max-w-6xl flex-col lg:flex-row items-start lg:items-center justify-between gap-5 sm:gap-6">
-        {/* Kiri: Teks Muted */}
-        <p className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-stone-400 font-semibold leading-relaxed shrink-0">
-          {isId ? 'KOMPETENSI & ALAT UTAMA' : 'CORE COMPETENCIES & TOOLS'}
-        </p>
+    <section
+      className="relative z-0 -mt-8 w-full overflow-hidden rounded-b-[36px] sm:rounded-b-[52px] bg-[#111113] border-b border-white/[0.06] shadow-xl"
+    >
+      {/* Top spacer that "hides" behind hero rounded corner */}
+      <div className="pt-14 pb-6 sm:pt-16 sm:pb-8">
+        <Reveal className="mx-auto max-w-6xl px-5 sm:px-8 mb-5">
+          <p className="type-label text-stone-500">
+            {isId ? 'KOMPETENSI & ALAT UTAMA' : 'CORE COMPETENCIES & TOOLS'}
+          </p>
+        </Reveal>
 
-        {/* Kanan: 4 Item Badge Tools */}
-        <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-3 w-full lg:w-auto">
-          {items.map((tool) => {
-            const Icon = tool.icon;
-            return (
-              <div
-                key={tool.name}
-                className="flex items-center gap-2.5 rounded-2xl bg-white/[0.04] sm:bg-white/5 border border-white/10 px-3.5 py-2.5 text-white transition-colors hover:border-white/20"
+        {/* Marquee row */}
+        <div className="relative overflow-hidden">
+          {/* Fade masks */}
+          <div className="pointer-events-none absolute left-0 top-0 h-full w-16 z-10 bg-gradient-to-r from-[#111113] to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 h-full w-16 z-10 bg-gradient-to-l from-[#111113] to-transparent" />
+
+          <div className="marquee-track gap-3 px-4" aria-hidden="false">
+            {doubled.map((tool, i) => (
+              <span
+                key={`${tool}-${i}`}
+                className="inline-flex shrink-0 items-center px-4 py-2 rounded-full border border-white/[0.08] bg-white/[0.03] text-xs font-semibold text-stone-300 mr-3 select-none whitespace-nowrap hover:border-white/20 hover:text-white transition-colors cursor-default"
               >
-                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#FF511A]/10 text-[#FF511A] shrink-0">
-                  <Icon className="h-3.5 w-3.5" />
-                </div>
-                <span className="text-xs sm:text-sm font-semibold text-white tracking-tight whitespace-nowrap">
-                  {tool.name}
-                </span>
-              </div>
-            );
-          })}
+                {tool}
+              </span>
+            ))}
+          </div>
         </div>
-      </Reveal>
+      </div>
     </section>
   );
 }
